@@ -1,5 +1,5 @@
 # bruin-bowl
-ucla theme trivia game
+ucla themed trivia game
 
 Group name: Six Body Problem
 
