@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import AnswerBar from './components/AnswerBar.js';
-import PageTitle from './PageTitle'
+import PageTitle from './components/PageTitle.js'
 
 function App() {
   return (
