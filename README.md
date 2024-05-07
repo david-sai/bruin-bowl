@@ -1,2 +1,2 @@
 # bruin-bowl
-ucla theme trivia game
+ucla themed trivia game
