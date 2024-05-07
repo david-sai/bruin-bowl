@@ -1,8 +1,28 @@
-# bruin-bowl
-ucla themed trivia game
+**Contribution Guide**
 
-Group name: Six Body Problem
+Always create a new branch from dev when working on a task or issue. 
+Once you've made your changes, submit a PR on GitHub.
 
-Based on the trivia competition Quiz Bowl! 
-Our finished product will be a single-player question-answering website where users can create accounts, login, and answer questions to increase their score. 
-Additional features may include a leaderboard, game modes (and time constraints), and question searches. 
+1. Switch to the dev branch and pull the newest changes:
+   ```bash
+   git switch dev
+   git pull
+   ```
+
+2. Create a new branch for your work. Please name "your_task" as specific and accurate as possible (at max 4 words):
+   ```bash
+   git switch -c [your_name]/[your_task]
+   ```
+
+3. Save your files after making contributions.
+   ```bash
+   git add .
+   git commit -m "Finished [your_name]/[your_task]"
+   ```
+
+4. Once you're finished, push your branch to the remote repository:
+   ```bash
+   git push origin [branch_name]
+   ```
+
+5. Go to GitHub and submit a PR to merge your changes into the dev branch.
