@@ -1,12 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import AnswerBar from './components/AnswerBar.js';
+import PageTitle from './PageTitle'
 
 function App() {
   return (
-    <>
-      <AnswerBar />
-    </>
+    <div>
+      <PageTitle title="BruinBowl" />
+      <>
+        <AnswerBar />
+      </>
+    </div>
   );
 }
 
