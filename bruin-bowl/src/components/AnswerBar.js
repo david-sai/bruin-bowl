@@ -20,7 +20,6 @@ function AnswerBar({setVar}) {
             console.log("Fail!");
             setVar(false);
         }
-
     }
     
     const answer1 = "Answer 1"; // To be accessed from database later
@@ -31,10 +30,14 @@ function AnswerBar({setVar}) {
     return (
         <>
             <form method="post" onSubmit={handleSubmit}>
-                <input type="radio" name="answerNum" value="1" />{answer1}
-                <input type="radio" name="answerNum" value="2" />{answer2}
-                <input type="radio" name="answerNum" value="3" />{answer3}
-                <input type="radio" name="answerNum" value="4" />{answer4}
+                <input type="radio" id="answer1" name="answerNum" value="1" />
+                <label for="answer1">{answer1}</label><br />
+                <input type="radio" id="answer2" name="answerNum" value="2" />
+                <label for="answer2">{answer2}</label><br />
+                <input type="radio" id="answer3" name="answerNum" value="3" />
+                <label for="answer3">{answer3}</label><br />
+                <input type="radio" id="answer4" name="answerNum" value="4" />
+                <label for="answer4">{answer4}</label><br />
                 <button type="submit">Submit</button>
             </form>
         </>
