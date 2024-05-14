@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose
   });
 
 app.use(express.json());
+app.use("/user", userRoutes);
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
