@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 let MAX_SECONDS = 10;
 
-const Timer = () => {
+const Timer = ({ questionID }) => {
     const [seconds, setSeconds] = useState(10);
-    const [questionID, setQuestionID] = useState(-1);
     const [printText, setPrintText] = useState(seconds);
 
     useEffect(() => {
