@@ -4,7 +4,6 @@ import './App.css';
 import AnswerBar from './components/AnswerBar.js';
 import PageTitle from './components/PageTitle.js';
 import QuestionBox from './components/QuestionBox.js';
-import React, { useState } from 'react';
 import Timer from './components/Timer.js';
 
 function App() {
