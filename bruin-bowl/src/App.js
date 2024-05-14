@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import AnswerBar from './components/AnswerBar.js';
 import PageTitle from './components/PageTitle.js';
@@ -7,6 +8,7 @@ import React, { useState } from 'react';
 import Timer from './components/Timer.js';
 
 function App() {
+  const [correct, setCorrect] = useState(false); // Player guessed correct answer
   const [questionBody, setQuestionBody] = useState('Initial Value'); 
   
   const handleQuestionChange = () => {
@@ -21,7 +23,7 @@ function App() {
         <button onClick={handleQuestionChange}>Next Question</button>
         <Timer />
         <QuestionBox />
-        <AnswerBar />
+        <AnswerBar setVar={setCorrect} />
       </>
     </div>
   );
