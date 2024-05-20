@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function AnswerBar({setVar}) {
+function AnswerBar({setVar, answer1, answer2, answer3, answer4}) {
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
@@ -21,11 +21,6 @@ function AnswerBar({setVar}) {
             setVar(false);
         }
     }
-    
-    const answer1 = "Answer 1"; // To be accessed from database later
-    const answer2 = "Answer 2";
-    const answer3 = "Answer 3";
-    const answer4 = "Answer 4";
 
     return (
         <>

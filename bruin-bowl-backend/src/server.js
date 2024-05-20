@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const quizRoutes = require("./routes/quizRoutes");
+var cors = require("cors");
 
 const app = express();
 
@@ -20,8 +22,10 @@ mongoose
     console.log(error);
   });
 
+app.use(cors());
 app.use(express.json());
 app.use("/user", userRoutes);
+app.use("/quiz", quizRoutes);
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
