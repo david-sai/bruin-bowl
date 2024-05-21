@@ -13,17 +13,19 @@ export const Status = {
   NOT_ANSWERED: 0,
   CORRECT_ANSWER: 1,
   WRONG_ANSWER: 2,
+  TIMEOUT: 3,
 };
 
 function App() {
   const [correct, setCorrect] = useState(false); // Player guessed correct answer
-  const [questionBody, setQuestionBody] = useState('Initial Value'); 
-  const [answer, setAnswer] = useState('Initial Answer'); 
-  const [option1, setOption1] = useState('Initial Option1'); 
-  const [option2, setOption2] = useState('Initial Option2'); 
-  const [option3, setOption3] = useState('Initial Option3'); 
+  const [questionBody, setQuestionBody] = useState('Initial Value');
+  const [answer, setAnswer] = useState('Initial Answer');
+  const [option1, setOption1] = useState('Initial Option1');
+  const [option2, setOption2] = useState('Initial Option2');
+  const [option3, setOption3] = useState('Initial Option3');
   const [error, setError] = useState(""); // Player guessed correct answer
   const [status, setStatus] = useState(Status.NOT_ANSWERED);
+  const [questionNumber, setQuestionNumber] = useState(0);
 
   useEffect(
     () => {
@@ -44,12 +46,12 @@ function App() {
       };
       getQuestion(response);
     },
-    []
+    [questionNumber]
   );
 
   const handleQuestionChange = () => {
-    setQuestionBody('Updated Value');
     setStatus(Status.NOT_ANSWERED);
+    setQuestionNumber(questionNumber + 1);
   };
 
 
@@ -57,12 +59,11 @@ function App() {
     <div>
       <>
         <PageTitle title="BruinBowl" />
-        <QuestionBox questionBody={questionBody}/>
-        <AnswerBar setStatus={setStatus} setVar={setCorrect} answer1={answer} answer2={option1} answer3={option2} answer4={option3} />
+        <QuestionBox questionBody={questionBody} />
+        <AnswerBar setStatus={setStatus} setVar={setCorrect} answer1={answer} answer2={option1} answer3={option2} answer4={option3} status={status} />
         <button onClick={handleQuestionChange}>Next Question</button>
-        <AnswerIndicator status={status} answer={answer}/>
-        <Timer />
-        
+        <AnswerIndicator status={status} answer={answer} />
+        <Timer questionNumber={questionNumber} setStatus={setStatus} status={status} />
 
       </>
     </div>
