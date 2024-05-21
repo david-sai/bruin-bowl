@@ -1,27 +1,30 @@
 import React, { useState } from 'react'
 import { Status } from '../App'
 
-function AnswerBar({setStatus, setVar, answer1, answer2, answer3, answer4}) {
+function AnswerBar({ setStatus, setVar, answer1, answer2, answer3, answer4, status }) {
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-        const formJson = Object.fromEntries(formData.entries());
+        if (status == Status.NOT_ANSWERED) {
 
-        const answer = "2"; // Change to access database
+            // Read the form data
+            const form = e.target;
+            const formData = new FormData(form);
+            const formJson = Object.fromEntries(formData.entries());
 
-        if (formJson.answerNum === answer) {
-            console.log("Success!");
-            setVar(true);
-            setStatus(Status.CORRECT_ANSWER);
-        }
-        else {
-            console.log("Fail!");
-            setVar(false);
-            setStatus(Status.WRONG_ANSWER);
+            const answer = "2"; // Change to access database
+
+            if (formJson.answerNum === answer) {
+                console.log("Success!");
+                setVar(true);
+                setStatus(Status.CORRECT_ANSWER);
+            }
+            else {
+                console.log("Fail!");
+                setVar(false);
+                setStatus(Status.WRONG_ANSWER);
+            }
         }
     }
 
