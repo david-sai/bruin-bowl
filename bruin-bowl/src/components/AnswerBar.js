@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Status } from '../App'
 
-function AnswerBar({setVar, answer1, answer2, answer3, answer4}) {
+function AnswerBar({setStatus, setVar, answer1, answer2, answer3, answer4}) {
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
@@ -15,10 +16,12 @@ function AnswerBar({setVar, answer1, answer2, answer3, answer4}) {
         if (formJson.answerNum === answer) {
             console.log("Success!");
             setVar(true);
+            setStatus(Status.CORRECT_ANSWER);
         }
         else {
             console.log("Fail!");
             setVar(false);
+            setStatus(Status.WRONG_ANSWER);
         }
     }
 
