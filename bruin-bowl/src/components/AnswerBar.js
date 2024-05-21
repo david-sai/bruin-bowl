@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { Status } from '../App'
 
-function AnswerBar({setStatus, setVar, answer, wrong1, wrong2, wrong3}) {
+function AnswerBar({status, setStatus, setVar, answer, wrong1, wrong2, wrong3}) {
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
         if (status == Status.NOT_ANSWERED) {
-          console.log("Fail!");
-            setVar(false);
-            setStatus(Status.WRONG_ANSWER);
 
             // Read the form data
             const form = e.target;

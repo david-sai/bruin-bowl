@@ -60,7 +60,7 @@ function App() {
       <>
         <PageTitle title="BruinBowl" />
         <QuestionBox questionBody={questionBody}/>
-        <AnswerBar setStatus={setStatus} setVar={setCorrect} answer={answer} wrong1={option1} wrong2={option2} wrong3={option3} />
+        <AnswerBar status={status} setStatus={setStatus} setVar={setCorrect} answer={answer} wrong1={option1} wrong2={option2} wrong3={option3} />
         <button onClick={handleQuestionChange}>Next Question</button>
         <AnswerIndicator status={status} answer={answer} />
         <Timer questionNumber={questionNumber} setStatus={setStatus} status={status} />
