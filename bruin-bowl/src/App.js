@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import AnswerBar from './components/AnswerBar.js';
 import PageTitle from './components/PageTitle.js';
-import QuestionBox from './components/questionBox.js';
+import QuestionBox from './components/QuestionBox.js';
 import Timer from './components/Timer.js';
 import { getQuestion } from './api/api.js';
 import AnswerIndicator from './components/AnswerIndicator.js';
@@ -59,8 +59,8 @@ function App() {
     <div>
       <>
         <PageTitle title="BruinBowl" />
-        <QuestionBox questionBody={questionBody} />
-        <AnswerBar setStatus={setStatus} setVar={setCorrect} answer1={answer} answer2={option1} answer3={option2} answer4={option3} status={status} />
+        <QuestionBox questionBody={questionBody}/>
+        <AnswerBar setStatus={setStatus} setVar={setCorrect} answer={answer} wrong1={option1} wrong2={option2} wrong3={option3} />
         <button onClick={handleQuestionChange}>Next Question</button>
         <AnswerIndicator status={status} answer={answer} />
         <Timer questionNumber={questionNumber} setStatus={setStatus} status={status} />
