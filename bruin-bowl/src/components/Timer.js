@@ -10,10 +10,12 @@ const Timer = (props) => {
     useEffect(() => {
         setPrintText(formatTime);
         if (deciseconds > 0) {
-            const timer = setTimeout(() => {
-                setDeciseconds(deciseconds - 1);
-            }, 100);
-            return () => clearTimeout(timer);
+            if (props.status == 0) {
+                const timer = setTimeout(() => {
+                    setDeciseconds(deciseconds - 1);
+                }, 100);
+                return () => clearTimeout(timer);
+            }
         }
         else {
             props.setStatus(Status.TIMEOUT);
