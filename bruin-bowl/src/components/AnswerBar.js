@@ -6,20 +6,27 @@ function AnswerBar({setStatus, setVar, answer, wrong1, wrong2, wrong3}) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-        const formJson = Object.fromEntries(formData.entries());
-
-        if (formJson.answerNum === answer) {
-            console.log("Success!");
-            setVar(true);
-            setStatus(Status.CORRECT_ANSWER);
-        }
-        else {
-            console.log("Fail!");
+        if (status == Status.NOT_ANSWERED) {
+          console.log("Fail!");
             setVar(false);
             setStatus(Status.WRONG_ANSWER);
+
+            // Read the form data
+            const form = e.target;
+            const formData = new FormData(form);
+            const formJson = Object.fromEntries(formData.entries());
+
+            const answer = "2"; // Change to access database
+
+            if (formJson.answerNum === answer) {
+                console.log("Success!");
+                setVar(true);
+                setStatus(Status.CORRECT_ANSWER);
+            } else {
+                console.log("Fail!");
+                setVar(false);
+                setStatus(Status.WRONG_ANSWER);
+            }
         }
     }
 

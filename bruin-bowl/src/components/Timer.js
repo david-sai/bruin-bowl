@@ -1,27 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { Status } from '../App.js';
 
 let MAX_SECONDS = 10;
 
-const Timer = ({ questionID }) => {
-    const [seconds, setSeconds] = useState(10);
-    const [printText, setPrintText] = useState(seconds);
+const Timer = (props) => {
+    const [deciseconds, setDeciseconds] = useState(100);
+    const [printText, setPrintText] = useState(deciseconds);
 
     useEffect(() => {
         setPrintText(formatTime);
-        if (seconds > 0) {
-            const timer = setTimeout(() => {
-                setSeconds(seconds - 1);
-            }, 1000);
-            return () => setTimeout(timer);
+        if (deciseconds > 0) {
+            if (props.status == 0) {
+                const timer = setTimeout(() => {
+                    setDeciseconds(deciseconds - 1);
+                }, 100);
+                return () => clearTimeout(timer);
+            }
         }
         else {
-            setPrintText("Ran out of time");
+            props.setStatus(Status.TIMEOUT);
         }
-    }, [seconds, questionID]);
+    }, [deciseconds]);
+
+    useEffect(() => {
+        setDeciseconds(MAX_SECONDS * 10);
+        setPrintText(formatTime);
+    }, [props.questionNumber]);
+
+
 
     // Function to format seconds into HH:MM:SS format
     const formatTime = () => {
-        const secs = seconds % 60;
+        let secs = Number(deciseconds);
+        secs /= 10;
         return secs;
     };
 
