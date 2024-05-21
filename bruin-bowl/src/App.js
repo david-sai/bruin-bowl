@@ -6,7 +6,14 @@ import PageTitle from './components/PageTitle.js';
 import QuestionBox from './components/questionBox.js';
 import Timer from './components/Timer.js';
 import { getQuestion } from './api/api.js';
+import AnswerIndicator from './components/AnswerIndicator.js';
 
+// For AnswerIndicator
+export const Status = {
+  NOT_ANSWERED: 0,
+  CORRECT_ANSWER: 1,
+  WRONG_ANSWER: 2,
+};
 
 function App() {
   const [correct, setCorrect] = useState(false); // Player guessed correct answer
@@ -16,7 +23,7 @@ function App() {
   const [option2, setOption2] = useState('Initial Option2'); 
   const [option3, setOption3] = useState('Initial Option3'); 
   const [error, setError] = useState(""); // Player guessed correct answer
-  
+  const [status, setStatus] = useState(Status.NOT_ANSWERED);
 
   useEffect(
     () => {
@@ -42,17 +49,21 @@ function App() {
 
   const handleQuestionChange = () => {
     setQuestionBody('Updated Value');
+    setStatus(Status.NOT_ANSWERED);
   };
+
 
   return (
     <div>
       <>
         <PageTitle title="BruinBowl" />
         <QuestionBox questionBody={questionBody}/>
-        <AnswerBar setVar={setCorrect} answer1={answer} answer2={option1} answer3={option2} answer4={option3} />
+        <AnswerBar setStatus={setStatus} setVar={setCorrect} answer1={answer} answer2={option1} answer3={option2} answer4={option3} />
         <button onClick={handleQuestionChange}>Next Question</button>
+        <AnswerIndicator status={status} answer={answer}/>
         <Timer />
         
+
       </>
     </div>
   );
