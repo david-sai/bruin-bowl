@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Status } from '../App'
 
 function AnswerBar({status, setStatus, setVar, answer, wrong1, wrong2, wrong3}) {
+    const [answers, setAnswers] = useState([String]);
+
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
@@ -13,19 +15,22 @@ function AnswerBar({status, setStatus, setVar, answer, wrong1, wrong2, wrong3}) 
             const formData = new FormData(form);
             const formJson = Object.fromEntries(formData.entries());
 
-            const answer = "2"; // Change to access database
-
             if (formJson.answerNum === answer) {
-                console.log("Success!");
                 setVar(true);
                 setStatus(Status.CORRECT_ANSWER);
             } else {
-                console.log("Fail!");
                 setVar(false);
                 setStatus(Status.WRONG_ANSWER);
             }
         }
     }
+
+    useEffect(() => {
+        let answers = [answer, wrong1, wrong2, wrong3]
+        const shuffledAnswers = shuffleArray(answers);
+        setAnswers(shuffledAnswers);
+    }, [answer]);
+
 
     const shuffleArray = (array) => { // Uses Fisher-Yates Algorithm
         let shuffledArray = array.slice();
@@ -36,31 +41,24 @@ function AnswerBar({status, setStatus, setVar, answer, wrong1, wrong2, wrong3}) 
         return shuffledArray;
     };
 
-    const answers = [answer, wrong1, wrong2, wrong3]
-    const shuffledAnswers = shuffleArray(answers);
-    const answer1 = shuffledAnswers[0];
-    const answer2 = shuffledAnswers[1];
-    const answer3 = shuffledAnswers[2];
-    const answer4 = shuffledAnswers[3];
-
     return (
         <>
             <form method="post" onSubmit={handleSubmit}>
                 <div className="mb-1">
-                    <input type="radio" id="answer1" name="answerNum" value={answer1} />
-                    <label htmlFor="answer1" className="ml-2">{answer1}</label>
+                    <input type="radio" id="answer1" name="answerNum" value={answers[0]} />
+                    <label htmlFor="answer1" className="ml-2">{answers[0]}</label>
                 </div>
                 <div className="mb-1">
-                    <input type="radio" id="answer2" name="answerNum" value={answer2} />
-                    <label htmlFor="answer2" className="ml-2">{answer2}</label>
+                    <input type="radio" id="answer2" name="answerNum" value={answers[1]} />
+                    <label htmlFor="answer2" className="ml-2">{answers[1]}</label>
                 </div>
                 <div className="mb-1">
-                    <input type="radio" id="answer3" name="answerNum" value={answer3} />
-                    <label htmlFor="answer3" className="ml-2">{answer3}</label>
+                    <input type="radio" id="answer3" name="answerNum" value={answers[2]} />
+                    <label htmlFor="answer3" className="ml-2">{answers[2]}</label>
                 </div>
                 <div className="mb-1">
-                    <input type="radio" id="answer4" name="answerNum" value={answer4} />
-                    <label htmlFor="answer4" className="ml-2">{answer4}</label>
+                    <input type="radio" id="answer4" name="answerNum" value={answers[3]} />
+                    <label htmlFor="answer4" className="ml-2">{answers[3]}</label>
                 </div>
                 <button type="submit" className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
             </form>
