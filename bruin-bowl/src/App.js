@@ -9,6 +9,8 @@ import Timer from "./components/Timer.js";
 import { getQuestion } from "./api/api.js";
 import AnswerIndicator from "./components/AnswerIndicator.js";
 import NavigationBar from "./components/NavigationBar.js";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 // For AnswerIndicator
 export const Status = {
@@ -67,7 +69,7 @@ function App() {
       <div className="max-w-screen-lg w-full">
         <NavigationBar page={page} setPage={setPage}/>
 
-        <div className="mt-4 bg-amber-100 rounded-3xl p-10 text-bruin-darkgold">
+        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
           <QuestionBox questionBody={questionBody} />
           
           <AnswerBar
