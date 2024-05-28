@@ -31,5 +31,19 @@ const getQuestion = async (req, res) => {
     }
 };
 
+const searchQuestion = async (req, res) => {
+    const { keyword } = req.body;
+    
+    if (!keyword) {
+      return res.status(400).json({ error: 'Keyword is required' });
+    }
+    try {
+      const regex = new RegExp(`\\b${keyword}\\b`, 'i');
+      const results = await QuizSchema.find({ question: { $regex: regex } });
+      res.status(200).json({ results: results });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
 
-module.exports = { createQuestion, getQuestion };
+module.exports = { createQuestion, getQuestion, searchQuestion };
