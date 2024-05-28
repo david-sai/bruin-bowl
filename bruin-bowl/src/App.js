@@ -27,18 +27,17 @@ export const Page = {
 };
 
 function App() {
-  const [correct, setCorrect] = useState(false); // Player guessed correct answer
   const [questionBody, setQuestionBody] = useState("Question Body");
   const [answer, setAnswer] = useState("Initial Answer");
   const [option1, setOption1] = useState("Initial Option1");
   const [option2, setOption2] = useState("Initial Option2");
   const [option3, setOption3] = useState("Initial Option3");
-  const [error, setError] = useState(""); // Player guessed correct answer
+  const [error, setError] = useState("");
   const [status, setStatus] = useState(Status.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [page, setPage] = useState(Page.QUESTIONS);
 
-  useEffect(() => {
+  useEffect(() => { // Queries server for next question when question number is changed
     const response = (data) => {
       if (data) {
         if (data["error"]) {
@@ -75,7 +74,6 @@ function App() {
           <AnswerBar
             status={status}
             setStatus={setStatus}
-            setVar={setCorrect}
             answer={answer}
             wrong1={option1}
             wrong2={option2}
