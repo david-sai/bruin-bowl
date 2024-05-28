@@ -67,11 +67,11 @@ function App() {
       <PageTitle title="BruinBowl" />
 
       <div className="max-w-screen-lg w-full">
-        <NavigationBar page={page} setPage={setPage}/>
+        <NavigationBar page={page} setPage={setPage} />
 
-        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
+        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold relative">
           <QuestionBox questionBody={questionBody} />
-          
+
           <AnswerBar
             status={status}
             setStatus={setStatus}
@@ -81,13 +81,15 @@ function App() {
             wrong2={option2}
             wrong3={option3}
           />
-          <button onClick={handleQuestionChange}>Next Question</button>
+          <button onClick={handleQuestionChange} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Next Question</button>
           <AnswerIndicator status={status} answer={answer} />
           <Timer
             questionNumber={questionNumber}
             setStatus={setStatus}
             status={status}
           />
+        </div>
+        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
           <SearchBar />
         </div>
       </div>

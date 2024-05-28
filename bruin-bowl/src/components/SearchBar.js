@@ -3,9 +3,9 @@ import { searchQuestion } from '../api/api.js';
 import QuestionBox from './QuestionBox.js';
 
 function SearchBar() {
-    const [keyword, setKeyword] = useState('');
-    const [results, setResults] = useState(null);
-    const [error, setError] = useState("");
+  const [keyword, setKeyword] = useState('');
+  const [results, setResults] = useState(null);
+  const [error, setError] = useState("");
 
   const handleChange = (event) => {
     setKeyword(event.target.value);
@@ -14,32 +14,35 @@ function SearchBar() {
   const handleSubmit = () => {
     // Call the function when the button is clicked
     const response = (data) => {
-        if (data) {
-            if (data["error"]) {
-                setError(data["error"].message);
-            } else {
-                console.log(data);
-                setResults(data["results"])
-                setError("");
-            }
+      if (data) {
+        if (data["error"]) {
+          setError(data["error"].message);
+        } else {
+          console.log(data);
+          setResults(data["results"])
+          setError("");
         }
+      }
     };
     searchQuestion(keyword, response);
   }
 
   return (
     <div>
+      <h1 className="font-bold text-3xl mb-1.5">Question Search</h1>
       <input
         type="text"
         value={keyword}
         onChange={handleChange}
-        placeholder="Enter something..."
+        placeholder="Search for question"
+        className="p-2"
       />
-      <button onClick={handleSubmit}>Submit</button>
-      {results != null && 
+      <br></br>
+      <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
+      {results != null &&
         results.map((questionObj) => (
-        <QuestionBox questionBody={questionObj.question}/>
-      ))
+          <QuestionBox questionBody={questionObj.question} />
+        ))
       }
     </div>
   );
