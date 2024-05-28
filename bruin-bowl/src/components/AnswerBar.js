@@ -46,18 +46,27 @@ function AnswerBar({status, setStatus, setVar, answer, wrong1, wrong2, wrong3}) 
     return (
         <>
             <form method="post" onSubmit={handleSubmit}>
-                <input type="radio" id="answer1" name="answerNum" value={answer1} />
-                <label for="answer1">{answer1}</label><br />
-                <input type="radio" id="answer2" name="answerNum" value={answer2} />
-                <label for="answer2">{answer2}</label><br />
-                <input type="radio" id="answer3" name="answerNum" value={answer3} />
-                <label for="answer3">{answer3}</label><br />
-                <input type="radio" id="answer4" name="answerNum" value={answer4} />
-                <label for="answer4">{answer4}</label><br />
-                <button type="submit">Submit</button>
+                <div className="mb-1">
+                    <input type="radio" id="answer1" name="answerNum" value={answer1} />
+                    <label htmlFor="answer1" className="ml-2">{answer1}</label>
+                </div>
+                <div className="mb-1">
+                    <input type="radio" id="answer2" name="answerNum" value={answer2} />
+                    <label htmlFor="answer2" className="ml-2">{answer2}</label>
+                </div>
+                <div className="mb-1">
+                    <input type="radio" id="answer3" name="answerNum" value={answer3} />
+                    <label htmlFor="answer3" className="ml-2">{answer3}</label>
+                </div>
+                <div className="mb-1">
+                    <input type="radio" id="answer4" name="answerNum" value={answer4} />
+                    <label htmlFor="answer4" className="ml-2">{answer4}</label>
+                </div>
+                <button type="submit" className="mt-4 p-2 bg-blue-500 text-white rounded">Submit</button>
             </form>
         </>
     );
+    
 }
 
 export default AnswerBar;
