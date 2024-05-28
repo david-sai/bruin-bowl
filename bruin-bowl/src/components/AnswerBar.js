@@ -62,7 +62,7 @@ function AnswerBar({status, setStatus, setVar, answer, wrong1, wrong2, wrong3}) 
                     <input type="radio" id="answer4" name="answerNum" value={answer4} />
                     <label htmlFor="answer4" className="ml-2">{answer4}</label>
                 </div>
-                <button type="submit" className="mt-4 p-2 bg-blue-500 text-white rounded">Submit</button>
+                <button type="submit" className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
             </form>
         </>
     );
