@@ -33,7 +33,7 @@ const Timer = (props) => {
     const formatTime = () => {
         let secs = Number(deciseconds);
         secs /= 10;
-        return secs;
+        return secs.toFixed(1);
     };
 
     return (
