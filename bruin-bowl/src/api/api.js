@@ -14,4 +14,27 @@ export const getQuestion = async (res) => {
         console.log(error);
         res({ error: error });
       });
+};
+
+export const searchQuestion = async (keyword, res) => {
+  var data = JSON.stringify({
+    "keyword": keyword
+  });
+
+  var config = {
+      method: 'post',
+      url: 'http://localhost:80/quiz/search',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data: data
   };
+  axios(config)
+  .then(function (response) {
+      res(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      res({ error: error });
+    });
+};
