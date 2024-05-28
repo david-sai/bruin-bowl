@@ -20,9 +20,9 @@ const userSchema = new Schema({
   }
 });
 
-///////////////////////////////////////////////////////////////
-//SCHEMA METHODS
-///////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//SCHEMA METHODS (USER MANIPULATION)
+/////////////////////////////////////////////////////////////////////////
 
 userSchema.statics.signup = async function (username, password) {
   if (!username || !password) {
@@ -50,6 +50,21 @@ userSchema.statics.getUserMetaData = async function (username) {
     };
 };
 
+//Note: this is sort of redundant code. Do we really need getUserMetaData (maybe better for future planning)
+userSchema.statics.getUserMetaData = async function (username) {
+  if (!username) {
+    throw Error("Missing Username...");
+  }
+  const user = await this.findOne({ username });
+  if (!user) {
+    return null;
+  }
+  return {
+    password: user.password,
+    score: user.score
+  };
+};
+
 userSchema.statics.deleteUserByUsername = async function (username) 
 {
   try {
@@ -69,4 +84,35 @@ userSchema.statics.deleteUserByUsername = async function (username)
     throw error;
   }
 }
+
+/////////////////////////////////////////////////////////////////////////
+//SCHEMA METHODS (SCORE MANIPULATION)
+/////////////////////////////////////////////////////////////////////////
+userSchema.statics.getUserScore = async function (username) {
+  if (!username) {
+    throw Error("Called Function getUserScore without a username!");
+  }
+  const user = await this.findOne({ username });
+  if (!user) {
+    return null;
+  }
+  return {
+    score: user.score
+  };
+};
+
+userSchema.statics.updateUserScore = async function (username, amount) {
+  const user = await this.findOne({ username: username});
+
+  if (!user) {
+    return false;
+  }
+
+  user.score = newScore;
+  await user.save();
+  return true;
+
+};
+
+
 module.exports = mongoose.model("User", userSchema);

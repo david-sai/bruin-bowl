@@ -6,10 +6,8 @@ const router = express.Router();
 
 router.post("/signup", signup);
 
-router.get("/retrieve", getUser);
+router.get("/retrieve", getUserMetaData);
 
 router.delete("/delete", deleteUser);
-
-router.put("/updatescore", updateScore);
 
 module.exports = router;

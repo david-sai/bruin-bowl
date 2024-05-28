@@ -24,7 +24,7 @@ const getUser = async (req, res) => {
 }
 
 const deleteUser = async(req, res) => {
-    const {username} = req.params;
+    const {username} = req.body;
     try {
         const result = await UserSchema.deleteUserByUsername(username)
         if (!result) {
@@ -36,6 +36,18 @@ const deleteUser = async(req, res) => {
     }
 }
 
+const updateScorebyUser = async(req, res) => {
+    const {username, newScore} = req.body;
+    try {
+        const result = await UserSchema.updateScorebyUser(username, newScore)
+        if (!result) {
+            return res.status(404).json({error: "Error occured with replaceing user (${username})'s score!"})
+        }
+        res.status(200).json({ message: "User score successfully updated to: ${amount}"})
+    } catch (error) {
+        res.status(500).json({error: "Server Error!"})
+    }
+}
 module.exports = { signup }
 module.exports = { getUser }
 module.exports = { deleteUser }
