@@ -10,6 +10,7 @@ import { getQuestion } from "./api/api.js";
 import AnswerIndicator from "./components/AnswerIndicator.js";
 import NavigationBar from "./components/NavigationBar.js";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import AvatarSelector from "./components/AvatarSelector.js";
 
 
 // For AnswerIndicator
