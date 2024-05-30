@@ -42,6 +42,19 @@ function NavigationBar() {
           Leaderboard
         </NavLink>
 
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${
+              isActive
+                ? "text-bruin-blue border-bruin-blue"
+                : "text-bruin-gold border-transparent"
+            }`
+          }
+        >
+          Settings
+        </NavLink>
+
         <button className="flex items-center py-0.5 px-5 bg-bruin-blue text-white rounded-full">
           <span>Sign In</span>
           <i className="fas fa-arrow-right pl-3"></i>

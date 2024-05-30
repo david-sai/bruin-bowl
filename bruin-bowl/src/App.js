@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
+import Settings from "./pages/Settings.js";
 
 // For AnswerIndicator
 export const Status = {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/leaderboard" element={<Leaderboard />}></Route>
             <Route path="/questions" element={<Questions />}></Route>
+            <Route path="/settings" element={<Settings />}></Route>
           </Routes>
         </div>
       </div>
