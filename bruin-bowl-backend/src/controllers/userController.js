@@ -50,9 +50,6 @@ const updateScorebyUser = async (req, res) => {
         res.status(500).json({ error: "Server Error!" });
     }
 }
-module.exports = { signup, getUser, deleteUser, updateScorebyUser };
-
-
 /*
 use find and google how to sort based on a number key attribute, then this should have an array of users
 */
@@ -64,3 +61,6 @@ const getAllUsernames = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+module.exports = { signup, getUser, deleteUser, updateScorebyUser, getAllUsernames};
+
+
