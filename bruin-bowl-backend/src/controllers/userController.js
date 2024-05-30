@@ -56,3 +56,11 @@ module.exports = { signup, getUser, deleteUser, updateScorebyUser };
 /*
 use find and google how to sort based on a number key attribute, then this should have an array of users
 */
+const getAllUsernames = async (req, res) => {
+    try {
+        const usernames = await UserSchema.getAllUsernames();
+        res.status(200).json({ usernames });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};

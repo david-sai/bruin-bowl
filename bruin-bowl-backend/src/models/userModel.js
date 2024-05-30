@@ -104,4 +104,15 @@ userSchema.statics.updateUserScore = async function (username, amount) {
   return true;
 
 };
+
+userSchema.statics.getAllUsernames = async function () {
+  try {
+    const usernames = await this.find({}).sort({score : -1});
+    return usernames;
+  }
+  catch (error) {
+    throw Error("Failed to fetch all usernames!");
+  }
+
+};
 module.exports = mongoose.model("User", userSchema);

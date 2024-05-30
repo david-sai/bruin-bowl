@@ -25,4 +25,7 @@ router.put("/updatescore", (req, res, next) => {
   updateScorebyUser(req, res).catch(next);
 });
 
+router.get("/users/sorted-by-score", (req, res, next) => {
+    returnAllUsers(req, res).catch(next);
+});
 module.exports = router;
