@@ -10,10 +10,10 @@ mongoose
   .connect("mongodb+srv://BruinBowl35L:PZ7R06@bruin-bowl-database.dytrqfo.mongodb.net/?retryWrites=true&w=majority&appName=Bruin-Bowl-Database")
   .then(() => {
     if (process.env.NODE_ENV !== "test") {
-      app.listen(80, () => {
+      app.listen(4000, () => {
         console.log(
           "connected to db & listening on port",
-          80
+          4000
         );
       });
     }
