@@ -37,6 +37,7 @@ function App() {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [page, setPage] = useState(Page.QUESTIONS);
 
+
   useEffect(() => { // Queries server for next question when question number is changed
     const response = (data) => {
       if (data) {
