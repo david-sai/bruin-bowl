@@ -7,8 +7,7 @@ function NavigationBar() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `py-2 text-xl font-bold ${
-            isActive ? "text-bruin-blue" : "text-bruin-gold"
+          `py-2 text-xl font-bold ${isActive ? "text-bruin-blue" : "text-bruin-gold"
           }`
         }
       >
@@ -19,10 +18,9 @@ function NavigationBar() {
         <NavLink
           to="/questions"
           className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${
-              isActive
-                ? "text-bruin-blue border-bruin-blue"
-                : "text-bruin-gold border-transparent"
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
             }`
           }
         >
@@ -32,10 +30,9 @@ function NavigationBar() {
         <NavLink
           to="/leaderboard"
           className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${
-              isActive
-                ? "text-bruin-blue border-bruin-blue"
-                : "text-bruin-gold border-transparent"
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
             }`
           }
         >
@@ -45,20 +42,27 @@ function NavigationBar() {
         <NavLink
           to="/settings"
           className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${
-              isActive
-                ? "text-bruin-blue border-bruin-blue"
-                : "text-bruin-gold border-transparent"
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
             }`
           }
         >
           Settings
         </NavLink>
 
-        <button className="flex items-center py-0.5 px-5 bg-bruin-blue text-white rounded-full">
+        <NavLink
+          to="/signup"
+          className={({ isActive }) =>
+            `flex items-center py-0.5 px-5 text-white rounded-full ${isActive
+              ? "bg-bruin-blue"
+              : "bg-bruin-gold"
+            }`
+          }
+        >
           <span>Sign In</span>
           <i className="fas fa-arrow-right pl-3"></i>
-        </button>
+        </NavLink>
       </div>
     </div>
   );

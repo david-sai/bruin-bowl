@@ -11,6 +11,7 @@ import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import Settings from "./pages/Settings.js";
+import Signup from "./pages/Signup.js";
 
 // For AnswerIndicator
 export const Status = {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard />}></Route>
             <Route path="/questions" element={<Questions />}></Route>
             <Route path="/settings" element={<Settings />}></Route>
+            <Route path="/signup" element={<Signup />}></Route>
           </Routes>
         </div>
       </div>
