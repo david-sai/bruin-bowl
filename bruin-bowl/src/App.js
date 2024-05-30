@@ -9,6 +9,7 @@ import Timer from "./components/Timer.js";
 import { getQuestion } from "./api/api.js";
 import AnswerIndicator from "./components/AnswerIndicator.js";
 import NavigationBar from "./components/NavigationBar.js";
+import GameModeSelector from "./components/ModeCategorySelector.js";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -26,6 +27,19 @@ export const Page = {
   LEADERBOARD: 2,
 };
 
+export const gameModes = [
+  "Classic",
+  "Rapid",
+  "Blitz"
+]
+
+export const categories = [
+  "All",
+  "UCLA",
+  "Computer Science",
+  "Star Wars"
+]
+
 function App() {
   const [questionBody, setQuestionBody] = useState("Question Body");
   const [answer, setAnswer] = useState("Initial Answer");
@@ -36,6 +50,8 @@ function App() {
   const [status, setStatus] = useState(Status.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [page, setPage] = useState(Page.QUESTIONS);
+  const [gameMode, setGameMode] = useState("Classic");
+  const [category, setCategory] = useState("All")
 
   useEffect(() => { // Queries server for next question when question number is changed
     const response = (data) => {
@@ -90,6 +106,11 @@ function App() {
         <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
           <SearchBar />
         </div>
+
+        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold relative">
+          <GameModeSelector setGameMode={setGameMode} setCategory={setCategory} />
+        </div>
+
       </div>
     </div>
   );
