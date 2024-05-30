@@ -19,15 +19,7 @@ export const Status = {
   TIMEOUT: 3,
 };
 
-export const Page = {
-  HOME: 0,
-  QUESTIONS: 1,
-  LEADERBOARD: 2,
-};
-
 function App() {
-  const [page, setPage] = useState(Page.QUESTIONS);
-
   return (
     // <p>Hello</p>
     <BrowserRouter>
@@ -35,9 +27,7 @@ function App() {
         <PageTitle title="BruinBowl" />
 
         <div className="max-w-screen-lg w-full">
-          <NavigationBar page={page} setPage={setPage} />
-
-          <Link to="/questions">Questions</Link>
+          <NavigationBar />
 
           <Routes>
             <Route path="/" element={<Home />}></Route>
