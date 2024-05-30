@@ -7,7 +7,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
@@ -30,11 +29,22 @@ function App() {
   const [page, setPage] = useState(Page.QUESTIONS);
 
   return (
+    // <p>Hello</p>
     <BrowserRouter>
       <div className="flex justify-center items-start min-h-screen p-8 bg-amber-50">
         <PageTitle title="BruinBowl" />
 
-        
+        <div className="max-w-screen-lg w-full">
+          <NavigationBar page={page} setPage={setPage} />
+
+          <Link to="/questions">Questions</Link>
+
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/leaderboard" element={<Leaderboard />}></Route>
+            <Route path="/questions" element={<Questions />}></Route>
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );
