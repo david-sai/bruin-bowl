@@ -1,9 +1,8 @@
 import logo from "./logo.svg";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import "./App.css";
 import PageTitle from "./components/PageTitle.js";
 import NavigationBar from "./components/NavigationBar.js";
-import GameModeSelector from "./components/ModeCategorySelector.js";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
@@ -12,6 +11,7 @@ import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import Settings from "./pages/Settings.js";
+import GameContext from "./context/GameContext.js";
 
 // For AnswerIndicator
 export const Status = {
@@ -31,18 +31,15 @@ function App() {
         <div className="max-w-screen-lg w-full">
           <NavigationBar />
 
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/leaderboard" element={<Leaderboard />}></Route>
-            <Route path="/questions" element={<Questions />}></Route>
-            <Route path="/settings" element={<Settings />}></Route>
-          </Routes>
+          <GameContext>
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/leaderboard" element={<Leaderboard />}></Route>
+              <Route path="/questions" element={<Questions />}></Route>
+              <Route path="/settings" element={<Settings />}></Route>
+            </Routes>
+          </GameContext>
         </div>
-
-        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold relative">
-          <GameModeSelector setGameMode={setGameMode} setCategory={setCategory} />
-        </div>
-
       </div>
     </BrowserRouter>
   );
