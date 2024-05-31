@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Status } from '../App'
+import { STATUS } from '../pages/Questions'
 
 function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
     const [answers, setAnswers] = useState([String]);
@@ -8,7 +8,7 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        if (status == Status.NOT_ANSWERED) {
+        if (status == STATUS.NOT_ANSWERED) {
 
             // Read the form data
             const form = e.target;
@@ -16,9 +16,9 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
             const formJson = Object.fromEntries(formData.entries());
 
             if (formJson.answerNum === answer) {
-                setStatus(Status.CORRECT_ANSWER);
+                setStatus(STATUS.CORRECT_ANSWER);
             } else {
-                setStatus(Status.WRONG_ANSWER);
+                setStatus(STATUS.WRONG_ANSWER);
             }
         }
     }

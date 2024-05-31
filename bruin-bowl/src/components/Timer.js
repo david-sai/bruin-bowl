@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Status } from '../App.js';
+import { STATUS } from '../pages/Questions.js';
 import { GameStateContext, GAME_MODES } from '../context/GameContext.js';
 
 export const GAME_MODE_TIMES = { // Sets how many seconds are given in each game mode, might need to be accessed for score calculation
-    [GAME_MODES.CLASSIC]: 20,
-    [GAME_MODES.RAPID]: 15,
-    [GAME_MODES.BLITZ]: 10
+    [GAME_MODES.CLASSIC]: 15,
+    [GAME_MODES.RAPID]: 10,
+    [GAME_MODES.BLITZ]: 5
 }
 
 const Timer = (props) => {
@@ -26,7 +26,7 @@ const Timer = (props) => {
             }
         }
         else {
-            props.setStatus(Status.TIMEOUT);
+            props.setStatus(STATUS.TIMEOUT);
         }
     }, [deciseconds]);
 

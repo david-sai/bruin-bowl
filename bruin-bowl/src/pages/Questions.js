@@ -5,8 +5,15 @@ import SearchBar from "../components/SearchBar.js";
 import Timer from "../components/Timer.js";
 import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
-import { Status } from "../App.js";
 import { useEffect, useState } from "react";
+
+// For AnswerIndicator
+export const STATUS = {
+  NOT_ANSWERED: 0,
+  CORRECT_ANSWER: 1,
+  WRONG_ANSWER: 2,
+  TIMEOUT: 3,
+};
 
 function Questions() {
   const [correct, setCorrect] = useState(false); // Player guessed correct answer
@@ -16,7 +23,7 @@ function Questions() {
   const [option2, setOption2] = useState("Initial Option2");
   const [option3, setOption3] = useState("Initial Option3");
   const [error, setError] = useState(""); // Player guessed correct answer
-  const [status, setStatus] = useState(Status.NOT_ANSWERED);
+  const [status, setStatus] = useState(STATUS.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
 
   useEffect(() => {
@@ -39,7 +46,7 @@ function Questions() {
   }, [questionNumber]);
 
   const handleQuestionChange = () => {
-    setStatus(Status.NOT_ANSWERED);
+    setStatus(STATUS.NOT_ANSWERED);
     setQuestionNumber(questionNumber + 1);
   };
 
