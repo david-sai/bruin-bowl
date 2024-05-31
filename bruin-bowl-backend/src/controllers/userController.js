@@ -17,7 +17,7 @@ const getUser = async (req, res) => {
         if (!username) {
             throw Error("Missing Username...");
           }
-          const user = await this.findOne({ username });
+          const user = await UserSchema.findOne({ username });
           if (!user) {
             return null;
           }
@@ -41,7 +41,7 @@ const deleteUser = async(req, res) => {
         if (!username) {
             throw Error("Missing Username...");
           }
-          const deleteResult = await this.deleteOne({ username });
+          const deleteResult = await UserSchema.deleteOne({ username });
           if (deleteResult.deletedCount === 0) {
             result = false;
           }
@@ -61,7 +61,7 @@ const updateScorebyUser = async (req, res) => {
         const result = false;
         if (!username || amount === undefined)
             throw Error("Missing information for score update");
-          const user = await this.findOne({ username: username});
+          const user = await UserSchema.findOne({ username: username});
         
           if (!user) {
             result = false;
@@ -84,7 +84,7 @@ use find and google how to sort based on a number key attribute, then this shoul
 */
 const getAllUsernames = async (req, res) => {
     try {
-        const usernames = await this.find({}).sort({score : -1});
+        const usernames = await UserSchema.find({}).sort({score : -1});
         res.status(200).json({ usernames });
     } catch (error) {
         res.status(500).json({ error: error.message });
