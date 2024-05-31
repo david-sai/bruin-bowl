@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import { categories, gameModes } from '../App';
+import React, { useState, useContext } from 'react'
+import { GameDispatchContext, CATEGORIES, GAME_MODES, ACTIONS } from '../context/GameContext'
 
-function GameModeSelector(props) {
+function ModeCategorySelector() {
+
+    const dispatch = useContext(GameDispatchContext);
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
@@ -12,21 +14,28 @@ function GameModeSelector(props) {
         const formData = new FormData(form);
         const formJson = Object.fromEntries(formData.entries());
 
-        let gameMode = formJson.gameMode;
-        let category = formJson.category;
-        if (gameMode === undefined) // Defaults to Classic if none submitted
-            gameMode = "Classic";
-        if (category === undefined) // Defaults to All if none submitted
-            category = "All"
-        props.setGameMode(gameMode);
-        props.setCategory(category);
+        let gameMode = formJson.gameMode === undefined ? GAME_MODES.CLASSIC : formJson.gameMode;// Defaults to Classic if none submitted
+        let category = formJson.category === undefined ? CATEGORIES.ALL : formJson.category; // Defaults to All if none submitted
+
+        dispatch({ // Setting context category
+            type: ACTIONS.SET_CATEGORY,
+            category: category
+        });
+
+        dispatch({ // Setting context game mode
+            type: ACTIONS.SET_GAME_MODE,
+            gameMode: gameMode
+        });
     }
+
+    const gameModeStrings = Object.values(GAME_MODES);
+    const categoryStrings = Object.values(CATEGORIES);
 
     return (
         <>
             <h1 className="font-bold text-3xl mb-1.5">Game Mode</h1>
             <form method="post" onSubmit={handleSubmit}>
-                {gameModes.map((gameMode) => {
+                {gameModeStrings.map((gameMode) => {
                     return (
                         <div className="mb-1">
                             <input type="radio" id={gameMode} name="gameMode" value={gameMode} />
@@ -38,7 +47,7 @@ function GameModeSelector(props) {
                 <br />
                 <h1 className="font-bold text-3xl mb-1.5">Category</h1>
 
-                {categories.map((category) => {
+                {categoryStrings.map((category) => {
                     return (
                         <div className="mb-1">
                             <input type="radio" id={category} name="category" value={category} />
@@ -51,7 +60,6 @@ function GameModeSelector(props) {
             </form>
         </>
     );
-
 }
 
-export default GameModeSelector;
+export default ModeCategorySelector;
