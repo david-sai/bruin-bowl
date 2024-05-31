@@ -14,6 +14,7 @@ import Settings from "./pages/Settings.js";
 import { GameProvider } from "./context/GameContext.js";
 
 // For AnswerIndicator
+//TODO: move to GameContext (Zach)
 export const Status = {
   NOT_ANSWERED: 0,
   CORRECT_ANSWER: 1,

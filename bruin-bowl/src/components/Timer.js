@@ -2,17 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Status } from '../App.js';
 import { GameStateContext, GAME_MODES } from '../context/GameContext.js';
 
-const GAME_MODE_TIMES = {
+export const GAME_MODE_TIMES = { // Sets how many seconds are given in each game mode, might need to be accessed for score calculation
     [GAME_MODES.CLASSIC]: 20,
     [GAME_MODES.RAPID]: 15,
     [GAME_MODES.BLITZ]: 10
 }
 
 const Timer = (props) => {
-    const state = useContext(GameStateContext);
-
-    const gameMode = state.gameMode;
-    const initial_deciseconds = GAME_MODE_TIMES[gameMode] * 10;
+    const state = useContext(GameStateContext); // state is an object with gameMode and category variables
+    const initial_deciseconds = GAME_MODE_TIMES[state.gameMode] * 10; // Gets the matching time for current mode from GAME_MODE_TIMES
 
     const [deciseconds, setDeciseconds] = useState(initial_deciseconds);
     const [printText, setPrintText] = useState(deciseconds);

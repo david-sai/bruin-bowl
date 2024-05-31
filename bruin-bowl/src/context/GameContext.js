@@ -25,6 +25,7 @@ const GameDispatchContext = createContext();
 
 const GameProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, {category : CATEGORIES.ALL, gameMode : GAME_MODES.CLASSIC});
+    // Default state of reducer is All category and Classic game mode
 
     return (
         <GameStateContext.Provider value={state}>
@@ -35,17 +36,14 @@ const GameProvider = ({ children }) => {
     );
 }
 
-function reducer(state, action) {
+function reducer(state, action) { // Reducer function takes in an action and does some action on the state
     switch (action.type) {
-
         case ACTIONS.SET_CATEGORY: {
-            return { ...state, category: action.category };
+            return { ...state, category: action.category }; // ...state means all props of state, next part overrides category
         }
-
         case ACTIONS.SET_GAME_MODE: {
             return { ...state, gameMode: action.gameMode };
         }
-
         default: {
             throw Error("Unknown action: " + action.type);
         }
@@ -53,3 +51,4 @@ function reducer(state, action) {
 }
 
 export {GameProvider, GameStateContext, GameDispatchContext};
+// GameProvider used as HTML element, GameStateContext has state variables, and GameDispatchContext has dispatch function

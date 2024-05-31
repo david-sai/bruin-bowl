@@ -3,13 +3,13 @@ import { GameDispatchContext, CATEGORIES, GAME_MODES, ACTIONS } from '../context
 
 function ModeCategorySelector() {
 
-    const dispatch = useContext(GameDispatchContext);
+    const dispatch = useContext(GameDispatchContext); // dispatch is a function in GameContext used to update category and game mode
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        // Read the form data
+        // Read the form data from radio buttons
         const form = e.target;
         const formData = new FormData(form);
         const formJson = Object.fromEntries(formData.entries());
@@ -28,14 +28,14 @@ function ModeCategorySelector() {
         });
     }
 
-    const gameModeStrings = Object.values(GAME_MODES);
+    const gameModeStrings = Object.values(GAME_MODES); // Used for mapping later
     const categoryStrings = Object.values(CATEGORIES);
 
     return (
         <>
             <h1 className="font-bold text-3xl mb-1.5">Game Mode</h1>
             <form method="post" onSubmit={handleSubmit}>
-                {gameModeStrings.map((gameMode) => {
+                {gameModeStrings.map((gameMode) => { // Creates a button for each game mode
                     return (
                         <div className="mb-1">
                             <input type="radio" id={gameMode} name="gameMode" value={gameMode} />
@@ -47,7 +47,7 @@ function ModeCategorySelector() {
                 <br />
                 <h1 className="font-bold text-3xl mb-1.5">Category</h1>
 
-                {categoryStrings.map((category) => {
+                {categoryStrings.map((category) => { // Creates a button for each category
                     return (
                         <div className="mb-1">
                             <input type="radio" id={category} name="category" value={category} />
