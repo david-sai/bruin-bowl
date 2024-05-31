@@ -1,6 +1,5 @@
 // GlobalStateContext.js
 import React, { useReducer, createContext } from 'react';
-import { gameModes } from '../App';
 
 export const ACTIONS = {
     SET_CATEGORY: "set-category",
@@ -14,7 +13,7 @@ export const CATEGORIES = {
     STAR_WARS: "Star Wars"
 }
 
-export const GAMEMODES = {
+export const GAME_MODES = {
     CLASSIC: "Classic",
     RAPID: "Rapid",
     BLITZ: "Blitz"
@@ -24,14 +23,14 @@ export const GAMEMODES = {
 const GameStateContext = createContext();
 const GameDispatchContext = createContext();
 
-export default function GameContext(children) {
-    const [state, dispatch] = useReducer(reducer, {category : CATEGORIES.ALL, gameMode : GAMEMODES.CLASSIC});
+const GameProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(reducer, {category : CATEGORIES.ALL, gameMode : GAME_MODES.CLASSIC});
 
     return (
         <GameStateContext.Provider value={state}>
-            <GameDispatchContext value={dispatch}>
+            <GameDispatchContext.Provider value={dispatch}>
                 {children}
-            </GameDispatchContext>
+            </GameDispatchContext.Provider>
         </GameStateContext.Provider>
     );
 }
@@ -40,17 +39,11 @@ function reducer(state, action) {
     switch (action.type) {
 
         case ACTIONS.SET_CATEGORY: {
-            return {
-                category: action.category,
-                gameMode: state.gameMode
-            };
+            return { ...state, category: action.category };
         }
 
         case ACTIONS.SET_GAME_MODE: {
-            return {
-                category: state.category,
-                gameMode: action.gameMode
-            };
+            return { ...state, gameMode: action.gameMode };
         }
 
         default: {
@@ -59,16 +52,4 @@ function reducer(state, action) {
     }
 }
 
-// function setCategory(category) {
-//     dispatch({
-//         type: ACTIONS.SET_CATEGORY,
-//         category: category
-//     });
-// }
-
-// function setGameMode(gameMode) {
-//     dispatch({
-//         type: ACTIONS.SET_GAME_MODE,
-//         gameMode: gameMode
-//     });
-// }
+export {GameProvider, GameStateContext, GameDispatchContext};

@@ -11,7 +11,7 @@ import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import Settings from "./pages/Settings.js";
-import GameContext from "./context/GameContext.js";
+import { GameProvider } from "./context/GameContext.js";
 
 // For AnswerIndicator
 export const Status = {
@@ -31,14 +31,14 @@ function App() {
         <div className="max-w-screen-lg w-full">
           <NavigationBar />
 
-          <GameContext>
+          <GameProvider>
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/leaderboard" element={<Leaderboard />}></Route>
               <Route path="/questions" element={<Questions />}></Route>
               <Route path="/settings" element={<Settings />}></Route>
             </Routes>
-          </GameContext>
+          </GameProvider>
         </div>
       </div>
     </BrowserRouter>
