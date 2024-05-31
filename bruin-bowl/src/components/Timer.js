@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Status } from '../App.js';
+import { GameStateContext, GAME_MODES } from '../context/GameContext.js';
 
-let MAX_SECONDS = 10;
+const GAME_MODE_TIMES = {
+    [GAME_MODES.CLASSIC]: 20,
+    [GAME_MODES.RAPID]: 15,
+    [GAME_MODES.BLITZ]: 10
+}
 
 const Timer = (props) => {
-    const [deciseconds, setDeciseconds] = useState(100);
+    const state = useContext(GameStateContext);
+
+    const gameMode = state.gameMode;
+    const initial_deciseconds = GAME_MODE_TIMES[gameMode] * 10;
+
+    const [deciseconds, setDeciseconds] = useState(initial_deciseconds);
     const [printText, setPrintText] = useState(deciseconds);
 
     useEffect(() => {
@@ -23,7 +33,7 @@ const Timer = (props) => {
     }, [deciseconds]);
 
     useEffect(() => {
-        setDeciseconds(MAX_SECONDS * 10);
+        setDeciseconds(initial_deciseconds);
         setPrintText(formatTime);
     }, [props.questionNumber]);
 
