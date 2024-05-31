@@ -14,17 +14,14 @@ function ModeCategorySelector() {
         const formData = new FormData(form);
         const formJson = Object.fromEntries(formData.entries());
 
-        let gameMode = formJson.gameMode === undefined ? GAME_MODES.CLASSIC : formJson.gameMode;// Defaults to Classic if none submitted
-        let category = formJson.category === undefined ? CATEGORIES.ALL : formJson.category; // Defaults to All if none submitted
-
         dispatch({ // Setting context category
             type: ACTIONS.SET_CATEGORY,
-            category: category
+            category: formJson.category
         });
 
         dispatch({ // Setting context game mode
             type: ACTIONS.SET_GAME_MODE,
-            gameMode: gameMode
+            gameMode: formJson.gameMode
         });
     }
 
@@ -35,10 +32,10 @@ function ModeCategorySelector() {
         <>
             <h1 className="font-bold text-3xl mb-1.5">Game Mode</h1>
             <form method="post" onSubmit={handleSubmit}>
-                {gameModeStrings.map((gameMode) => { // Creates a button for each game mode
+                {gameModeStrings.map((gameMode, index) => { // Creates a button for each game mode
                     return (
                         <div className="mb-1">
-                            <input type="radio" id={gameMode} name="gameMode" value={gameMode} />
+                            <input type="radio" id={gameMode} name="gameMode" value={gameMode} defaultChecked={index === 0} />
                             <label htmlFor={gameMode} className="ml-2">{gameMode}</label>
                         </div>
                     )
@@ -47,10 +44,10 @@ function ModeCategorySelector() {
                 <br />
                 <h1 className="font-bold text-3xl mb-1.5">Category</h1>
 
-                {categoryStrings.map((category) => { // Creates a button for each category
+                {categoryStrings.map((category, index) => { // Creates a button for each category
                     return (
                         <div className="mb-1">
-                            <input type="radio" id={category} name="category" value={category} />
+                            <input type="radio" id={category} name="category" value={category} defaultChecked={index === 0}/>
                             <label htmlFor={category} className="ml-2">{category}</label>
                         </div>
                     );
