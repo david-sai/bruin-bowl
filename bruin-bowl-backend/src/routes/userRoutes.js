@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/signup", signup);
 
-router.get("/retrieve", getUser);
+router.get("/get", getUser);
 
 router.delete("/delete", deleteUser);
 
