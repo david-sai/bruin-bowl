@@ -39,10 +39,18 @@ function NavigationBar() {
           Leaderboard
         </NavLink>
 
-        <button className="flex items-center py-0.5 px-5 bg-bruin-blue text-white rounded-full">
+        <NavLink
+          to="/signup"
+          className={({ isActive }) =>
+            `flex items-center py-0.5 px-5 text-white rounded-full ${isActive
+              ? "bg-bruin-blue"
+              : "bg-bruin-gold"
+            }`
+          }
+        >
           <span>Sign In</span>
           <i className="fas fa-arrow-right pl-3"></i>
-        </button>
+        </NavLink>
       </div>
     </div>
   );

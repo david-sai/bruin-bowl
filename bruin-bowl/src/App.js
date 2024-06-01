@@ -13,9 +13,10 @@ import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
 import SignIn from "./pages/SignIn.js";
+import Signup from "./pages/Signup";
 
 function App() {
-  
+
   return (
     <BrowserRouter>
       <div className="flex justify-center items-start min-h-screen p-8 bg-amber-50">
@@ -31,6 +32,7 @@ function App() {
               <Route path="/questions" element={<Questions />}></Route>
               <Route path="/mode-select" element={<ModeSelect />}></Route>
               <Route path="/sign-in" element={<SignIn />}></Route>
+              <Route path="/signup" element={<Signup />}></Route>
             </Routes>
           </GameProvider>
         </div>
