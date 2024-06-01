@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Status } from '../App.js';
+import React, { useState, useEffect, useContext } from 'react';
+import { STATUS } from '../pages/Questions.js';
+import { GameStateContext, GAME_MODES } from '../context/GameContext.js';
 
-let MAX_SECONDS = 10;
+export const GAME_MODE_TIMES = { // Sets how many seconds are given in each game mode, might need to be accessed for score calculation
+    [GAME_MODES.CLASSIC]: 15,
+    [GAME_MODES.RAPID]: 10,
+    [GAME_MODES.BLITZ]: 5
+}
 
 const Timer = (props) => {
-    const [deciseconds, setDeciseconds] = useState(100);
+    const state = useContext(GameStateContext); // state is an object with gameMode and category variables
+    const initial_deciseconds = GAME_MODE_TIMES[state.gameMode] * 10; // Gets the matching time for current mode from GAME_MODE_TIMES
+
+    const [deciseconds, setDeciseconds] = useState(initial_deciseconds);
     const [printText, setPrintText] = useState(deciseconds);
 
     useEffect(() => {
@@ -18,12 +26,12 @@ const Timer = (props) => {
             }
         }
         else {
-            props.setStatus(Status.TIMEOUT);
+            props.setStatus(STATUS.TIMEOUT);
         }
     }, [deciseconds]);
 
     useEffect(() => {
-        setDeciseconds(MAX_SECONDS * 10);
+        setDeciseconds(initial_deciseconds);
         setPrintText(formatTime);
     }, [props.questionNumber]);
 
