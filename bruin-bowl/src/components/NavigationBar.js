@@ -40,18 +40,6 @@ function NavigationBar() {
         </NavLink>
 
         <NavLink
-          to="/mode-select"
-          className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${isActive
-              ? "text-bruin-blue border-bruin-blue"
-              : "text-bruin-gold border-transparent"
-            }`
-          }
-        >
-          Mode
-        </NavLink>
-
-        <NavLink
           to="/signup"
           className={({ isActive }) =>
             `flex items-center py-0.5 px-5 text-white rounded-full ${isActive
