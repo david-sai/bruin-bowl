@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { GameDispatchContext, CATEGORIES, GAME_MODES, ACTIONS } from '../context/GameContext'
+import { useNavigate } from 'react-router-dom'
 
 function ModeCategorySelector() {
 
     const dispatch = useContext(GameDispatchContext); // dispatch is a function in GameContext used to update category and game mode
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
@@ -23,6 +25,8 @@ function ModeCategorySelector() {
             type: ACTIONS.SET_GAME_MODE,
             gameMode: formJson.gameMode
         });
+
+        navigate('/questions');
     }
 
     const gameModeStrings = Object.values(GAME_MODES); // Used for mapping later
@@ -53,7 +57,7 @@ function ModeCategorySelector() {
                     );
                 })}
 
-                <button type="submit" className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
+                <button type="submit" className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Start game</button>
             </form>
         </>
     );
