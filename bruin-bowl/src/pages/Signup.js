@@ -17,7 +17,7 @@ function Signup() {
     const handleSubmit = () => {
         // Call the function when the button is clicked
         const response = (data) => {
-            if (!data.username || !data.password) {
+            if (username == '' || password == '') {
                 setError("Username or password is empty.")
                 return;
             }
