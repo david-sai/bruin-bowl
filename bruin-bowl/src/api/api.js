@@ -3,7 +3,7 @@ import axios from "axios";
 export const getQuestion = async (res) => {
   var config = {
     method: 'get',
-    url: 'http://localhost:80/quiz',
+    url: 'http://localhost:4000/quiz',
     headers: {}
   };
   axios(config)
@@ -23,7 +23,7 @@ export const searchQuestion = async (keyword, res) => {
 
   var config = {
     method: 'post',
-    url: 'http://localhost:80/quiz/search',
+    url: 'http://localhost:4000/quiz/search',
     headers: {
       'Content-Type': 'application/json'
     },

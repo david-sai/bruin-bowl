@@ -18,10 +18,10 @@ const getQuestion = async (req, res) => {
     try {
         const totalQuestions = await QuizSchema.countDocuments();
         while(true){
-            if(usedQuestions.size >= totalQuestions) usedQuestions.clear();
-            const randomIndex = Math.floor(Math.random() * totalQuestions);
-            if(usedQuestions.has(randomIndex)) continue;
-            quizQuestion = await QuizSchema.findOne().skip(randomIndex);
+            if(usedQuestions.size >= totalQuestions) usedQuestions.clear(); //If i'm out of questions, clear out used questions
+            const randomIndex = Math.floor(Math.random() * totalQuestions); //pick a random number
+            if(usedQuestions.has(randomIndex)) continue; 
+            quizQuestion = await QuizSchema.findOne().skip(randomIndex); //select that random question
             usedQuestions.add(randomIndex);
             break;
         }
@@ -38,7 +38,7 @@ const searchQuestion = async (req, res) => {
       return res.status(400).json({ error: 'Keyword is required' });
     }
     try {
-      const regex = new RegExp(`\\b${keyword}\\b`, 'i');
+      const regex = new RegExp(`\\b${keyword}\\b`, 'i'); //search for keyword (surrounded by word boundaries)
       const results = await QuizSchema.find({ question: { $regex: regex } });
       res.status(200).json({ results: results });
     } catch (error) {

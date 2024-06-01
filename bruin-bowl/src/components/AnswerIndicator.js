@@ -1,18 +1,18 @@
 import React from 'react'
-import { Status } from '../App'
+import { STATUS } from '../pages/Questions'
 
 function AnswerIndicator({ status, answer }) {
     let indicatorString = "";
-    if (status === Status.NOT_ANSWERED) {
+    if (status === STATUS.NOT_ANSWERED) {
         indicatorString = "No answer has been selected.";
     }
-    else if (status === Status.CORRECT_ANSWER) {
+    else if (status === STATUS.CORRECT_ANSWER) {
         indicatorString = "You got it correct!";
     }
-    else if (status === Status.WRONG_ANSWER) {
+    else if (status === STATUS.WRONG_ANSWER) {
         indicatorString = "You got it wrong. The correct answer is " + answer + ".";
     }
-    else if (status === Status.TIMEOUT) {
+    else if (status === STATUS.TIMEOUT) {
         indicatorString = "You ran out of time!";
     }
     return (
