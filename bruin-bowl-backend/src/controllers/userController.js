@@ -1,4 +1,3 @@
-//User Controller
 const UserSchema = require("../models/userModel");
 
 const signup = async (req, res) => {
@@ -12,14 +11,14 @@ const signup = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-    const {username} = req.query; //get user metadata from req
+    const {username} = req.query; 
     try {
         if (!username) {
-        throw Error("Missing Username...");
+            throw Error("Missing Username...");
         }
         const user = await UserSchema.findOne({ username });
         if (!user) {
-        return res.status(400).json({error: "User Not Found!"});
+            return res.status(400).json({error: "User Not Found!"});
         }
         res.status(200).json({ user: user })
     } catch (error) {
@@ -34,7 +33,7 @@ const deleteUser = async(req, res) => {
             throw Error("Missing Username...");
         }
         const deleteResult = await UserSchema.deleteOne({ username });
-        if(deleteResult.deletedCount === 0){
+        if(deleteResult.deletedCount === 0){ //When you've deleted 0, then error
             return res.status(400).json({error: "User Not Found!"})
         }
         res.status(200).json({ message: "User successfully deleted!"})
@@ -51,31 +50,26 @@ const updateScorebyUser = async (req, res) => {
 
         await UserSchema.updateOne(
             { username: username },
-            { $inc: { score: amount } }
+            { $inc: { score: amount } } //increment by amount
         );
 
         const user = await UserSchema.findOne(
             { username: username },
         );
-        
-        console.log(user);
 
         if (!user) {
             return res.status(400).json({ error: `Error occurred with replacing user (${username})\'s score!` });
         }
         await user.save();
-        console.log(user)
         res.status(200).json({ message: `User score successfully updated to: ${user.score}` });
     } catch (error) {
         res.status(400).json({ error: "Update Score Error!" });
     }
 }
-/*
-use find and google how to sort based on a number key attribute, then this should have an array of users
-*/
+
 const getLeaderBoard = async (req, res) => {
     try {
-        const usernames = await UserSchema.find({}).sort({score : -1});
+        const usernames = await UserSchema.find({}).sort({score : -1}); //sort in descending order
         res.status(200).json({ usernames });
     } catch (error) {
         res.status(400).json({ error: error.message });
