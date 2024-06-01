@@ -30,27 +30,23 @@ const getUser = async (req, res) => {
         }
         res.status(200).json(metadata)
     } catch (error) {
-        res.status(500).json({error: "Server Error!"})
+        res.status(400).json({error: "Server Error!"})
     }
 }
 
 const deleteUser = async(req, res) => {
     const {username} = req.body;
     try {
-        const result = false;
         if (!username) {
             throw Error("Missing Username...");
           }
           const deleteResult = await UserSchema.deleteOne({ username });
           if (deleteResult.deletedCount === 0) {
-            result = false;
-          }
-          else {
-            result = true;
+            throw Error("Function deleteUser did not delete any users!")
           }
         res.status(200).json({ message: "User successfully deleted!"})
     } catch (error) {
-        res.status(500).json({error: "Server Error!"})
+        res.status(400).json({error: "Server Error!"})
     }
 }
 
@@ -72,24 +68,24 @@ const updateScorebyUser = async (req, res) => {
           result = true;
         
         if (!result) {
-            return res.status(404).json({ error: "Error occurred with replacing user (${username})\'s score!" });
+            return res.status(400).json({ error: "Error occurred with replacing user (${username})\'s score!" });
         }
         res.status(200).json({ message: "User score successfully updated to: ${newScore}" });
     } catch (error) {
-        res.status(500).json({ error: "Server Error!" });
+        res.status(400).json({ error: "Server Error!" });
     }
 }
 /*
 use find and google how to sort based on a number key attribute, then this should have an array of users
 */
-const getAllUsernames = async (req, res) => {
+const getLeaderBoard = async (req, res) => {
     try {
         const usernames = await UserSchema.find({}).sort({score : -1});
         res.status(200).json({ usernames });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(400).json({ error: error.message });
     }
 };
-module.exports = { signup, getUser, deleteUser, updateScorebyUser, getAllUsernames};
+module.exports = { signup, getUser, deleteUser, updateScorebyUser, getLeaderBoard};
 
 
