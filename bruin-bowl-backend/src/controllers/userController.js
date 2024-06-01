@@ -1,4 +1,3 @@
-//User Controller
 const UserSchema = require("../models/userModel");
 
 const signup = async (req, res) => {
@@ -12,25 +11,18 @@ const signup = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-    const {username} = req.query; //get user metadata from req
+    const {username} = req.query; 
     try {
         if (!username) {
             throw Error("Missing Username...");
-          }
-          const user = await UserSchema.findOne({ username });
-          if (!user) {
-            return null;
-          }
-          const metadata =  {
-            password: user.password,
-            score: user.score
-          };
-        if (!metadata) {
-            return res.status(404).json({error: "User not found! Please try again with a different username!"});
         }
-        res.status(200).json(metadata)
+        const user = await UserSchema.findOne({ username });
+        if (!user) {
+            return res.status(400).json({error: "User Not Found!"});
+        }
+        res.status(200).json({ user: user })
     } catch (error) {
-        res.status(400).json({error: "Server Error!"})
+        res.status(400).json({error: "Get User Error!"})
     }
 }
 
@@ -39,48 +31,45 @@ const deleteUser = async(req, res) => {
     try {
         if (!username) {
             throw Error("Missing Username...");
-          }
-          const deleteResult = await UserSchema.deleteOne({ username });
-          if (deleteResult.deletedCount === 0) {
-            throw Error("Function deleteUser did not delete any users!")
-          }
+        }
+        const deleteResult = await UserSchema.deleteOne({ username });
+        if(deleteResult.deletedCount === 0){ //When you've deleted 0, then error
+            return res.status(400).json({error: "User Not Found!"})
+        }
         res.status(200).json({ message: "User successfully deleted!"})
     } catch (error) {
-        res.status(400).json({error: "Server Error!"})
+        res.status(400).json({error: "Deletion Failed!"})
     }
 }
 
 
 const updateScorebyUser = async (req, res) => {
-    const { username, newScore } = req.body;
+    const { username, amount } = req.body;
     try {
-        const result = false;
-        if (!username || amount === undefined)
-            throw Error("Missing information for score update");
-          const user = await UserSchema.findOne({ username: username});
-        
-          if (!user) {
-            result = false;
-          }
-        
-          user.score += amount;
-          await user.save();
-          result = true;
-        
-        if (!result) {
-            return res.status(400).json({ error: "Error occurred with replacing user (${username})\'s score!" });
+        if (!username || !amount) throw Error("Missing information for score update");
+
+        await UserSchema.updateOne(
+            { username: username },
+            { $inc: { score: amount } } //increment by amount
+        );
+
+        const user = await UserSchema.findOne(
+            { username: username },
+        );
+
+        if (!user) {
+            return res.status(400).json({ error: `Error occurred with replacing user (${username})\'s score!` });
         }
-        res.status(200).json({ message: "User score successfully updated to: ${newScore}" });
+        await user.save();
+        res.status(200).json({ message: `User score successfully updated to: ${user.score}` });
     } catch (error) {
-        res.status(400).json({ error: "Server Error!" });
+        res.status(400).json({ error: "Update Score Error!" });
     }
 }
-/*
-use find and google how to sort based on a number key attribute, then this should have an array of users
-*/
+
 const getLeaderBoard = async (req, res) => {
     try {
-        const usernames = await UserSchema.find({}).sort({score : -1});
+        const usernames = await UserSchema.find({}).sort({score : -1}); //sort in descending order
         res.status(200).json({ usernames });
     } catch (error) {
         res.status(400).json({ error: error.message });
