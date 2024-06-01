@@ -10,6 +10,22 @@ const signup = async (req, res) => {
     }
 };
 
+const signin = async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        if (!username || !password) {
+            return res.status(400).json({ error: "Missing Fields"});
+          }
+        const user = await UserSchema.findOne({ username });
+        if (!user) {
+            return res.status(400).json({ error: "Not Found"});
+        }
+        res.status(200).json({ user: user });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 const getUser = async (req, res) => {
     const {username} = req.query; 
     try {
@@ -75,6 +91,6 @@ const getLeaderBoard = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-module.exports = { signup, getUser, deleteUser, updateScorebyUser, getLeaderBoard};
+module.exports = { signup, signin, getUser, deleteUser, updateScorebyUser, getLeaderBoard};
 
 
