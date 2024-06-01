@@ -53,7 +53,7 @@ function Signup() {
             <br />
             <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
             <br />
-            <p>Error: {error}</p>
+            <p>{error}</p>
         </div>
     );
 }

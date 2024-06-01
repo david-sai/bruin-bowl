@@ -12,6 +12,7 @@ import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
+import Signup from "./pages/Signup";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/leaderboard" element={<Leaderboard />}></Route>
               <Route path="/questions" element={<Questions />}></Route>
               <Route path="/mode-select" element={<ModeSelect />}></Route>
+              <Route path="/signup" element={<Signup />}></Route>
             </Routes>
           </GameProvider>
         </div>
