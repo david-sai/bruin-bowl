@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AnswerBar from "../components/AnswerBar.js";
 import QuestionBox from "../components/QuestionBox.js";
 import SearchBar from "../components/SearchBar.js";
@@ -6,6 +6,8 @@ import Timer from "../components/Timer.js";
 import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
 import { useEffect, useState } from "react";
+import { GameStateContext, GAME_MODES } from '../context/GameContext.js';
+
 
 // For AnswerIndicator
 export const STATUS = {
@@ -25,6 +27,7 @@ function Questions() {
   const [error, setError] = useState(""); // Player guessed correct answer
   const [status, setStatus] = useState(STATUS.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
+  const state = useContext(GameStateContext);
 
   useEffect(() => {
     const response = (data) => {
@@ -42,7 +45,7 @@ function Questions() {
         }
       }
     };
-    getQuestion(response);
+    getQuestion(state.category, response);
   }, [questionNumber]);
 
   const handleQuestionChange = () => {
