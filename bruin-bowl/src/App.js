@@ -12,6 +12,7 @@ import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
+import SignIn from "./pages/SignIn.js";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/leaderboard" element={<Leaderboard />}></Route>
               <Route path="/questions" element={<Questions />}></Route>
               <Route path="/mode-select" element={<ModeSelect />}></Route>
+              <Route path="/sign-in" element={<SignIn />}></Route>
             </Routes>
           </GameProvider>
         </div>
