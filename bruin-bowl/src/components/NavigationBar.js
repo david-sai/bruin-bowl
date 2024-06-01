@@ -7,8 +7,7 @@ function NavigationBar() {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `py-2 text-xl font-bold ${
-            isActive ? "text-bruin-blue" : "text-bruin-gold"
+          `py-2 text-xl font-bold ${isActive ? "text-bruin-blue" : "text-bruin-gold"
           }`
         }
       >
@@ -17,42 +16,27 @@ function NavigationBar() {
 
       <div className="flex space-x-5 text-large">
         <NavLink
-          to="/questions"
+          to="/mode-select"
           className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${
-              isActive
-                ? "text-bruin-blue border-bruin-blue"
-                : "text-bruin-gold border-transparent"
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
             }`
           }
         >
-          Questions
+          Change Mode
         </NavLink>
 
         <NavLink
           to="/leaderboard"
           className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${
-              isActive
-                ? "text-bruin-blue border-bruin-blue"
-                : "text-bruin-gold border-transparent"
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
             }`
           }
         >
           Leaderboard
-        </NavLink>
-
-        <NavLink
-          to="/mode-select"
-          className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${
-              isActive
-                ? "text-bruin-blue border-bruin-blue"
-                : "text-bruin-gold border-transparent"
-            }`
-          }
-        >
-          Mode
         </NavLink>
 
         <button className="flex items-center py-0.5 px-5 bg-bruin-blue text-white rounded-full">
