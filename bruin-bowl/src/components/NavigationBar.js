@@ -16,7 +16,7 @@ function NavigationBar() {
 
       <div className="flex space-x-5 text-large">
         <NavLink
-          to="/questions"
+          to="/mode-select"
           className={({ isActive }) =>
             `py-0.5 place-self-center border-b-2 ${isActive
               ? "text-bruin-blue border-bruin-blue"
@@ -24,7 +24,7 @@ function NavigationBar() {
             }`
           }
         >
-          Questions
+          Change Mode
         </NavLink>
 
         <NavLink

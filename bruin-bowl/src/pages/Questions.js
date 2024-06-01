@@ -63,7 +63,10 @@ function Questions() {
         wrong2={option2}
         wrong3={option3}
       />
-      <button onClick={handleQuestionChange}>Next Question</button>
+
+      <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
+        Next Question
+      </button>
 
       <AnswerIndicator status={status} answer={answer} />
       <Timer
