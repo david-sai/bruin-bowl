@@ -3,7 +3,7 @@ import React, { useState, useEffect, createContext } from "react";
 import "./App.css";
 import PageTitle from "./components/PageTitle.js";
 import NavigationBar from "./components/NavigationBar.js";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -16,28 +16,38 @@ import SignIn from "./pages/SignIn.js";
 import Signup from "./pages/Signup";
 import SearchBar from "./components/SearchBar.js";
 
+
+import { ModalIsOpenContext } from "./context/Contexts.js";
+import AuthModal from "./components/AuthModal";
+
 function App() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <BrowserRouter>
       <div className="flex justify-center items-start min-h-screen p-8 bg-amber-50">
         <PageTitle title="BruinBowl" />
 
-        <div className="max-w-screen-lg w-full">
-          <NavigationBar />
+        <ModalIsOpenContext.Provider value={ { modalIsOpen, setModalIsOpen } }>
+          <div className="max-w-screen-lg w-full">
+            <NavigationBar />
 
-          <GameProvider>
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/leaderboard" element={<Leaderboard />}></Route>
-              <Route path="/questions" element={<Questions />}></Route>
-              <Route path="/search" element={<SearchBar />}></Route>
-              <Route path="/mode-select" element={<ModeSelect />}></Route>
-              <Route path="/sign-in" element={<SignIn />}></Route>
-              <Route path="/signup" element={<Signup />}></Route>
-            </Routes>
-          </GameProvider>
-        </div>
+            <GameProvider>
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/leaderboard" element={<Leaderboard />}></Route>
+                <Route path="/questions" element={<Questions />}></Route>
+                <Route path="/search" element={<SearchBar />}></Route>
+                <Route path="/mode-select" element={<ModeSelect />}></Route>
+                <Route path="/sign-in" element={<SignIn />}></Route>
+                <Route path="/signup" element={<Signup />}></Route>
+              </Routes>
+            </GameProvider>
+          </div>
+
+          <AuthModal />
+
+        </ModalIsOpenContext.Provider>
       </div>
     </BrowserRouter>
   );
