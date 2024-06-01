@@ -43,7 +43,7 @@ function NavigationBar() {
         </NavLink>
 
         <NavLink
-          to="/settings"
+          to="/mode-select"
           className={({ isActive }) =>
             `py-0.5 place-self-center border-b-2 ${
               isActive
@@ -52,7 +52,7 @@ function NavigationBar() {
             }`
           }
         >
-          Settings
+          Mode
         </NavLink>
 
         <button className="flex items-center py-0.5 px-5 bg-bruin-blue text-white rounded-full">

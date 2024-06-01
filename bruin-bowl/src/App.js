@@ -10,12 +10,11 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
-import Settings from "./pages/Settings.js";
+import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
 
 function App() {
   return (
-    // <p>Hello</p>
     <BrowserRouter>
       <div className="flex justify-center items-start min-h-screen p-8 bg-amber-50">
         <PageTitle title="BruinBowl" />
@@ -28,7 +27,7 @@ function App() {
               <Route path="/" element={<Home />}></Route>
               <Route path="/leaderboard" element={<Leaderboard />}></Route>
               <Route path="/questions" element={<Questions />}></Route>
-              <Route path="/settings" element={<Settings />}></Route>
+              <Route path="/mode-select" element={<ModeSelect />}></Route>
             </Routes>
           </GameProvider>
         </div>
