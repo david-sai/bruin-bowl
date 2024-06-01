@@ -47,7 +47,7 @@ export const signup = async (username, password, res) => {
 
   var config = {
     method: 'post',
-    url: 'http://localhost:80/user/signup',
+    url: 'http://localhost:4000/user/signup',
     headers: {
       'Content-Type': 'application/json'
     },
