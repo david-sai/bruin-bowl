@@ -24,7 +24,7 @@ function NavigationBar() {
             }`
           }
         >
-          Change Mode
+          Select Mode
         </NavLink>
 
         <NavLink
