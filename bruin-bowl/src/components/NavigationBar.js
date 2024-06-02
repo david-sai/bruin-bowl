@@ -67,7 +67,7 @@ function NavigationBar() {
           className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"
           onClick={handleSignIn}
         >
-          <span>Sign In</span>
+          <span>Sign Up</span>
           <i className="fas fa-arrow-right pl-3"></i>
         </button>
       </div>
