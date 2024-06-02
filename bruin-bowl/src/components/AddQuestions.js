@@ -60,7 +60,6 @@ function AddQuestions() {
         }
       }
     };
-    console.log(jsonData);
 
     createQuestion(jsonData, response);
   }
