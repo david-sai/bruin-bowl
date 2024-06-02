@@ -6,6 +6,7 @@ import NavigationBar from "./components/NavigationBar.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import AvatarSelector from "./components/AvatarSelector.js";
 
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
