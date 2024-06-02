@@ -130,7 +130,9 @@ function AuthModal() {
             {isSignIn ? "Sign In" : "Sign Up"}
           </h1>
 
-          {modalIsOpen && modalIsOpen != "" && <div className="mt-2 text-lg">{modalIsOpen}</div>}
+          {modalIsOpen && modalIsOpen != "" && (
+            <div className="mt-2 text-lg">{modalIsOpen}</div>
+          )}
         </div>
 
         <div className="flex flex-col space-y-4 ">
@@ -151,13 +153,19 @@ function AuthModal() {
           />
 
           {!isSignIn && (
-            <input
-              type="password"
-              value={password2}
-              onChange={(e) => setPassword2(e.target.value)}
-              placeholder="Confirm password"
-              className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
-            />
+            <>
+              <input
+                type="password"
+                value={password2}
+                onChange={(e) => setPassword2(e.target.value)}
+                placeholder="Confirm password"
+                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
+              />
+
+              <button className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left">
+                Profile Picture
+              </button>
+            </>
           )}
         </div>
 
