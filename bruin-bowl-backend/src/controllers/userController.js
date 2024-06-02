@@ -4,6 +4,10 @@ const signup = async (req, res) => {
     const { username, password } = req.body;
     try {
         const user = await UserSchema.signup(username, password);
+        console.log(user);
+        if(user == "exists"){
+            return res.status(400).json({ error: "User already exists" });
+        }
         res.status(200).json({ user: user });
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -14,11 +18,14 @@ const signin = async (req, res) => {
     const { username, password } = req.body;
     try {
         if (!username || !password) {
-            return res.status(400).json({ error: "Missing Fields"});
+            return res.status(400).json({ error: "Missing fields"});
           }
         const user = await UserSchema.findOne({ username });
         if (!user) {
-            return res.status(400).json({ error: "Not Found"});
+            return res.status(400).json({ error: "User not found"});
+        }
+        if (user.password !== password) {
+            return res.status(400).json({ error: "Incorrect password"});
         }
         res.status(200).json({ user: user });
     } catch (error) {
