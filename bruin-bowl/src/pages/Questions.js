@@ -74,7 +74,6 @@ function Questions() {
         setStatus={setStatus}
         status={status}
       />
-      <SearchBar />
     </div>
   );
 }

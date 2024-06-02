@@ -13,7 +13,8 @@ import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
 import SignIn from "./pages/SignIn.js";
-import Signup from "./pages/Signup";
+import Signup from "./pages/Signup.js";
+import QuestionAddition from "./pages/QuestionAddition.js";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/mode-select" element={<ModeSelect />}></Route>
               <Route path="/sign-in" element={<SignIn />}></Route>
               <Route path="/signup" element={<Signup />}></Route>
+              <Route path="/question-add" element={<QuestionAddition />}></Route>
             </Routes>
           </GameProvider>
         </div>
