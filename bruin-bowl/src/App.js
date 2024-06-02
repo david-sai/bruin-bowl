@@ -14,7 +14,6 @@ import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
 
-import SearchBar from "./components/SearchBar.js";
 import Profile from "./pages/Profile.js";
 
 import { ModalIsOpenContext } from "./context/Contexts.js";
@@ -61,7 +60,7 @@ function App() {
                   <Route path="/" element={<Home />}></Route>
                   <Route path="/leaderboard" element={<Leaderboard />}></Route>
                   <Route path="/questions" element={<Questions />}></Route>
-                  <Route path="/search" element={<SearchBar />}></Route>
+                  <Route path="/search" element={<SearchQuestions />}></Route>
                   <Route path="/mode-select" element={<ModeSelect />}></Route>
                   <Route path="/profile" element={<Profile />}></Route>
                   <Route path="/question-add" element={<QuestionAddition />}></Route>
