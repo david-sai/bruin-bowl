@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 var cors = require("cors");
+require('dotenv').config();
+
 
 const app = express();
 
 mongoose
-  .connect("mongodb+srv://BruinBowl35L:PZ7R06@bruin-bowl-database.dytrqfo.mongodb.net/?retryWrites=true&w=majority&appName=Bruin-Bowl-Database")
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     if (process.env.NODE_ENV !== "test") {
       app.listen(4000, () => {
