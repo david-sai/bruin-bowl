@@ -6,7 +6,7 @@ const signup = async (req, res) => {
         const user = await UserSchema.signup(username, password);
         console.log(user);
         if(user == "exists"){
-            return res.status(400).json({ error: "User Exists" });
+            return res.status(400).json({ error: "User already exists" });
         }
         res.status(200).json({ user: user });
     } catch (error) {

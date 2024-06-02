@@ -42,13 +42,14 @@ function AuthModal() {
       }
 
       // password must be at least 8 characters long and only contain letters and numbers
-      if (!/^[A-Za-z0-9]*$/.test(password) || password.length < 8) {
-        setError("Password must be at least 8 characters long and only contain letters and numbers.");
+      if (!/^[A-Za-z0-9]*$/.test(password) || password.length < 4) {
+        setError("Password must be at least 4 characters long and only contain letters and numbers.");
         return;
       }
 
       if (data) {
         if (data["error"]) {
+          setError(data["error"]["response"]["data"]["error"]);
         } else {
           console.log(data);
           setError("");
@@ -124,7 +125,7 @@ function AuthModal() {
             </span>
           </p>
 
-          <p className="text-red-500 mt-2">{error}</p>
+          <p className="text-red-500 mt-6">{error}</p>
         </div>
       </Modal>
     </div>
