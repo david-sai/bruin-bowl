@@ -69,7 +69,13 @@ function AuthModal() {
           setError(data["error"]["response"]["data"]["error"]);
         } else {
           // success!
-          setSuccessfullySignedIn(true);
+
+          if (isSignIn) {
+            setSuccessfullySignedIn(true);
+          } else {
+            setSuccessfullySignedUp(true);
+          }
+
           console.log(data);
           setError("");
         }
@@ -95,74 +101,98 @@ function AuthModal() {
       borderColor: "#f0e68c",
     },
   };
-  return (
-    <div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={customStyles}
-      >
-        <div className="mt-4 p-4 text-bruin-darkgold">
-          <button
-            onClick={() => setModalIsOpen(false)}
-            className="absolute top-4 right-4 p-2"
-          >
-            <i className="fas fa-times fa-2x"></i>
-          </button>
 
-          <h1 className="font-bold text-3xl mb-5">
-            {isSignIn ? "Sign In" : "Sign Up"}
-          </h1>
+  function mainContent() {
+    return (
+      <div className="mt-4 p-4 text-bruin-darkgold">
+        <button
+          onClick={() => setModalIsOpen(false)}
+          className="absolute top-4 right-4 p-2"
+        >
+          <i className="fas fa-times fa-2x"></i>
+        </button>
 
-          <div className="flex flex-col space-y-4 ">
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username"
-              className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
-            />
+        <h1 className="font-bold text-3xl mb-5">
+          {isSignIn ? "Sign In" : "Sign Up"}
+        </h1>
 
+        <div className="flex flex-col space-y-4 ">
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter username"
+            className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
+          />
+
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+            className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
+          />
+
+          {!isSignIn && (
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
+              placeholder="Confirm password"
               className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
             />
-
-            {!isSignIn && (
-              <input
-                type="password"
-                value={password2}
-                onChange={(e) => setPassword2(e.target.value)}
-                placeholder="Confirm password"
-                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
-              />
-            )}
-          </div>
-
-          <button
-            onClick={handleSubmit}
-            className="mt-4 px-4 py-3 bg-bruin-gold text-white rounded-md w-full"
-          >
-            {isSignIn ? "Sign In" : "Sign Up"}
-          </button>
-          <br />
-          <p className="mt-4 text-center text-sm">
-            {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
-            <span
-              className="text-bruin-blue cursor-pointer"
-              onClick={() => setIsSignIn(!isSignIn)}
-            >
-              {isSignIn ? "Sign Up" : "Sign In"}
-            </span>
-          </p>
-
-          <p className="text-red-500 mt-6">{error}</p>
+          )}
         </div>
-      </Modal>
-    </div>
+
+        <button
+          onClick={handleSubmit}
+          className="mt-4 px-4 py-3 bg-bruin-gold text-white rounded-md w-full"
+        >
+          {isSignIn ? "Sign In" : "Sign Up"}
+        </button>
+        <br />
+        <p className="mt-4 text-center text-sm">
+          {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
+          <span
+            className="text-bruin-blue cursor-pointer"
+            onClick={() => setIsSignIn(!isSignIn)}
+          >
+            {isSignIn ? "Sign Up" : "Sign In"}
+          </span>
+        </p>
+
+        <p className="text-red-500 mt-6">{error}</p>
+      </div>
+    );
+  }
+
+  function successContent() {
+    return (
+      <div className="mt-4 p-4 text-bruin-darkgold">
+        <h1 className="font-bold text-3xl mb-5">
+          {successfullySignedUp ? "Signed Up!" : "Signed In!"}
+        </h1>
+
+        <button
+          onClick={() => setModalIsOpen(false)}
+          className="mt-4 px-4 py-3 bg-bruin-gold text-white rounded-md w-full"
+        >
+          Close
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={() => setModalIsOpen(false)}
+      style={customStyles}
+    >
+      {successfullySignedUp || successfullySignedIn
+        ? successContent()
+        : mainContent()}
+    </Modal>
   );
 }
 
