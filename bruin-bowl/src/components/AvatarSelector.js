@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AvatarDisplay from "./AvatarDisplay.js";
 
 function AvatarSelector(props) {
-  const [selectedURL, setSelectedURL] = useState(null);
+  
   const availableURLs = [
     "https://pbs.twimg.com/media/GPBZbEUWgAAwTjx?format=jpg&name=large",
     "https://cdn.britannica.com/22/187222-050-07B17FB6/apples-on-a-tree-branch.jpg",
@@ -15,8 +15,7 @@ function AvatarSelector(props) {
   ];
 
   const handleAvatarClick = (url) => {
-    console.log(`Avatar ID clicked: ${url}`);
-    setSelectedURL(url);
+    props.setSelectedURL(url);
   };
 
   const avatarPath = "default_pfp";
@@ -38,7 +37,7 @@ function AvatarSelector(props) {
               id={url}
               path={url}
               onClick={handleAvatarClick}
-              isSelected={selectedURL === url}
+              isSelected={props.selectedURL === url}
             />
           </div>
         ))}

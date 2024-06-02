@@ -182,10 +182,12 @@ function AuthModal() {
               />
 
               <button
-                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left"
+                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left flex items-center"
                 onClick={() => setShowingAvatarSelector(true)}
               >
-                Profile Picture
+                <img src={avatarURL} className="w-8 h-8 rounded-md object-cover mr-2 " alt="Profile Avatar" />
+
+                <span>Profile Picture</span>
               </button>
 
               <Modal
@@ -195,6 +197,8 @@ function AuthModal() {
               >
                 <AvatarSelector
                   setShowingAvatarSelector={setShowingAvatarSelector}
+                  selectedURL={avatarURL}
+                  setSelectedURL={setAvatarURL}
                 />
               </Modal>
             </>
