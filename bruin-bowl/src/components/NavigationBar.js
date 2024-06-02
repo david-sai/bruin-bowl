@@ -62,18 +62,19 @@ function NavigationBar() {
           Question Search
         </NavLink>
 
-
-        {user ? <div>{user.username}</div> : <div>TEMP</div>}
-
-        {user ? <div>Signed in</div> : <div>TEMP</div>}
-
-        <button
-          className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"
-          onClick={handleSignIn}
-        >
-          <span>Sign Up</span>
-          <i className="fas fa-arrow-right pl-3"></i>
-        </button>
+        {user ? (
+          <div
+          className="flex items-center py-0.5 px-5 text-bruin-gold font-bold rounded-full bg-bruin-gold bg-opacity-10"
+          >{user.username}</div>
+        ) : (
+          <button
+            className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"
+            onClick={handleSignIn}
+          >
+            <span>Sign Up</span>
+            <i className="fas fa-arrow-right pl-3"></i>
+          </button>
+        )}
       </div>
     </div>
   );

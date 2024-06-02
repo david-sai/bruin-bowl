@@ -29,7 +29,6 @@ function App() {
     const saved = localStorage.getItem("user");
     const initialValue = JSON.parse(saved);
 
-    console.log(initialValue);
     return initialValue || null;
   });
 

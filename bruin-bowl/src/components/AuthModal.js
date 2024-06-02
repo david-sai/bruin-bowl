@@ -73,7 +73,8 @@ function AuthModal() {
 
           // success!
           console.log(data);
-          setUser(JSON.stringify(data["user"]));
+          
+          setUser(data["user"]);
 
           if (isSignIn) {
             setSuccessfullySignedIn(true);
