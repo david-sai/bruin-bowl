@@ -23,9 +23,10 @@ import QuestionAddition from "./pages/QuestionAddition.js";
 import SearchQuestions from "./pages/SearchQuestions.js";
 
 function App() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [user, setUser] = useState(null);
-
+  // this is a string
+  // null means no modal is open
+  // provide a string to show additional text underneath the signup
+  const [modalIsOpen, setModalIsOpen] = useState(null);
   const [user, setUser] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("user");

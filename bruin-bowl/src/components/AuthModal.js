@@ -78,7 +78,6 @@ function AuthModal() {
         if (data["error"]) {
           setError(data["error"]["response"]["data"]["error"]);
         } else {
-
           // success!
           console.log(data);
 
@@ -120,15 +119,19 @@ function AuthModal() {
     return (
       <div className="mt-4 p-4 text-bruin-darkgold">
         <button
-          onClick={() => setModalIsOpen(false)}
+          onClick={() => setModalIsOpen(null)}
           className="absolute top-4 right-4 p-2"
         >
           <i className="fas fa-times fa-2x"></i>
         </button>
 
-        <h1 className="font-bold text-3xl mb-5">
-          {isSignIn ? "Sign In" : "Sign Up"}
-        </h1>
+        <div className="mb-5">
+          <h1 className="font-bold text-3xl">
+            {isSignIn ? "Sign In" : "Sign Up"}
+          </h1>
+
+          {modalIsOpen && modalIsOpen != "" && <div className="mt-2 text-lg">{modalIsOpen}</div>}
+        </div>
 
         <div className="flex flex-col space-y-4 ">
           <input
@@ -188,7 +191,7 @@ function AuthModal() {
         </h1>
 
         <button
-          onClick={() => setModalIsOpen(false)}
+          onClick={() => setModalIsOpen(null)}
           className="mt-4 px-4 py-3 bg-bruin-gold text-white rounded-md w-full"
         >
           Close
@@ -197,10 +200,12 @@ function AuthModal() {
     );
   }
 
+  const isOpen = modalIsOpen != null;
+
   return (
     <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={() => setModalIsOpen(false)}
+      isOpen={isOpen}
+      onRequestClose={() => setModalIsOpen(null)}
       style={customStyles}
     >
       {successfullySignedUp || successfullySignedIn
