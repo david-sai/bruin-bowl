@@ -11,9 +11,9 @@ function AvatarSelector(props) {
     <div className="mt-4 p-4 text-bruin-darkgold">
       <button
         onClick={() => props.setShowingAvatarSelector(null)}
-        className="absolute top-4 right-4 p-2"
+        className="absolute top-4 right-4 p-2 text-2xl"
       >
-        <i className="fas fa-times fa-2x"></i>
+        Done
       </button>
 
       <h1 className="text-3xl font-bold mb-6">Select Profile Picture</h1>
