@@ -60,10 +60,11 @@ export const createQuestion = async (data, res) => {
     });
 };
 
-export const signup = async (username, password, res) => {
+export const signup = async (username, password, avatar, res) => {
   var data = JSON.stringify({
     "username": username,
-    "password": password
+    "password": password,
+    "avatar": avatar
   });
 
   var config = {

@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { useState, useContext, useEffect } from "react";
 import { ModalIsOpenContext } from "../context/Contexts.js";
 import { UserContext } from "../context/Contexts.js";
+import AvatarSelector from "./AvatarSelector.js";
 
 import { signup } from "../api/api.js";
 import { signin } from "../api/api.js";
@@ -15,12 +16,35 @@ function AuthModal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+
+  const availableAvatarURLs = [
+    "https://pbs.twimg.com/media/GPBZbEUWgAAwTjx?format=jpg&name=large",
+    "https://cdn.britannica.com/22/187222-050-07B17FB6/apples-on-a-tree-branch.jpg",
+    "https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_1",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDBJs8O8bT9rxdPm0UUvM7FUjfudubqU4a3A&s=",
+    "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/06/apple-varieties-types-1296x728-header.jpg?w=1155&h=1528",
+    "https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2022/06/05130314/25.jpg",
+    "https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_22726_16560822540037952.jpg",
+    "https://media.post.rvohealth.io/wp-content/uploads/2020/08/different-berries-birdview-thumb.jpg",
+  ];
+
+  // start up with a random avatar
+  const getRandomAvatar = () => {
+    const randomIndex = Math.floor(Math.random() * availableAvatarURLs.length);
+    return availableAvatarURLs[randomIndex];
+  };
+
+  const [avatarURL, setAvatarURL] = useState(getRandomAvatar);
+
+
   const [error, setError] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [successfullySignedUp, setSuccessfullySignedUp] = useState(false);
   const [successfullySignedIn, setSuccessfullySignedIn] = useState(false);
+
+  const [showingAvatarSelector, setShowingAvatarSelector] = useState(false);
 
   // reset back to beginning
   useEffect(() => {
@@ -100,14 +124,26 @@ function AuthModal() {
     if (isSignIn) {
       signin(username, password, response);
     } else {
-      signup(username, password, response);
+      signup(username, password, avatarURL, response);
     }
   };
 
   const customStyles = {
     content: {
       maxWidth: "400px",
-      maxHeight: "500px",
+      maxHeight: "600px",
+      overflow: "none",
+      margin: "auto", // center horizontally
+      backgroundColor: "#fffbeb",
+      borderRadius: "24px",
+      borderColor: "#f0e68c",
+    },
+  };
+
+  const customStylesAvatarSelector = {
+    content: {
+      maxWidth: "800px",
+      maxHeight: "600px",
       margin: "auto", // center horizontally
       backgroundColor: "#fffbeb",
       borderRadius: "24px",
@@ -130,7 +166,9 @@ function AuthModal() {
             {isSignIn ? "Sign In" : "Sign Up"}
           </h1>
 
-          {modalIsOpen && modalIsOpen != "" && <div className="mt-2 text-lg">{modalIsOpen}</div>}
+          {modalIsOpen && modalIsOpen != "" && (
+            <div className="mt-2 text-lg">{modalIsOpen}</div>
+          )}
         </div>
 
         <div className="flex flex-col space-y-4 ">
@@ -151,13 +189,41 @@ function AuthModal() {
           />
 
           {!isSignIn && (
-            <input
-              type="password"
-              value={password2}
-              onChange={(e) => setPassword2(e.target.value)}
-              placeholder="Confirm password"
-              className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
-            />
+            <>
+              <input
+                type="password"
+                value={password2}
+                onChange={(e) => setPassword2(e.target.value)}
+                placeholder="Confirm password"
+                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
+              />
+
+              <button
+                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left flex items-center"
+                onClick={() => setShowingAvatarSelector(true)}
+              >
+                <img
+                  src={avatarURL}
+                  className="w-8 h-8 rounded-md object-cover mr-2 "
+                  alt="Profile Avatar"
+                />
+
+                <span>Choose profile picture</span>
+              </button>
+
+              <Modal
+                isOpen={showingAvatarSelector}
+                onRequestClose={() => setShowingAvatarSelector(false)}
+                style={customStylesAvatarSelector}
+              >
+                <AvatarSelector
+                  setShowingAvatarSelector={setShowingAvatarSelector}
+                  availableAvatarURLs={availableAvatarURLs}
+                  selectedURL={avatarURL}
+                  setSelectedURL={setAvatarURL}
+                />
+              </Modal>
+            </>
           )}
         </div>
 

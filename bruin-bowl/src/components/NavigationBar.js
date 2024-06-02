@@ -35,7 +35,7 @@ function NavigationBar() {
             }`
           }
         >
-          Select Mode
+          Game
         </NavLink>
         <NavLink
           to="/search"
@@ -52,9 +52,10 @@ function NavigationBar() {
         <NavLink
           to="/question-add"
           className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${isActive
-              ? "text-bruin-blue border-bruin-blue"
-              : "text-bruin-gold border-transparent"
+            `py-0.5 place-self-center border-b-2 ${
+              isActive
+                ? "text-bruin-blue border-bruin-blue"
+                : "text-bruin-gold border-transparent"
             }`
           }
         >
@@ -78,13 +79,19 @@ function NavigationBar() {
           <NavLink
             to="/profile"
             className={({ isActive }) =>
-              `flex items-center py-0.5 px-5  font-bold rounded-full bg-bruin-gold ${
+              `flex items-center py-0.5 pl-2 pr-5 font-bold rounded-full ${
                 isActive
-                  ? "text-white bg-opacity-100"
-                  : "text-bruin-gold bg-opacity-10"
+                  ? "text-white bg-bruin-blue bg-opacity-100"
+                  : "text-bruin-gold bg-bruin-gold bg-opacity-10"
               }`
             }
           >
+            <img
+              src={user.avatar}
+              className="w-8 h-8 rounded-full object-cover mr-2 shadow-md"
+              alt="Profile Avatar"
+            />
+
             {user.username}
           </NavLink>
         ) : (

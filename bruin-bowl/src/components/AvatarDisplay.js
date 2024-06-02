@@ -1,19 +1,17 @@
-import React from 'react'
+import React from "react";
 
 function AvatarDisplay({ id, path, onClick, isSelected }) {
-
-    return (
-      <div>
-      <img 
-        src={`/assets/${path}.jpeg`}
-        alt="Default Profile" 
-        style={{ maxWidth: '80%', maxHeight: '80%', borderRadius: '50%' }}
-        className={`aspect-w-1 aspect-h-1 cursor-pointer p-1 rounded-full ${isSelected ? 'ring-4 ring-blue-500' : ''} hover:ring-2 hover:ring-blue-200 hover:bg-gray-200`}
-      onClick={() => onClick(id)}
+  return (
+    <div className="w-full aspect-square">
+      <img
+        src={path}
+        className={`w-full h-full object-cover rounded-lg cursor-pointer p-1 ${
+          isSelected ? "ring-4 ring-blue-500" : ""
+        }`}
+        onClick={() => onClick(id)}
       />
     </div>
-      );
-    
+  );
 }
 
 export default AvatarDisplay;

@@ -10,8 +10,8 @@ function Profile() {
   function signOut() {
     let text = "Sign out?";
     if (window.confirm(text) == true) {
-        setUser(null);
-        navigate("/");
+      setUser(null);
+      navigate("/");
     } else {
       return;
     }
@@ -20,12 +20,21 @@ function Profile() {
   function userView(user) {
     return (
       <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
-        <h1 className="font-bold text-3xl mb-1.5">Profile</h1>
+        <h1 className="font-bold text-3xl mb-4">Profile</h1>
+
+        <img
+          src={user.avatar}
+          className="w-24 h-24 rounded-full object-cover shadow-md mr-2  mb-5"
+          alt="Profile Avatar"
+        />
+
         <p className="text-2xl">
-          Welcome, <span className="font-bold">{user.username}</span>!
+          Username: <span className="font-bold">{user.username}</span>
         </p>
 
-        <p className="text-2xl">Your score: {user.score}</p>
+        <p className="text-2xl">
+          Score: <span className="font-bold">{user.score}</span>
+        </p>
 
         <button
           onClick={signOut}
@@ -37,7 +46,15 @@ function Profile() {
     );
   }
 
-  return <div>{user ? userView(user) : <h1 className="text-bruin-gold mt-4">Sign in to view profile</h1>}</div>;
+  return (
+    <div>
+      {user ? (
+        userView(user)
+      ) : (
+        <h1 className="text-bruin-gold mt-4">Sign in to view profile</h1>
+      )}
+    </div>
+  );
 }
 
 export default Profile;

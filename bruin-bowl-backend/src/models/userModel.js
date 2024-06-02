@@ -15,20 +15,24 @@ const userSchema = new Schema({
   },
   score: {
     type: Number,
-    required: true,
+    required: true, 
     default: 0
+  }, 
+  avatar: {
+    type: String,
+    required: true,
   }
 });
 
-userSchema.statics.signup = async function (username, password) {
-  if (!username || !password) {
+userSchema.statics.signup = async function (username, password, score, avatar) {
+  if (!username || !password || !avatar) {
     throw Error("Missing Information");
   }
   const doesUserExist = await this.findOne({ username });
   if (doesUserExist) {
     return "exists";
   }
-  const user = await this.create({ username, password });
+  const user = await this.create({ username, password, score, avatar });
   return user;
 };
 
