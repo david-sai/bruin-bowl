@@ -12,6 +12,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
+  },
+  score: {
+    type: Number,
+    required: true,
+    default: 0
   }
 });
 
@@ -21,10 +26,26 @@ userSchema.statics.signup = async function (username, password) {
   }
   const doesUserExist = await this.findOne({ username });
   if (doesUserExist) {
-    return doesUserExist;
+    return "exists";
   }
   const user = await this.create({ username, password });
   return user;
 };
+
+
+//TODO: JONATHAN PAI
+// userSchema.statics.getUserScore = async function (username) {
+//   if (!username) {
+//     throw Error("Called Function getUserScore without a username!");
+//   }
+//   const user = await this.findOne({ username });
+//   if (!user) {
+//     return null;
+//   }
+//   return {
+//     score: user.score
+//   };
+// };
+
 
 module.exports = mongoose.model("User", userSchema);

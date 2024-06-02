@@ -29,7 +29,7 @@ function SearchBar() {
 
   return (
     <div>
-      <h1 className="font-bold text-3xl mb-1.5">Question Search</h1>
+      <h1 className="font-bold text-bruin-darkgold text-3xl mb-1.5">Question Search</h1>
       <input
         type="text"
         value={keyword}
@@ -38,7 +38,7 @@ function SearchBar() {
         className="p-2"
       />
       <br></br>
-      <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
+      <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Search</button>
       {results != null &&
         results.map((questionObj) => (
           <QuestionBox questionBody={questionObj.question} />

@@ -1,42 +1,101 @@
-import React from "react";
-import { Page } from "../App";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { ModalIsOpenContext, UserContext } from "../context/Contexts";
+import { useContext } from "react";
 
-function NavigationBar({ page, setPage }) {
+function NavigationBar() {
+  const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
+  const { user, setUser } = useContext(UserContext);
+
+  function handleSignIn() {
+    setModalIsOpen("");
+  }
+
   return (
     <div className="flex justify-between">
-      <button
-        className={`py-2 text-xl font-bold ${
-          page === Page.HOME ? "text-bruin-blue" : "text-bruin-gold"
-        }`}
-        onClick={() => setPage(Page.HOME)}
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          `py-2 text-xl font-bold ${
+            isActive ? "text-bruin-blue" : "text-bruin-gold"
+          }`
+        }
       >
         Bruin Bowl
-      </button>
+      </NavLink>
 
       <div className="flex space-x-5 text-large">
-        <button
-          className={`py-0.5 place-self-center border-b-2 ${
-            page === Page.QUESTIONS ? "text-bruin-blue  border-bruin-blue" : "text-bruin-gold border-transparent"
-          }`}
-          onClick={() => setPage(Page.QUESTIONS)}
+        <NavLink
+          to="/mode-select"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${
+              isActive
+                ? "text-bruin-blue border-bruin-blue"
+                : "text-bruin-gold border-transparent"
+            }`
+          }
         >
-          Questions
-        </button>
-        <button
-          className={`py-0.5 place-self-center border-b-2 ${
-            page === Page.LEADERBOARD ? "text-bruin-blue border-bruin-blue" : "text-bruin-gold border-transparent"
-          }`}
-          onClick={() => setPage(Page.LEADERBOARD)}
+          Select Mode
+        </NavLink>
+        <NavLink
+          to="/search"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${
+              isActive
+                ? "text-bruin-blue border-bruin-blue"
+                : "text-bruin-gold border-transparent"
+            }`
+          }
+        >
+          Search Questions
+        </NavLink>
+        <NavLink
+          to="/question-add"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
+            }`
+          }
+        >
+          Add Questions
+        </NavLink>
+
+        <NavLink
+          to="/leaderboard"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${
+              isActive
+                ? "text-bruin-blue border-bruin-blue"
+                : "text-bruin-gold border-transparent"
+            }`
+          }
         >
           Leaderboard
-        </button>
-        <button
-          className="bg-bruin-gold px-4 py-1.5 rounded-full text-white place-self-center"
-          onClick={() => setPage(Page.QUESTIONS)}
-        >
-          <span>Sign In</span>
-          <i className="fas fa-arrow-right pl-3"></i>
-        </button>
+        </NavLink>
+
+        {user ? (
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              `flex items-center py-0.5 px-5  font-bold rounded-full bg-bruin-gold ${
+                isActive
+                  ? "text-white bg-opacity-100"
+                  : "text-bruin-gold bg-opacity-10"
+              }`
+            }
+          >
+            {user.username}
+          </NavLink>
+        ) : (
+          <button
+            className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"
+            onClick={handleSignIn}
+          >
+            <span>Sign Up</span>
+            <i className="fas fa-arrow-right pl-3"></i>
+          </button>
+        )}
       </div>
     </div>
   );
