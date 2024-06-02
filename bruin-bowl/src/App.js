@@ -20,6 +20,8 @@ import Profile from "./pages/Profile.js";
 import { ModalIsOpenContext } from "./context/Contexts.js";
 import { UserContext } from "./context/Contexts.js";
 import AuthModal from "./components/AuthModal";
+import QuestionAddition from "./pages/QuestionAddition.js";
+import SearchQuestions from "./pages/SearchQuestions.js";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -63,6 +65,7 @@ function App() {
                   <Route path="/sign-in" element={<SignIn />}></Route>
                   <Route path="/signup" element={<Signup />}></Route>
                   <Route path="/profile" element={<Profile />}></Route>
+                  <Route path="/question-add" element={<QuestionAddition />}></Route>
                 </Routes>
               </GameProvider>
             </div>

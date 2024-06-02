@@ -12,6 +12,7 @@ const createQuestion = async (req, res) => {
 };
 
 const usedQuestions = new Map();
+var lastQuestion = null;
 
 const getQuestion = async (req, res) => {
     const { category } = req.query; 
@@ -32,7 +33,9 @@ const getQuestion = async (req, res) => {
             const randomIndex = Math.floor(Math.random() * totalQuestions); //pick a random number
             if(usedQuestionsSet.has(randomIndex)) continue; 
             quizQuestion = await QuizSchema.findOne({ category: category }).skip(randomIndex); //select that random question
+            if(lastQuestion != null && lastQuestion == quizQuestion.question) continue;
             usedQuestionsSet.add(randomIndex);
+            lastQuestion = quizQuestion.question
             break;
         }
         res.status(200).json({ quizQuestion: quizQuestion });

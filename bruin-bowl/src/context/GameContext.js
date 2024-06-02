@@ -9,7 +9,9 @@ export const ACTIONS = {
 export const CATEGORIES = {
     UCLA: "UCLA",
     COMPUTER_SCIENCE: "Computer Science",
-    STAR_WARS: "Star Wars"
+    STAR_WARS: "Star Wars",
+    OTHER: "Other",
+    TRASH: "Trash"
 }
 
 export const GAME_MODES = {

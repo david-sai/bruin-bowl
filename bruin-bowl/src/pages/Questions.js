@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AnswerBar from "../components/AnswerBar.js";
 import QuestionBox from "../components/QuestionBox.js";
-import SearchBar from "./SearchBar.js";
+import SearchBar from "../components/SearchBar.js";
 import Timer from "../components/Timer.js";
 import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
@@ -19,11 +19,11 @@ export const STATUS = {
 
 function Questions() {
   const [correct, setCorrect] = useState(false); // Player guessed correct answer
-  const [questionBody, setQuestionBody] = useState("Question Body");
-  const [answer, setAnswer] = useState("Initial Answer");
-  const [option1, setOption1] = useState("Initial Option1");
-  const [option2, setOption2] = useState("Initial Option2");
-  const [option3, setOption3] = useState("Initial Option3");
+  const [questionBody, setQuestionBody] = useState('\u00A0');
+  const [answer, setAnswer] = useState("");
+  const [option1, setOption1] = useState("");
+  const [option2, setOption2] = useState("");
+  const [option3, setOption3] = useState("");
   const [error, setError] = useState(""); // Player guessed correct answer
   const [status, setStatus] = useState(STATUS.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
