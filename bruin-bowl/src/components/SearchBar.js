@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { searchQuestion } from '../api/api.js';
-import QuestionBox from '../components/QuestionBox.js';
+import QuestionBox from './QuestionBox.js';
 
 function SearchBar() {
   const [keyword, setKeyword] = useState('');
@@ -29,7 +29,7 @@ function SearchBar() {
 
   return (
     <div>
-      <h1 className="font-bold text-3xl mb-1.5">Question Search</h1>
+      <h1 className="font-bold text-bruin-darkgold text-3xl mb-1.5">Question Search</h1>
       <input
         type="text"
         value={keyword}

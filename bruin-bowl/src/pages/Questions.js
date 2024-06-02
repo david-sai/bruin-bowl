@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AnswerBar from "../components/AnswerBar.js";
 import QuestionBox from "../components/QuestionBox.js";
-import SearchBar from "./SearchBar.js";
+import SearchBar from "../components/SearchBar.js";
 import Timer from "../components/Timer.js";
 import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
