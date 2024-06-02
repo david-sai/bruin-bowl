@@ -14,7 +14,7 @@ router.get("/get", getUser);
 
 router.delete("/delete", deleteUser);
 
-// router.get("/getscore", getUserScore)
+router.get("/getscore", getUserScore)
 
 router.post("/updateScore", updateScorebyUser);
 

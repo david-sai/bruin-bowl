@@ -48,6 +48,22 @@ const getUser = async (req, res) => {
     }
 }
 
+const getUserScore = async (req, res) => {
+    const {username} = req.query; 
+    try {
+        if (!username) {
+            throw Error("Missing Username...");
+        }
+        const user = await UserSchema.findOne({ username });
+        if (!user) {
+            return res.status(400).json({error: "User Not Found!"});
+        }
+        res.status(200).json({ score: user.score })
+    } catch (error) {
+        res.status(400).json({error: "Get Score Error!"})
+    }
+}
+
 const deleteUser = async(req, res) => {
     const {username} = req.body;
     try {
@@ -97,6 +113,6 @@ const getLeaderBoard = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-module.exports = { signup, signin, getUser, deleteUser, updateScorebyUser, getLeaderBoard};
+module.exports = { signup, signin, getUser, getUserScore, deleteUser, updateScorebyUser, getLeaderBoard};
 
 
