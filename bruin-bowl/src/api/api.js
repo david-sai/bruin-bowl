@@ -107,3 +107,44 @@ export const signin = async (username, password, res) => {
       res({ error: error });
     });
 };
+
+export const updateScore = async(username, amount, res) => {
+
+  var data = JSON.stringify({
+    "username" : username,
+    "amount" : amount
+  });
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:4000/updateScore',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: data
+  };
+  axios(config)   //uses axios to send the HTTP request w/ specified config
+  .then(function (response) { //if successful, data is passed back to callback fn res
+    res(response.data);
+  })
+  .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
+    console.log(error);
+    res({ error: error });
+  });
+}
+
+export const getLeaderBoard = async(res) => {
+  var config = {
+    method: 'get',
+    url: 'http://localhost:4000/leaderboard',
+    headers: {},
+  };
+  axios(config)   //uses axios to send the HTTP request w/ specified config
+  .then(function (response) { //if successful, data is passed back to callback fn res
+    res(response.data);
+  })
+  .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
+    console.log(error);
+    res({ error: error });
+  });
+}
