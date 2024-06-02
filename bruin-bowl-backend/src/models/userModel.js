@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt') //for password hashing
+
+const saltRounds = 10; //var that controls amnt of processing needed to compute hash (complexity)
 
 const userSchema = new Schema({
   username: {
@@ -18,6 +21,24 @@ const userSchema = new Schema({
     required: true,
     default: 0
   }
+});
+
+//middleware to hash the passwords
+userSchema.pre('save', function(next) {
+  // hash password only if it's been modiified or new 
+  if (!this.isModified('password')) 
+    return next();
+  // generate a salt and use it to hash the password
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    if (err) return next(err);
+
+    bcrypt.hash(this.password, salt, (err, hash) => {
+      if (err) return next(err);
+      // replace the string password to the hashed one
+      this.password = hash
+      next();
+    });
+  });
 });
 
 userSchema.statics.signup = async function (username, password) {
