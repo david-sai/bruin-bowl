@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { useState, useContext, useEffect } from "react";
 import { ModalIsOpenContext } from "../context/Contexts.js";
 import { UserContext } from "../context/Contexts.js";
+import AvatarSelector from "./AvatarSelector.js";
 
 import { signup } from "../api/api.js";
 import { signin } from "../api/api.js";
@@ -21,6 +22,8 @@ function AuthModal() {
   const [isLoading, setIsLoading] = useState(false);
   const [successfullySignedUp, setSuccessfullySignedUp] = useState(false);
   const [successfullySignedIn, setSuccessfullySignedIn] = useState(false);
+
+  const [showingAvatarSelector, setShowingAvatarSelector] = useState(false);
 
   // reset back to beginning
   useEffect(() => {
@@ -115,6 +118,17 @@ function AuthModal() {
     },
   };
 
+  const customStylesAvatarSelector = {
+    content: {
+      maxWidth: "800px",
+      maxHeight: "600px",
+      margin: "auto", // center horizontally
+      backgroundColor: "#fffbeb",
+      borderRadius: "24px",
+      borderColor: "#f0e68c",
+    },
+  };
+
   function mainContent() {
     return (
       <div className="mt-4 p-4 text-bruin-darkgold">
@@ -162,11 +176,20 @@ function AuthModal() {
                 className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
               />
 
-              <button className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left">
-                
-
+              <button
+                className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left"
+                onClick={() => setShowingAvatarSelector(true)}
+              >
                 Profile Picture
               </button>
+
+              <Modal
+                isOpen={showingAvatarSelector}
+                onRequestClose={() => setShowingAvatarSelector(false)}
+                style={customStylesAvatarSelector}
+              >
+                <AvatarSelector setShowingAvatarSelector={setShowingAvatarSelector} />
+              </Modal>
             </>
           )}
         </div>
