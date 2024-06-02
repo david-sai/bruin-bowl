@@ -16,9 +16,26 @@ function AuthModal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [avatarURL, setAvatarURL] = useState(
-    "https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_1"
-  );
+
+  const availableAvatarURLs = [
+    "https://pbs.twimg.com/media/GPBZbEUWgAAwTjx?format=jpg&name=large",
+    "https://cdn.britannica.com/22/187222-050-07B17FB6/apples-on-a-tree-branch.jpg",
+    "https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_1",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDBJs8O8bT9rxdPm0UUvM7FUjfudubqU4a3A&s=",
+    "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/06/apple-varieties-types-1296x728-header.jpg?w=1155&h=1528",
+    "https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2022/06/05130314/25.jpg",
+    "https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_22726_16560822540037952.jpg",
+    "https://media.post.rvohealth.io/wp-content/uploads/2020/08/different-berries-birdview-thumb.jpg",
+  ];
+
+  // start up with a random avatar
+  const getRandomAvatar = () => {
+    const randomIndex = Math.floor(Math.random() * availableAvatarURLs.length);
+    return availableAvatarURLs[randomIndex];
+  };
+
+  const [avatarURL, setAvatarURL] = useState(getRandomAvatar);
+
 
   const [error, setError] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
@@ -185,7 +202,11 @@ function AuthModal() {
                 className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left flex items-center"
                 onClick={() => setShowingAvatarSelector(true)}
               >
-                <img src={avatarURL} className="w-8 h-8 rounded-md object-cover mr-2 " alt="Profile Avatar" />
+                <img
+                  src={avatarURL}
+                  className="w-8 h-8 rounded-md object-cover mr-2 "
+                  alt="Profile Avatar"
+                />
 
                 <span>Profile Picture</span>
               </button>
@@ -197,6 +218,7 @@ function AuthModal() {
               >
                 <AvatarSelector
                   setShowingAvatarSelector={setShowingAvatarSelector}
+                  availableAvatarURLs={availableAvatarURLs}
                   selectedURL={avatarURL}
                   setSelectedURL={setAvatarURL}
                 />
