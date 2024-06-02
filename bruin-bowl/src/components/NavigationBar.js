@@ -8,7 +8,7 @@ function NavigationBar() {
   const { user, setUser } = useContext(UserContext);
 
   function handleSignIn() {
-    setModalIsOpen(true);
+    setModalIsOpen("");
   }
 
   return (
@@ -75,10 +75,6 @@ function NavigationBar() {
         </NavLink>
 
         {user ? (
-          // <div
-          // className="flex items-center py-0.5 px-5 text-bruin-gold font-bold rounded-full bg-bruin-gold bg-opacity-10"
-          // >{user.username}</div>
-
           <NavLink
             to="/profile"
             className={({ isActive }) =>
