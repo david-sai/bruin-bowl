@@ -16,6 +16,10 @@ function AuthModal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [avatarURL, setAvatarURL] = useState(
+    "https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_1"
+  );
+
   const [error, setError] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
 
@@ -103,14 +107,15 @@ function AuthModal() {
     if (isSignIn) {
       signin(username, password, response);
     } else {
-      signup(username, password, response);
+      signup(username, password, avatarURL, response);
     }
   };
 
   const customStyles = {
     content: {
       maxWidth: "400px",
-      maxHeight: "500px",
+      maxHeight: "600px",
+      overflow: "none",
       margin: "auto", // center horizontally
       backgroundColor: "#fffbeb",
       borderRadius: "24px",
@@ -188,7 +193,9 @@ function AuthModal() {
                 onRequestClose={() => setShowingAvatarSelector(false)}
                 style={customStylesAvatarSelector}
               >
-                <AvatarSelector setShowingAvatarSelector={setShowingAvatarSelector} />
+                <AvatarSelector
+                  setShowingAvatarSelector={setShowingAvatarSelector}
+                />
               </Modal>
             </>
           )}
