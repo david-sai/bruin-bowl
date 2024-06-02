@@ -208,7 +208,7 @@ function AuthModal() {
                   alt="Profile Avatar"
                 />
 
-                <span>Profile Picture</span>
+                <span>Choose profile picture</span>
               </button>
 
               <Modal
