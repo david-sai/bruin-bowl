@@ -26,7 +26,7 @@ userSchema.statics.signup = async function (username, password) {
   }
   const doesUserExist = await this.findOne({ username });
   if (doesUserExist) {
-    return doesUserExist;
+    return "exists";
   }
   const user = await this.create({ username, password });
   return user;

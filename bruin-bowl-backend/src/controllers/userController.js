@@ -4,6 +4,10 @@ const signup = async (req, res) => {
     const { username, password } = req.body;
     try {
         const user = await UserSchema.signup(username, password);
+        console.log(user);
+        if(user == "exists"){
+            return res.status(400).json({ error: "User Exists" });
+        }
         res.status(200).json({ user: user });
     } catch (error) {
         res.status(400).json({ error: error.message });

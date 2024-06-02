@@ -25,10 +25,28 @@ function AuthModal() {
   const handleSubmit = () => {
     // Call the function when the button is clicked
     const response = (data) => {
-      if (username == "" || password == "") {
-        setError("Username or password is empty.");
+      if (username == "") {
+        setError("Username is empty.");
         return;
       }
+
+      if (password == "") {
+        setError("Password is empty.");
+        return;
+      }
+
+      // username must only contain letters, numbers, and underscores
+      if (!/^[A-Za-z0-9_]*$/.test(username)) {
+        setError("Username can only contain letters, numbers, and underscores.");
+        return;
+      }
+
+      // password must be at least 8 characters long and only contain letters and numbers
+      if (!/^[A-Za-z0-9]*$/.test(password) || password.length < 8) {
+        setError("Password must be at least 8 characters long and only contain letters and numbers.");
+        return;
+      }
+
       if (data) {
         if (data["error"]) {
         } else {
@@ -37,6 +55,8 @@ function AuthModal() {
         }
       }
     };
+
+
     signup(username, password, response);
   };
 
