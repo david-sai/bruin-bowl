@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getQuestion = async (res) => {
+export const getQuestion = async (category, res) => {
   var config = {
     method: 'get',
-    url: 'http://localhost:4000/quiz',
+    url: 'http://localhost:4000/quiz?category=' + category,
     headers: {}
   };
   axios(config)
