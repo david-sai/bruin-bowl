@@ -23,8 +23,6 @@ function LeaderboardDisplay () {
 
     return (
         <div className="board">
-            <h1 className="leaderboard">Leaderboard</h1>
-
             {leaderboard && <Profiles LeaderboardData={leaderboard}></Profiles>}
         </div>
     )
