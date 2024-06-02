@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ModalIsOpenContext } from "../context/Contexts.js";
 import { UserContext } from "../context/Contexts.js";
 
@@ -21,6 +21,14 @@ function AuthModal() {
   const [isLoading, setIsLoading] = useState(false);
   const [successfullySignedUp, setSuccessfullySignedUp] = useState(false);
   const [successfullySignedIn, setSuccessfullySignedIn] = useState(false);
+
+  // reset back to beginning
+  useEffect(() => {
+    if (user == null) {
+      setSuccessfullySignedIn(false);
+      setSuccessfullySignedUp(false);
+    }
+  }, [user]);
 
   const handleSubmit = () => {
     if (isLoading) {
@@ -73,7 +81,7 @@ function AuthModal() {
 
           // success!
           console.log(data);
-          
+
           setUser(data["user"]);
 
           if (isSignIn) {
