@@ -35,7 +35,7 @@ userSchema.pre('save', function(next) {
     bcrypt.hash(this.password, salt, (err, hash) => {
       if (err) return next(err);
       // replace the string password to the hashed one
-      this.password = hash
+      this.password = hash;
       next();
     });
   });
