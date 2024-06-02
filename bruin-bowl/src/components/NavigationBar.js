@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import { ModalIsOpenContext } from "../context/Contexts";
+import { ModalIsOpenContext, UserContext } from "../context/Contexts";
 import { useContext } from "react";
 
 function NavigationBar() {
   const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
+  const { user, setUser } = useContext(UserContext);
 
   function handleSignIn() {
-      setModalIsOpen(true); 
+    setModalIsOpen(true);
   }
 
   return (
@@ -36,7 +37,6 @@ function NavigationBar() {
         >
           Select Mode
         </NavLink>
-
         <NavLink
           to="/leaderboard"
           className={({ isActive }) =>
@@ -49,7 +49,6 @@ function NavigationBar() {
         >
           Leaderboard
         </NavLink>
-
         <NavLink
           to="/search"
           className={({ isActive }) =>
@@ -62,6 +61,11 @@ function NavigationBar() {
         >
           Question Search
         </NavLink>
+
+
+        {user ? <div>{user.username}</div> : <div>TEMP</div>}
+
+        {user ? <div>Signed in</div> : <div>TEMP</div>}
 
         <button
           className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"

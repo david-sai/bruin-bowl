@@ -3,12 +3,14 @@ import Modal from "react-modal";
 
 import { useState, useContext } from "react";
 import { ModalIsOpenContext } from "../context/Contexts.js";
+import { UserContext } from "../context/Contexts.js";
 
 import { signup } from "../api/api.js";
 import { signin } from "../api/api.js";
 
 function AuthModal() {
   const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
+  const { user, setUser } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -68,7 +70,10 @@ function AuthModal() {
         if (data["error"]) {
           setError(data["error"]["response"]["data"]["error"]);
         } else {
+
           // success!
+          console.log(data);
+          setUser(JSON.stringify(data["user"]));
 
           if (isSignIn) {
             setSuccessfullySignedIn(true);

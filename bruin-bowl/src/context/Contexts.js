@@ -8,3 +8,11 @@ export const ModalIsOpenContext = createContext(
         setContext: () => {}
     }
 );
+
+// the signed in user
+export const UserContext = createContext(
+    {
+        context: null,
+        setContext: () => {}
+    }
+);
