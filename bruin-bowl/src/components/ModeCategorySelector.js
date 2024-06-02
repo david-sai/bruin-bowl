@@ -2,12 +2,15 @@ import React, { useState, useContext } from 'react'
 import { GameDispatchContext, CATEGORIES, GAME_MODES, ACTIONS } from '../context/GameContext'
 import { useNavigate } from 'react-router-dom'
 
+
 function ModeCategorySelector() {
 
     const dispatch = useContext(GameDispatchContext); // dispatch is a function in GameContext used to update category and game mode
     const navigate = useNavigate();
 
     function handleSubmit(e) {
+
+
         // Prevent the browser from reloading the page
         e.preventDefault();
 
