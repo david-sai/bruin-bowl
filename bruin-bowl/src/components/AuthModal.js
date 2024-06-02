@@ -163,6 +163,8 @@ function AuthModal() {
               />
 
               <button className="p-3 w-full bg-transparent border rounded-md border-bruin-gold text-left">
+                
+
                 Profile Picture
               </button>
             </>
