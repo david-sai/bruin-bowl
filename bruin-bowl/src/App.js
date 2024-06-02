@@ -14,7 +14,7 @@ import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
 import SignIn from "./pages/SignIn.js";
 import Signup from "./pages/Signup";
-import SearchBar from "./components/SearchBar.js";
+import SearchBar from "./pages/SearchBar.js";
 
 
 import { ModalIsOpenContext } from "./context/Contexts.js";
