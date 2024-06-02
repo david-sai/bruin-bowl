@@ -39,6 +39,27 @@ export const searchQuestion = async (keyword, res) => {
     });
 };
 
+
+export const createQuestion = async (data, res) => {
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:4000/quiz/create',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: data
+  };
+  axios(config)
+    .then(function (response) {
+      res(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      res({ error: error });
+    });
+};
+
 export const signup = async (username, password, res) => {
   var data = JSON.stringify({
     "username": username,
