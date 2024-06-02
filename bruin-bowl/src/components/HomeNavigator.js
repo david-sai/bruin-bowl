@@ -1,27 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ModalIsOpenContext, UserContext } from "../context/Contexts";
 
 function HomeNavigator() {
-    const isSignedIn = true; // Change once sign in page is done
+    const navigate = useNavigate();
+    const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
+    const { user, setUser } = useContext(UserContext);
 
-    if (isSignedIn) {
-        return (
-            <div >
-                <button className="mt-1 px-4 py-2 bg-bruin-blue text-white text-xl font-bold rounded-full">
-                    <Link to='/mode-select'>Start playing</Link>
-                </button>
-            </div>
-        )
+    const message = user === null ? "Sign in" : "Start playing"
+
+    function handleClick() {
+        if (user === null) {
+            setModalIsOpen("You need to be logged in first!");
+            return;
+        }
+        else {
+            navigate("/mode-select");
+        }
     }
-    else {
-        return (
-            <div className="text-bruin-blue font-bold text-2xl">
-                <button className="mt-1 px-4 py-2 bg-bruin-blue text-white text-xl font-bold rounded-full">
-                    <Link to='/sign-in'>Sign in</Link>
-                </button>
-            </div>
-        )
-    }
+
+
+
+    return (
+        <div >
+            <button onClick={handleClick} className="mt-1 px-4 py-2 bg-bruin-blue text-white text-xl font-bold rounded-full">
+                {message}
+            </button>
+        </div>
+    );
 }
 
 export default HomeNavigator;
