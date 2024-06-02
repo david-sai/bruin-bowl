@@ -15,6 +15,7 @@ import { GameProvider } from "./context/GameContext.js";
 import SignIn from "./pages/SignIn.js";
 import Signup from "./pages/Signup.js";
 import QuestionAddition from "./pages/QuestionAddition.js";
+import SearchBar from "./pages/SearchBar.js";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
               <Route path="/" element={<Home />}></Route>
               <Route path="/leaderboard" element={<Leaderboard />}></Route>
               <Route path="/questions" element={<Questions />}></Route>
+              <Route path="/search" element={<SearchBar />}></Route>
               <Route path="/mode-select" element={<ModeSelect />}></Route>
               <Route path="/sign-in" element={<SignIn />}></Route>
               <Route path="/signup" element={<Signup />}></Route>

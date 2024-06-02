@@ -22,11 +22,15 @@ const quizSchema = new Schema({
   option3: {
     type: String,
     required: true,
+  },
+  category: {
+    type: String,
+    required: true,
   }
 });
 
-quizSchema.statics.createQuestion = async function (question, answer, option1, option2, option3) {
-    if (!question || !answer || !option1 || !option2 || !option3) {
+quizSchema.statics.createQuestion = async function (question, answer, option1, option2, option3, category) {
+    if (!question || !answer || !option1 || !option2 || !option3 || !category) {
       throw Error("Missing Information");
     }
 
@@ -35,7 +39,7 @@ quizSchema.statics.createQuestion = async function (question, answer, option1, o
       return doesQuestionExist;
     }
   
-    const quizQuestion = await this.create({ question, answer, option1, option2, option3 });
+    const quizQuestion = await this.create({ question, answer, option1, option2, option3, category });
     return quizQuestion;
   };
 

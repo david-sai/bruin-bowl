@@ -24,7 +24,7 @@ function NavigationBar() {
             }`
           }
         >
-          Change Mode
+          Select Mode
         </NavLink>
 
         <NavLink
@@ -37,6 +37,18 @@ function NavigationBar() {
           }
         >
           Leaderboard
+        </NavLink>
+
+        <NavLink
+          to="/search"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
+            }`
+          }
+        >
+          Question Search
         </NavLink>
 
         <NavLink
