@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { STATUS } from '../pages/Questions'
+import { updateScore } from "../api/api.js";
 
-function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
+function AnswerBar({remainingTime, status, setStatus, answer, wrong1, wrong2, wrong3}) {
     const [answers, setAnswers] = useState([String]);
 
+    //Code for handling answers
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
         e.preventDefault();
@@ -17,8 +19,9 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
 
             if (formJson.answerNum === answer) {
                 setStatus(STATUS.CORRECT_ANSWER);
+                updateScore(calculateScore(remainingTime)); //if correct, calculate score
             } else {
-                setStatus(STATUS.WRONG_ANSWER);
+                setStatus(STATUS.WRONG_ANSWER); //no need to calculate score if wrong
             }
         }
     }

@@ -28,6 +28,7 @@ function Questions() {
   const [status, setStatus] = useState(STATUS.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
   const state = useContext(GameStateContext);
+  const [remainingTime, setRemainingTime] = useState(GAME_MODE_TIMES[state.gameMode] * 10);
 
   useEffect(() => {
     const response = (data) => {
@@ -45,6 +46,7 @@ function Questions() {
         }
       }
     };
+
     getQuestion(state.category, response);
   }, [questionNumber]);
 
@@ -53,11 +55,13 @@ function Questions() {
     setQuestionNumber(questionNumber + 1);
   };
 
+
   return (
     <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
       <QuestionBox questionBody={questionBody} />
 
       <AnswerBar
+        remainingTime={remainingTime}
         status={status}
         setStatus={setStatus}
         setVar={setCorrect}
