@@ -15,6 +15,7 @@ import { GameProvider } from "./context/GameContext.js";
 import SignIn from "./pages/SignIn.js";
 import Signup from "./pages/Signup";
 import SearchBar from "./pages/SearchBar.js";
+import Profile from "./pages/Profile.js";
 
 import { ModalIsOpenContext } from "./context/Contexts.js";
 import { UserContext } from "./context/Contexts.js";
@@ -61,6 +62,7 @@ function App() {
                   <Route path="/mode-select" element={<ModeSelect />}></Route>
                   <Route path="/sign-in" element={<SignIn />}></Route>
                   <Route path="/signup" element={<Signup />}></Route>
+                  <Route path="/profile" element={<Profile />}></Route>
                 </Routes>
               </GameProvider>
             </div>

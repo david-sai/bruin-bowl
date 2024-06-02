@@ -63,9 +63,22 @@ function NavigationBar() {
         </NavLink>
 
         {user ? (
-          <div
-          className="flex items-center py-0.5 px-5 text-bruin-gold font-bold rounded-full bg-bruin-gold bg-opacity-10"
-          >{user.username}</div>
+          // <div
+          // className="flex items-center py-0.5 px-5 text-bruin-gold font-bold rounded-full bg-bruin-gold bg-opacity-10"
+          // >{user.username}</div>
+
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              `flex items-center py-0.5 px-5  font-bold rounded-full bg-bruin-gold ${
+                isActive
+                  ? "text-white bg-opacity-100"
+                  : "text-bruin-gold bg-opacity-10"
+              }`
+            }
+          >
+            {user.username}
+          </NavLink>
         ) : (
           <button
             className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"
