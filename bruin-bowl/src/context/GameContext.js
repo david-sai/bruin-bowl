@@ -7,7 +7,6 @@ export const ACTIONS = {
 }
 
 export const CATEGORIES = {
-    ALL: "All",
     UCLA: "UCLA",
     COMPUTER_SCIENCE: "Computer Science",
     STAR_WARS: "Star Wars"
@@ -24,8 +23,8 @@ const GameStateContext = createContext();
 const GameDispatchContext = createContext();
 
 const GameProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, {category : CATEGORIES.ALL, gameMode : GAME_MODES.CLASSIC});
-    // Default state of reducer is All category and Classic game mode
+    const [state, dispatch] = useReducer(reducer, {category : CATEGORIES.UCLA, gameMode : GAME_MODES.CLASSIC});
+    // Default state of reducer is UCLA category and Classic game mode
 
     return (
         <GameStateContext.Provider value={state}>
