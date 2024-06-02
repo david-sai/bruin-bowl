@@ -14,6 +14,9 @@ function AuthModal() {
   const [error, setError] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
 
+  const [successfullySignedUp, setSuccessfullySignedUp] = useState(false);
+  const [successfullySignedIn, setSuccessfullySignedIn] = useState(false);
+
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -36,8 +39,8 @@ function AuthModal() {
       }
 
       // username must only contain letters, numbers, and underscores
-      if (!/^[A-Za-z0-9_]*$/.test(username)) {
-        setError("Username can only contain letters, numbers, and underscores.");
+      if (!/^[A-Za-z0-9_]*$/.test(username)|| username.length < 4) {
+        setError("Username must be at least 4 characters long and can only contain letters, numbers, and underscores.");
         return;
       }
 
@@ -51,6 +54,8 @@ function AuthModal() {
         if (data["error"]) {
           setError(data["error"]["response"]["data"]["error"]);
         } else {
+          // success!
+          setSuccessfullySignedIn(true);
           console.log(data);
           setError("");
         }
@@ -58,7 +63,11 @@ function AuthModal() {
     };
 
 
-    signup(username, password, response);
+    if (isSignIn) {
+      // signin(username, password, response);
+    } else {
+      signup(username, password, response);
+    }
   };
 
   const customStyles = {
