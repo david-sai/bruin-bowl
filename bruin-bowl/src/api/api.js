@@ -137,7 +137,7 @@ export const updateScore = async(username, amount, res) => {
 export const getLeaderBoard = async(res) => {
   var config = {
     method: 'get',
-    url: 'http://localhost:4000/leaderboard',
+    url: 'http://localhost:4000/user/leaderboard',
     headers: {},
   };
   axios(config)   //uses axios to send the HTTP request w/ specified config

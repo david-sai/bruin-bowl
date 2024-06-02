@@ -1,4 +1,5 @@
 import React from "react";
+import LeaderboardDisplay from "../components/LeaderboardDisplay.js";
 
 function Leaderboard() {
     return (
@@ -6,6 +7,7 @@ function Leaderboard() {
         <h1 className="font-bold text-3xl mb-1.5">Leaderboard</h1>
         <p className="text-2xl">
             Placeholder Leaderboard
+            <LeaderboardDisplay />
         </p>
         </div>
     );
