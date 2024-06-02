@@ -28,18 +28,6 @@ function NavigationBar() {
         </NavLink>
 
         <NavLink
-          to="/leaderboard"
-          className={({ isActive }) =>
-            `py-0.5 place-self-center border-b-2 ${isActive
-              ? "text-bruin-blue border-bruin-blue"
-              : "text-bruin-gold border-transparent"
-            }`
-          }
-        >
-          Leaderboard
-        </NavLink>
-
-        <NavLink
           to="/search"
           className={({ isActive }) =>
             `py-0.5 place-self-center border-b-2 ${isActive
@@ -48,7 +36,7 @@ function NavigationBar() {
             }`
           }
         >
-          Question Search
+          Search Questions
         </NavLink>
 
         <NavLink
@@ -61,6 +49,18 @@ function NavigationBar() {
           }
         >
           Add Questions
+        </NavLink>
+
+        <NavLink
+          to="/leaderboard"
+          className={({ isActive }) =>
+            `py-0.5 place-self-center border-b-2 ${isActive
+              ? "text-bruin-blue border-bruin-blue"
+              : "text-bruin-gold border-transparent"
+            }`
+          }
+        >
+          Leaderboard
         </NavLink>
 
         <NavLink
