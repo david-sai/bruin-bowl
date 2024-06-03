@@ -117,8 +117,12 @@ function AddQuestions() {
         {categoryStrings.map((category, index) => { // Creates a button for each category
           return (
             <div className="mb-1">
-              <input type="radio" id={category} name="category" value={category} defaultChecked={index === 0} />
-              <label htmlFor={category} className="ml-2">{category}</label>
+              <input type="radio" id={category} name="category" value={category} defaultChecked={index === 0}
+                className="form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold focus:ring-0 focus:ring-offset-0" />
+              <label htmlFor={category}
+                className="ml-2 bg-bruin-gold bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+                {category}
+              </label>
             </div>
           );
         })}

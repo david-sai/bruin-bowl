@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { STATUS } from '../pages/Questions'
 
-function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
+function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
     const [answers, setAnswers] = useState([String]);
     const formRef = useRef(null)
 
@@ -44,27 +44,24 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
     return (
         <>
             <form ref={formRef} method="post" onSubmit={handleSubmit}>
-                <div className="mb-1">
-                    <input className="rounded-full" type="radio" id="answer1" name="answerNum" value={answers[0]} />
-                    <label htmlFor="answer1" className="ml-2 rounded-full">{answers[0]}</label>
-                </div>
-                <div className="mb-1">
-                    <input type="radio" id="answer2" name="answerNum" value={answers[1]} />
-                    <label htmlFor="answer2" className="ml-2">{answers[1]}</label>
-                </div>
-                <div className="mb-1">
-                    <input type="radio" id="answer3" name="answerNum" value={answers[2]} />
-                    <label htmlFor="answer3" className="ml-2">{answers[2]}</label>
-                </div>
-                <div className="mb-1">
-                    <input type="radio" id="answer4" name="answerNum" value={answers[3]} />
-                    <label htmlFor="answer4" className="ml-2">{answers[3]}</label>
-                </div>
+                {answers.map((answer, index) => {
+                    return (
+                        <div className="mb-1">
+                            <input className="form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold focus:ring-0 focus:ring-offset-0"
+                                type="radio" id={"answer" + index} name="answerNum" value={answer} />
+                            <label htmlFor={"answer" + index}
+                                className="ml-2 bg-bruin-gold bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+                                {answer}
+                            </label>
+                        </div>
+                    )
+                })}
+
                 <button type="submit" className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
             </form>
         </>
     );
-    
+
 }
 
 export default AnswerBar;

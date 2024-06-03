@@ -55,15 +55,16 @@ function ModeCategorySelector() {
         {gameModeStrings.map((gameMode, index) => {
           // Creates a button for each game mode
           return (
-            <div className="mb-1">
+            <div className="mb-2">
               <input
                 type="radio"
+                className="form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold focus:ring-0 focus:ring-offset-0"
                 id={gameMode}
                 name="gameMode"
                 value={gameMode}
                 defaultChecked={index === 0}
               />
-              <label htmlFor={gameMode} className="ml-2">
+              <label htmlFor={gameMode} className="ml-2 bg-bruin-gold bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
                 {gameMode}
               </label>
             </div>
@@ -78,13 +79,14 @@ function ModeCategorySelector() {
           return (
             <div className="mb-1">
               <input
+                className="form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold focus:ring-0 focus:ring-offset-0"
                 type="radio"
                 id={category}
                 name="category"
                 value={category}
                 defaultChecked={index === 0}
               />
-              <label htmlFor={category} className="ml-2">
+              <label htmlFor={category} className="ml-2 bg-bruin-gold bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
                 {category}
               </label>
             </div>
