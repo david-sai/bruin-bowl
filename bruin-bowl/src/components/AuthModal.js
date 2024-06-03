@@ -88,7 +88,7 @@ function AuthModal() {
       }
 
       // make sure passwords match
-      if (password != password2) {
+      if (password !== password2) {
         setError("Passwords do not match.");
         return;
       }
@@ -166,7 +166,7 @@ function AuthModal() {
             {isSignIn ? "Sign In" : "Sign Up"}
           </h1>
 
-          {modalIsOpen && modalIsOpen != "" && (
+          {modalIsOpen && modalIsOpen !== "" && (
             <div className="mt-2 text-lg">{modalIsOpen}</div>
           )}
         </div>
@@ -266,7 +266,7 @@ function AuthModal() {
     );
   }
 
-  const isOpen = modalIsOpen != null;
+  const isOpen = modalIsOpen !== null;
 
   return (
     <Modal

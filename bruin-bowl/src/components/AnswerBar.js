@@ -27,7 +27,7 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
         let answers = [answer, wrong1, wrong2, wrong3]
         const shuffledAnswers = shuffleArray(answers);
         setAnswers(shuffledAnswers);
-    }, [answer]);
+    }, [answer, wrong1, wrong2, wrong3]);
 
 
     const shuffleArray = (array) => { // Uses Fisher-Yates Algorithm

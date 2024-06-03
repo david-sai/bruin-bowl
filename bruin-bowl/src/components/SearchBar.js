@@ -39,7 +39,7 @@ function SearchBar() {
       />
       <br></br>
       <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Search</button>
-      {results != null &&
+      {results !== null &&
         results.map((questionObj) => (
           <QuestionBox questionBody={questionObj.question} />
         ))

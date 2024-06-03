@@ -1,12 +1,10 @@
-import logo from "./logo.svg";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import PageTitle from "./components/PageTitle.js";
 import NavigationBar from "./components/NavigationBar.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import AvatarSelector from "./components/AvatarSelector.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
