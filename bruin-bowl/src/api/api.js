@@ -109,8 +109,7 @@ export const signin = async (username, password, res) => {
     });
 };
 
-export const updateScore = async(username, amount, res) => {
-
+export const updateScore = async (username, amount, res) => {
   var data = JSON.stringify({
     "username" : username,
     "amount" : amount
@@ -118,7 +117,7 @@ export const updateScore = async(username, amount, res) => {
 
   var config = {
     method: 'post',
-    url: 'http://localhost:4000/updateScore',
+    url: 'http://localhost:4000/user/updateScore',
     headers: {
       'Content-Type': 'application/json'
     },

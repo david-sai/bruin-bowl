@@ -64,9 +64,9 @@ function Questions() {
         wrong3={option3}
       />
 
-      <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
+      {(status != STATUS.WRONG_ANSWER && status != STATUS.TIMEOUT) && <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
         Next Question
-      </button>
+      </button>}
 
       <AnswerIndicator status={status} answer={answer} />
       <Timer
