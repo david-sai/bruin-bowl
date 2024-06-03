@@ -35,7 +35,7 @@ const signin = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-    const {username} = req.query; 
+    const { username } = req.query; 
     try {
         if (!username) {
             throw Error("Missing Username...");

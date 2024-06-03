@@ -109,6 +109,22 @@ export const signin = async (username, password, res) => {
     });
 };
 
+export const getUser = async (username, res) => {
+  var config = {
+    method: 'get',
+    url: 'http://localhost:4000/user/get?username=' + username,
+    headers: {}
+  };
+  axios(config)
+    .then(function (response) {
+      res(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      res({ error: error });
+    });
+};
+
 export const updateScore = async (username, amount, res) => {
   var data = JSON.stringify({
     "username" : username,
@@ -134,22 +150,6 @@ export const updateScore = async (username, amount, res) => {
 }
 
 export const getLeaderBoard = async(res) => {
-  var config = {
-    method: 'get',
-    url: 'http://localhost:4000/user/leaderboard',
-    headers: {},
-  };
-  axios(config)   //uses axios to send the HTTP request w/ specified config
-  .then(function (response) { //if successful, data is passed back to callback fn res
-    res(response.data);
-  })
-  .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
-    console.log(error);
-    res({ error: error });
-  });
-}
-
-export const getUserScore = async(res) => {
   var config = {
     method: 'get',
     url: 'http://localhost:4000/user/leaderboard',
