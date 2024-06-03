@@ -50,6 +50,9 @@ function ModeCategorySelector() {
   const gameModeStrings = Object.values(GAME_MODES); // Used for mapping later
   const categoryStrings = Object.values(CATEGORIES);
 
+  const selectedStyling = "bg-bruin-gold ";
+  const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
+
   return (
     <>
       <h1 className="font-bold text-3xl mb-1.5">Game Mode</h1>
@@ -59,7 +62,7 @@ function ModeCategorySelector() {
           return (
             <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
               <span className={`ml-2 w-4 h-4 inline-block rounded-full
-                ${index === gameModeIndex ? 'bg-bruin-gold' : 'bg-bruin-darkgold'}`} />
+                ${index === gameModeIndex ? selectedStyling : unselectedStyling}`} />
               <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
                 {gameMode}
               </p>
@@ -77,7 +80,7 @@ function ModeCategorySelector() {
           return (
             <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
               <span className={`ml-2 w-4 h-4 inline-block rounded-full
-                ${index === categoryIndex ? 'bg-bruin-gold' : 'bg-bruin-darkgold'}`} />
+                ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
               <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
                 {category}
               </p>
