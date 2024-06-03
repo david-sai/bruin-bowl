@@ -206,7 +206,7 @@ function AddQuestions() {
               <span className="font-bold">{results.category}</span> category.
             </h2>
 
-            <div className="mt-4 p-10 bg-amber-50 rounded-3xl border border-amber-400">
+            <div className="mt-4 p-10 bg-amber-50 rounded-2xl border border-amber-300">
               <h2 className="text-3xl font-bold mb-5">{results.question}</h2>
               <ul className="text-xl">
                 <li className="text-green-700">{results.answer}</li>
