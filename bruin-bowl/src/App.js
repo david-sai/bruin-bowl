@@ -1,31 +1,30 @@
-import logo from "./logo.svg";
 import React, { useState, useEffect, createContext } from "react";
-import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+//Component Imports:
 import PageTitle from "./components/PageTitle.js";
 import NavigationBar from "./components/NavigationBar.js";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import AvatarSelector from "./components/AvatarSelector.js";
-
+import AuthModal from "./components/AuthModal";
+//Styling imports:
+import "./App.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import logo from "./logo.svg";
+//Pages Imports:
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
-import { GameProvider } from "./context/GameContext.js";
-
 import Profile from "./pages/Profile.js";
-
-import { ModalIsOpenContext } from "./context/Contexts.js";
-import { UserContext } from "./context/Contexts.js";
-import AuthModal from "./components/AuthModal";
 import QuestionAddition from "./pages/QuestionAddition.js";
 import SearchQuestions from "./pages/SearchQuestions.js";
+//Context Imports:
+import { GameProvider } from "./context/GameContext.js";
+import { ModalIsOpenContext } from "./context/Contexts.js";
+import { UserContext } from "./context/Contexts.js";
 
 function App() {
-  // this is a string
-  // null means no modal is open
-  // provide a string to show additional text underneath the signup
+  /* modalIsOpen is a string. When it is null, no modal is open. 
+  Used to display additional info undertneath signup area in a model. */
   const [modalIsOpen, setModalIsOpen] = useState(null);
   const [user, setUser] = useState(() => {
     // getting stored value
@@ -34,10 +33,10 @@ function App() {
 
     return initialValue || null;
   });
-
+  //Creates an effect that instantiates when the user state changes.
   useEffect(() => {
     console.log(user);
-
+    //Updates local storage with user data
     if (user == null) {
       localStorage.setItem("user", "\"\"");
     } else {
@@ -46,13 +45,13 @@ function App() {
   }, [user]);
 
   return (
-    <BrowserRouter>
-      <div className="flex justify-center items-start min-h-screen p-8 bg-amber-50">
+    <BrowserRouter> {/* wraps application with a BrowserRouter (handles dynamic client side routing) */}
+      <div className="flex justify-center items-start min-h-screen p-8 bg-amber-50"> {/* Applies CSS interfaces (separated by whitespace) */}
         <PageTitle title="BruinBowl" />
 
-        <ModalIsOpenContext.Provider value={{ modalIsOpen, setModalIsOpen }}>
-          <UserContext.Provider value={{ user, setUser }}>
-            <div className="max-w-screen-lg w-full">
+        <ModalIsOpenContext.Provider value={{ modalIsOpen, setModalIsOpen }}> {/* allows any child component to access the modalIsOpen state var */}
+          <UserContext.Provider value={{ user, setUser }}> {/* Same as obove but with the user var */}
+            <div className="max-w-screen-lg w-full"> {/* wrapper for the content area of the App */}
               <NavigationBar />
 
               <GameProvider>
