@@ -34,6 +34,10 @@ function AuthModal() {
     "https://github.com/david-sai/bruin-bowl/blob/images/robot.png?raw=true",
     "https://github.com/david-sai/bruin-bowl/blob/images/soccer_player.png?raw=true",
     "https://github.com/david-sai/bruin-bowl/blob/images/ucla_bear.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/flowers.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/student.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/car.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/prince.png?raw=true",
   ];
 
   // start up with a random avatar
