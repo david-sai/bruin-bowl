@@ -10,10 +10,7 @@ import ProfileView from "../components/ProfileView.js";
 function Profile() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-
-  // const { username } = useParams(); // Get the username from the URL
-  // const [displayedUser, setDisplayedUser] = useState(null);
-
+  
   function signOut() {
     let text = "Sign out?";
     if (window.confirm(text) === true) {

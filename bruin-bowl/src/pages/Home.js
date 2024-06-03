@@ -18,6 +18,12 @@ function Home() {
       </p>
 
       <HomeNavigator />
+
+      <p className="text-left text-md text-bruin-darkgold mt-8 flex flex-col">
+        <span className="font-bold">Made by: Andrew, Brayden, Daniel, David, Jon, Zach</span>
+        <span>Copyright © 2024 Six Body Problem</span>
+        <span>CS35L Discussion 1G</span>
+      </p>
     </div>
   );
 }
