@@ -61,6 +61,8 @@ function App() {
                   <Route path="/search" element={<SearchQuestions />}></Route>
                   <Route path="/mode-select" element={<ModeSelect />}></Route>
                   <Route path="/profile" element={<Profile />}></Route>
+                  <Route path="/profile/:username" element={<Profile />} />
+
                   <Route path="/question-add" element={<QuestionAddition />}></Route>
                 </Routes>
               </GameProvider>
