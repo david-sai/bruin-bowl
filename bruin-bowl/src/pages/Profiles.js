@@ -34,7 +34,7 @@ function Profiles() {
           signOut={() => {}}
         />
       ) : (
-        <h1 className="text-bruin-gold mt-4">You must be signed in first!</h1>
+        <h1 className="text-bruin-gold mt-4">Loading...</h1>
       )}
     </div>
   );
