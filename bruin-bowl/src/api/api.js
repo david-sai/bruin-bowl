@@ -149,3 +149,19 @@ export const getLeaderBoard = async(res) => {
     res({ error: error });
   });
 }
+
+export const getUserScore = async(res) => {
+  var config = {
+    method: 'get',
+    url: 'http://localhost:4000/user/leaderboard',
+    headers: {},
+  };
+  axios(config)   //uses axios to send the HTTP request w/ specified config
+  .then(function (response) { //if successful, data is passed back to callback fn res
+    res(response.data);
+  })
+  .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
+    console.log(error);
+    res({ error: error });
+  });
+}

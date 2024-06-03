@@ -1,4 +1,5 @@
 const UserSchema = require("../models/userModel");
+const bcrypt = require('bcrypt') //for password hashing
 
 const signup = async (req, res) => {
     const { username, password, avatar } = req.body;
@@ -23,8 +24,9 @@ const signin = async (req, res) => {
         if (!user) {
             return res.status(400).json({ error: "User not found"});
         }
-        if (user.password !== password) {
-            return res.status(400).json({ error: "Incorrect password"});
+        const doesPasswordMatch = await bcrypt.compare(password, user.password)
+        if (!doesPasswordMatch) {
+            return res.status(400).json({ error: "Incorrect password"})
         }
         res.status(200).json({ user: user });
     } catch (error) {
@@ -45,6 +47,22 @@ const getUser = async (req, res) => {
         res.status(200).json({ user: user })
     } catch (error) {
         res.status(400).json({error: "Get User Error!"})
+    }
+}
+
+const getUserScore = async (req, res) => {
+    const {username} = req.query; 
+    try {
+        if (!username) {
+            throw Error("Missing Username...");
+        }
+        const user = await UserSchema.findOne({ username });
+        if (!user) {
+            return res.status(400).json({error: "User Not Found!"});
+        }
+        res.status(200).json({ score: user.score })
+    } catch (error) {
+        res.status(400).json({error: "Get Score Error!"})
     }
 }
 
@@ -97,6 +115,6 @@ const getLeaderBoard = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-module.exports = { signup, signin, getUser, deleteUser, updateScorebyUser, getLeaderBoard};
+module.exports = { signup, signin, getUser, getUserScore, deleteUser, updateScorebyUser, getLeaderBoard};
 
 
