@@ -48,7 +48,6 @@ function AuthModal() {
 
   const [avatarURL, setAvatarURL] = useState(getRandomAvatar);
 
-
   const [error, setError] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
 
@@ -224,6 +223,7 @@ function AuthModal() {
               </button>
 
               <Modal
+                closeTimeoutMS={2000}
                 isOpen={showingAvatarSelector}
                 onRequestClose={() => setShowingAvatarSelector(false)}
                 style={customStylesAvatarSelector}
@@ -282,6 +282,7 @@ function AuthModal() {
 
   return (
     <Modal
+      closeTimeoutMS={200}
       isOpen={isOpen}
       onRequestClose={() => setModalIsOpen(null)}
       style={customStyles}
