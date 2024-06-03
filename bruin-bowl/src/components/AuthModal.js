@@ -223,7 +223,7 @@ function AuthModal() {
               </button>
 
               <Modal
-                closeTimeoutMS={2000}
+                closeTimeoutMS={200}
                 isOpen={showingAvatarSelector}
                 onRequestClose={() => setShowingAvatarSelector(false)}
                 style={customStylesAvatarSelector}
