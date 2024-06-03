@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { STATUS } from '../pages/Questions'
 
 function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
     const [answers, setAnswers] = useState([String]);
+    const formRef = useRef(null)
 
     function handleSubmit(e) {
         // Prevent the browser from reloading the page
@@ -27,6 +28,7 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
         let answers = [answer, wrong1, wrong2, wrong3]
         const shuffledAnswers = shuffleArray(answers);
         setAnswers(shuffledAnswers);
+        formRef.current.reset();
     }, [answer, wrong1, wrong2, wrong3]);
 
 
@@ -41,10 +43,10 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
 
     return (
         <>
-            <form method="post" onSubmit={handleSubmit}>
+            <form ref={formRef} method="post" onSubmit={handleSubmit}>
                 <div className="mb-1">
-                    <input type="radio" id="answer1" name="answerNum" value={answers[0]} />
-                    <label htmlFor="answer1" className="ml-2">{answers[0]}</label>
+                    <input className="rounded-full" type="radio" id="answer1" name="answerNum" value={answers[0]} />
+                    <label htmlFor="answer1" className="ml-2 rounded-full">{answers[0]}</label>
                 </div>
                 <div className="mb-1">
                     <input type="radio" id="answer2" name="answerNum" value={answers[1]} />
