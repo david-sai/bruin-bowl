@@ -25,11 +25,12 @@ function LeaderboardDisplay() {
     <div className="board">
       {leaderboard &&
         leaderboard.map((value, index) => (
-          <Link to={`/profile/${value.username}`} key={index}>
-            <div
-              className="flex items-center justify-between bg-amber-50 py-6 px-12 rounded-3xl mb-4"
-            >
-              <div className="flex items-center ">
+          <Link
+            to={`/profiles/${value.username}`}
+            key={index}
+          >
+            <div className="flex items-center justify-between bg-amber-50 py-6 px-12 rounded-3xl mb-4 transition-shadow duration-100 ease-in-out hover:shadow-lg focus:shadow-lg">
+              <div className="flex items-center">
                 <p
                   className={`font-bold text-3xl mr-8 ${
                     index === 0
@@ -49,7 +50,9 @@ function LeaderboardDisplay() {
                   src={value.avatar}
                   alt=""
                 />
-                <h3 className="font-bold">{value.username}</h3>
+                <h3 className="font-bold underline underline-offset-2">
+                  {value.username}
+                </h3>
               </div>
               <div>
                 <span>{value.score}</span>

@@ -13,6 +13,7 @@ import ModeSelect from "./pages/ModeSelect.js";
 import { GameProvider } from "./context/GameContext.js";
 
 import Profile from "./pages/Profile.js";
+import Profiles from "./pages/Profiles.js";
 
 import { ModalIsOpenContext } from "./context/Contexts.js";
 import { UserContext } from "./context/Contexts.js";
@@ -61,8 +62,7 @@ function App() {
                   <Route path="/search" element={<SearchQuestions />}></Route>
                   <Route path="/mode-select" element={<ModeSelect />}></Route>
                   <Route path="/profile" element={<Profile />}></Route>
-                  <Route path="/profile/:username" element={<Profile />} />
-
+                  <Route path="/profiles/:username" element={<Profiles />} />
                   <Route path="/question-add" element={<QuestionAddition />}></Route>
                 </Routes>
               </GameProvider>
