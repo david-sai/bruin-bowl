@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   GameDispatchContext,
   CATEGORIES,
@@ -15,34 +15,36 @@ function ModeCategorySelector() {
 
   const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
   const { user, setUser } = useContext(UserContext);
+  const [gameModeIndex, setGameModeIndex] = useState(0);
+  const [categoryIndex, setCategoryIndex] = useState(0);
 
-  function handleSubmit(e) {
-    // Prevent the browser from reloading the page
-    e.preventDefault();
-
+  function handleSubmit() {
     if (user === null) {
       setModalIsOpen("You need to be logged in first!");
       return;
     }
 
-    // Read the form data from radio buttons
-    const form = e.target;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
-
     dispatch({
       // Setting context category
       type: ACTIONS.SET_CATEGORY,
-      category: formJson.category,
+      category: categoryStrings[categoryIndex],
     });
 
     dispatch({
       // Setting context game mode
       type: ACTIONS.SET_GAME_MODE,
-      gameMode: formJson.gameMode,
+      gameMode: gameModeStrings[gameModeIndex],
     });
 
     navigate("/questions");
+  }
+
+  function handleGameModeClick(index) {
+    setGameModeIndex(index);
+  }
+
+  function handleCategoryClick(index) {
+    setCategoryIndex(index);
   }
 
   const gameModeStrings = Object.values(GAME_MODES); // Used for mapping later
@@ -55,21 +57,17 @@ function ModeCategorySelector() {
         {gameModeStrings.map((gameMode, index) => {
           // Creates a button for each game mode
           return (
-            <div className="mb-2">
-              <input
-                type="radio"
-                className="form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold focus:ring-0 focus:ring-offset-0"
-                id={gameMode}
-                name="gameMode"
-                value={gameMode}
-                defaultChecked={index === 0}
-              />
-              <label htmlFor={gameMode} className="ml-2 bg-bruin-gold bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+            <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
+              <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                ${index === gameModeIndex ? 'bg-bruin-gold' : 'bg-bruin-darkgold'}`} />
+              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
                 {gameMode}
-              </label>
+              </p>
             </div>
           );
         })}
+
+        {/* form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold cursor-pointer focus:ring-0 focus:ring-offset-0 */}
 
         <br />
         <h1 className="font-bold text-3xl mb-1.5">Category</h1>
@@ -77,18 +75,12 @@ function ModeCategorySelector() {
         {categoryStrings.map((category, index) => {
           // Creates a button for each category
           return (
-            <div className="mb-1">
-              <input
-                className="form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold focus:ring-0 focus:ring-offset-0"
-                type="radio"
-                id={category}
-                name="category"
-                value={category}
-                defaultChecked={index === 0}
-              />
-              <label htmlFor={category} className="ml-2 bg-bruin-gold bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+            <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
+              <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                ${index === categoryIndex ? 'bg-bruin-gold' : 'bg-bruin-darkgold'}`} />
+              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
                 {category}
-              </label>
+              </p>
             </div>
           );
         })}
