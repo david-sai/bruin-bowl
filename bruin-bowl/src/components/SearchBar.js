@@ -35,7 +35,7 @@ function SearchBar() {
         value={keyword}
         onChange={handleChange}
         placeholder="Search for question"
-        className="p-2"
+        className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
       <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Search</button>

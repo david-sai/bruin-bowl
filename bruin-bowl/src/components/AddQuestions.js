@@ -70,7 +70,7 @@ function AddQuestions() {
         value={question}
         onChange={handleChangeQuestion}
         placeholder="Question Prompt"
-        className="p-2"
+        className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
       <br></br>
@@ -80,7 +80,7 @@ function AddQuestions() {
         value={answer}
         onChange={handleChangeAnswer}
         placeholder="Correct Answer"
-        className="p-2"
+        className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
       <br></br>
@@ -90,7 +90,7 @@ function AddQuestions() {
         value={wrong1}
         onChange={handleChangeWrong1}
         placeholder="Wrong Answer"
-        className="p-2"
+        className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
       <br></br>
@@ -99,7 +99,7 @@ function AddQuestions() {
         value={wrong2}
         onChange={handleChangeWrong2}
         placeholder="Wrong Answer"
-        className="p-2"
+        className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
       <br></br>
@@ -108,7 +108,7 @@ function AddQuestions() {
         value={wrong3}
         onChange={handleChangeWrong3}
         placeholder="Wrong Answer"
-        className="p-2"
+        className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
       <br></br>
