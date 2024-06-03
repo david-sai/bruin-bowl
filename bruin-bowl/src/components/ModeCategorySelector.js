@@ -56,46 +56,42 @@ function ModeCategorySelector() {
   return (
     <>
       <h1 className="font-bold text-3xl mb-1.5">Game Mode</h1>
-      <form method="post" onSubmit={handleSubmit}>
-        {gameModeStrings.map((gameMode, index) => {
-          // Creates a button for each game mode
-          return (
-            <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
-              <span className={`ml-2 w-4 h-4 inline-block rounded-full
+      {gameModeStrings.map((gameMode, index) => {
+        // Creates a button for each game mode
+        return (
+          <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
+            <span className={`ml-2 w-4 h-4 inline-block rounded-full
                 ${index === gameModeIndex ? selectedStyling : unselectedStyling}`} />
-              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
-                {gameMode}
-              </p>
-            </div>
-          );
-        })}
+            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              {gameMode}
+            </p>
+          </div>
+        );
+      })}
 
-        {/* form-radio ml-2  bg-bruin-darkgold checked:text-bruin-gold cursor-pointer focus:ring-0 focus:ring-offset-0 */}
+      <br />
+      <h1 className="font-bold text-3xl mb-1.5">Category</h1>
 
-        <br />
-        <h1 className="font-bold text-3xl mb-1.5">Category</h1>
-
-        {categoryStrings.map((category, index) => {
-          // Creates a button for each category
-          return (
-            <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
-              <span className={`ml-2 w-4 h-4 inline-block rounded-full
+      {categoryStrings.map((category, index) => {
+        // Creates a button for each category
+        return (
+          <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
+            <span className={`ml-2 w-4 h-4 inline-block rounded-full
                 ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
-              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
-                {category}
-              </p>
-            </div>
-          );
-        })}
+            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              {category}
+            </p>
+          </div>
+        );
+      })}
 
-        <button
-          type="submit"
-          className="mt-4 px-6 py-3 bg-bruin-gold text-white rounded-full font-bold"
-        >
-          <span>Start Game</span>
-          <i className="fa-solid fa-play pl-3"></i>
-        </button>
-      </form>
+      <button
+        onClick={() => handleSubmit()}
+        className="mt-4 px-6 py-3 bg-bruin-gold text-white rounded-full font-bold"
+      >
+        <span>Start Game</span>
+        <i className="fa-solid fa-play pl-3"></i>
+      </button>
     </>
   );
 }
