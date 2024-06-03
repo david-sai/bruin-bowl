@@ -19,7 +19,7 @@ const getQuestion = async (req, res) => {
     try {
         const totalQuestions = await QuizSchema.countDocuments({ category: category });
 
-        if(totalQuestions == 0){
+        if(totalQuestions === 0){
             return res.status(400).json({ error: "No Questions of this category in DB" });
         }
         if (!usedQuestions.has(category)) {
@@ -33,7 +33,7 @@ const getQuestion = async (req, res) => {
             const randomIndex = Math.floor(Math.random() * totalQuestions); //pick a random number
             if(usedQuestionsSet.has(randomIndex)) continue; 
             quizQuestion = await QuizSchema.findOne({ category: category }).skip(randomIndex); //select that random question
-            if(lastQuestion != null && lastQuestion == quizQuestion.question) continue;
+            if(lastQuestion != null && lastQuestion === quizQuestion.question) continue;
             usedQuestionsSet.add(randomIndex);
             lastQuestion = quizQuestion.question
             break;

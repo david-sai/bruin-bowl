@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import AnswerBar from "../components/AnswerBar.js";
 import QuestionBox from "../components/QuestionBox.js";
-import SearchBar from "../components/SearchBar.js";
 import Timer from "../components/Timer.js";
 import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
 import { useEffect, useState } from "react";
-import { GameStateContext, GAME_MODES } from '../context/GameContext.js';
+import { GameStateContext } from '../context/GameContext.js';
 
 
 // For AnswerIndicator
@@ -18,7 +17,6 @@ export const STATUS = {
 };
 
 function Questions() {
-  const [correct, setCorrect] = useState(false); // Player guessed correct answer
   const [questionBody, setQuestionBody] = useState('\u00A0');
   const [answer, setAnswer] = useState("");
   const [option1, setOption1] = useState("");
@@ -60,7 +58,6 @@ function Questions() {
       <AnswerBar
         status={status}
         setStatus={setStatus}
-        setVar={setCorrect}
         answer={answer}
         wrong1={option1}
         wrong2={option2}

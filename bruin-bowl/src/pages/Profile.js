@@ -9,7 +9,7 @@ function Profile() {
 
   function signOut() {
     let text = "Sign out?";
-    if (window.confirm(text) == true) {
+    if (window.confirm(text) === true) {
       setUser(null);
       navigate("/");
     } else {

@@ -18,7 +18,7 @@ const Timer = (props) => {
     useEffect(() => {
         setPrintText(formatTime);
         if (deciseconds > 0) {
-            if (props.status == 0) {
+            if (props.status === 0) {
                 const timer = setTimeout(() => {
                     setDeciseconds(deciseconds - 1);
                 }, 100);

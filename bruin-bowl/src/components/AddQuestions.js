@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { createQuestion } from '../api/api.js';
-import QuestionBox from './QuestionBox.js';
-import { GameDispatchContext, CATEGORIES, GAME_MODES, ACTIONS } from '../context/GameContext'
-import { json } from 'react-router-dom';
-
+import { CATEGORIES } from '../context/GameContext'
 
 function AddQuestions() {
   const [question, setQuestion] = useState('');

@@ -48,7 +48,7 @@ function AuthModal() {
 
   // reset back to beginning
   useEffect(() => {
-    if (user == null) {
+    if (user === null) {
       setSuccessfullySignedIn(false);
       setSuccessfullySignedUp(false);
     }
@@ -60,12 +60,12 @@ function AuthModal() {
       return;
     }
 
-    if (username == "") {
+    if (username === "") {
       setError("Username is empty.");
       return;
     }
 
-    if (password == "") {
+    if (password === "") {
       setError("Password is empty.");
       return;
     }

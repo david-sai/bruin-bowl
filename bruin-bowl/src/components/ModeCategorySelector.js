@@ -20,7 +20,7 @@ function ModeCategorySelector() {
     // Prevent the browser from reloading the page
     e.preventDefault();
 
-    if (user == null) {
+    if (user === null) {
       setModalIsOpen("You need to be logged in first!");
       return;
     }

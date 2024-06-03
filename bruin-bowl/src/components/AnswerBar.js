@@ -8,7 +8,7 @@ function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
         // Prevent the browser from reloading the page
         e.preventDefault();
 
-        if (status == STATUS.NOT_ANSWERED) {
+        if (status === STATUS.NOT_ANSWERED) {
 
             // Read the form data
             const form = e.target;

@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     console.log(user);
 
-    if (user == null) {
+    if (user === null) {
       localStorage.setItem("user", "\"\"");
     } else {
       localStorage.setItem("user", JSON.stringify(user));
