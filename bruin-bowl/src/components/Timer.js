@@ -11,7 +11,6 @@ export const GAME_MODE_TIMES = { // Sets how many seconds are given in each game
 const Timer = (props) => {
     const state = useContext(GameStateContext); // state is an object with gameMode and category variables
     const initial_deciseconds = GAME_MODE_TIMES[state.gameMode] * 10; // Gets the matching time for current mode from GAME_MODE_TIMES
-
     const [deciseconds, setDeciseconds] = useState(initial_deciseconds);
     const [printText, setPrintText] = useState(deciseconds);
 
@@ -35,7 +34,10 @@ const Timer = (props) => {
         setPrintText(formatTime);
     }, [props.questionNumber]);
 
-
+    //Pass up the remaining time to the parent
+    useEffect(() => {
+        props.setRemainingTime(deciseconds);  
+      }, [deciseconds]);
 
     // Function to format seconds into HH:MM:SS format
     const formatTime = () => {
