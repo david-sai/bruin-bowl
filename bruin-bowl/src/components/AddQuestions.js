@@ -77,6 +77,26 @@ function AddQuestions() {
     createQuestion(jsonData, response);
   };
 
+  function close() {
+    setResults(null);
+    setQuestion("");
+    setAnswer("");
+    setWrong1("");
+    setWrong2("");
+    setWrong3("");
+  }
+
+  const customStyles = {
+    content: {
+      maxWidth: "600px",
+      maxHeight: "500px",
+      margin: "auto", // center horizontally
+      backgroundColor: "#fffbeb",
+      borderRadius: "24px",
+      borderColor: "#f0e68c",
+    },
+  };
+
   function mainContent() {
     return (
       <div>
@@ -165,12 +185,39 @@ function AddQuestions() {
     <div>
       {mainContent()}
 
-      {/* <Modal
+      <Modal
         closeTimeoutMS={2000}
-        isOpen={showingAvatarSelector}
-        onRequestClose={() => setShowingAvatarSelector(false)}
-        style={customStylesAvatarSelector}
-      ></Modal> */}
+        isOpen={results !== null}
+        onRequestClose={() => close()}
+        style={customStyles}
+      >
+        {results != null ? (
+          <div className="mt-4 p-4 text-bruin-darkgold">
+            <button
+              onClick={() => close()}
+              className="absolute top-4 right-4 p-2"
+            >
+              <i className="fas fa-times fa-2x"></i>
+            </button>
+
+            <h1 className="font-bold text-2xl mb-2">Question Added!</h1>
+            <h2 className="text-xl mb-5">
+              This will show up when you play in the{" "}
+              <span className="font-bold">{results.category}</span> category.
+            </h2>
+
+            <div className="mt-4 p-10 bg-amber-50 rounded-3xl border border-amber-400">
+              <h2 className="text-3xl font-bold mb-5">{results.question}</h2>
+              <ul className="text-xl">
+                <li className="text-green-700">{results.answer}</li>
+                <li>{results.option1}</li>
+                <li>{results.option2}</li>
+                <li>{results.option3}</li>
+              </ul>
+            </div>
+          </div>
+        ) : null}
+      </Modal>
     </div>
   );
 }
