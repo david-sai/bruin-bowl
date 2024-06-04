@@ -111,7 +111,7 @@ Other features include game modes and question categories to keep each playthrou
 
 And of course, to ensure that users are real people and to add an extra layer of security to the application, login requires a username, password, and profile picture. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/SignUp-Screenshot.png width="250" height="400">
+<img src=./bruin-bowl/public/Readme-Screenshots/SignUp-Screenshot.png width="250" height="350">
 
 - A sign up popup allows users to create a username, password, and choose a profile picture from a few options. 
 
