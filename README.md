@@ -71,7 +71,7 @@ Here are our endpoints:
 
 ## Playthrough
 
-1. Navigate to the home page of the app. You should see a large blue button at the bottom, with the words "Log in to start."
+1. Navigate to the home page of the app. You should see a large blue button at the bottom, with the words "Sign up to start."
 2. After clicking on the button, you will be directed to the login page where you can choose a username, password, and profile picture.
     - Note that if you already have an account, you may click the "sign in" link instead to sign into your account.
 3. After logging in, you may click the "Start playing" button to begin your playthrough.
