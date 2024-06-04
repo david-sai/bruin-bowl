@@ -76,25 +76,33 @@ When we first created a group for the CS35L project, our motivation was to creat
 
 The original inspiration for our project is Quiz Bowl, an academic trivia competition that, like the essential gameplay of our project, awards points based on the speed of the participant’s response. In this project, we also provided a variety of features that adapt aspects of Quiz Bowl to an appropriate web-based equivalent. 
 
-For example, the leaderboard displays scores to bolster competition. 
+For example, the <u>leaderboard</u> displays scores to bolster competition. 
 
 ![Leaderboard display screenshot](./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png)
 
-Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
+- Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
 
 Meanwhile, the visual timer component replaces the verbal countdown of Quiz Bowl staff so players know how much time they have left before the question ends. 
 
-15 seconds are given for each question. Points are awarded based on the timeliness of the response. 
+![Timer screenshot](bruin-bowl/public/Readme-Screenshots/Timer-Screenshot.png)
+
+- 15 seconds are given for each question. Points are awarded based on the timeliness of the response. 
 
 Other features include game modes and question categories to keep each playthrough fresh and exciting. 
 
-In the Game page, users can select the game mode and category of question which suits them best before starting the game. 
+![GameMode screenshot](bruin-bowl/public/Readme-Screenshots/GameMode-Screenshot.png)
+
+- In the Game page, users can select the game mode and category of question which suits them best before starting the game. 
 
 And of course, to ensure that users are real people and to add an extra layer of security to the application, login requires a username, password, and profile picture. 
 
-A sign up popup allows users to create a username, password, and choose a profile picture from a few options. 
+![Sign up screenshot](bruin-bowl/public/Readme-Screenshots/SignUp-Screenshot.png)
 
-While a different popup allows users to select a profile picture from a range of options. 
+- A sign up popup allows users to create a username, password, and choose a profile picture from a few options. 
+
+![Select PFP screenshot](bruin-bowl/public/Readme-Screenshots/SelectPFP-Screenshot.png)
+
+- While a different popup allows users to select a profile picture from a range of options. 
 
 
 ## **Contribution Guide**
