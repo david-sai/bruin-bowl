@@ -59,6 +59,8 @@ function Questions() {
   const restartQuiz = () => {
     setStatus(STATUS.NOT_ANSWERED);
     setQuestionNumber(0);
+    setScore(0);
+    changeQuestion();
   };
 
   return (
@@ -78,6 +80,7 @@ function Questions() {
         <QuestionContinueButton
           status={status}
           handleQuestionChange={changeQuestion}
+          restartQuiz={restartQuiz}
         />
 
         <AnswerIndicator

@@ -16,6 +16,12 @@ function AnswerIndicator({ status, answer, score, setScore }) {
             setError(data["error"].message);
           } else {
             console.log(data)
+
+            const newScore = data["score"];
+            const u = user;
+            u.score = newScore;
+            setUser(u);
+
             setError("");
           }
         }
