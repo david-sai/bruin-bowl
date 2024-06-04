@@ -95,7 +95,7 @@ A sign up popup allows users to create a username, password, and choose a profil
 While a different popup allows users to select a profile picture from a range of options. 
 
 
-**Contribution Guide**
+## **Contribution Guide**
 
 Always create a new branch from dev when working on a task or issue. 
 Once you've made your changes, submit a PR on GitHub.
