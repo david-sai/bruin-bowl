@@ -11,6 +11,7 @@ function AddQuestions() {
   const [wrong3, setWrong3] = useState("");
   const [results, setResults] = useState(null);
   const [error, setError] = useState("");
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const categoryStrings = Object.values(CATEGORIES);
 
   const handleChangeQuestion = (event) => {
@@ -28,15 +29,11 @@ function AddQuestions() {
   const handleChangeWrong3 = (event) => {
     setWrong3(event.target.value);
   };
+  const handleChangeCategory = (index) => {
+    setCategoryIndex(index);
+  }
 
-  const handleSubmit = (e) => {
-    // Call the function when the button is clicked
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
-
+  const handleSubmit = () => {
     // check if question, answer, and wrong answers are empty
     if (
       question === "" ||
@@ -55,7 +52,7 @@ function AddQuestions() {
       option1: wrong1,
       option2: wrong2,
       option3: wrong3,
-      category: formJson.category,
+      category: categoryStrings[categoryIndex]
     };
 
     const response = (data) => {
@@ -96,6 +93,9 @@ function AddQuestions() {
       borderColor: "#f0e68c",
     },
   };
+
+  const selectedStyling = "bg-bruin-gold ";
+  const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
 
   function mainContent() {
     return (
@@ -150,36 +150,23 @@ function AddQuestions() {
         <br></br>
         <br></br>
         <h2 className="text-xl mb-1.5">Category</h2>
-        <form method="post" onSubmit={handleSubmit}>
-          {categoryStrings.map((category, index) => {
-            // Creates a button for each category
-            return (
-              <div className="mb-1">
-                <input
-                  type="radio"
-                  id={category}
-                  name="category"
-                  value={category}
-                  defaultChecked={index === 0}
-                />
-                <label htmlFor={category} className="ml-2">
-                  {category}
-                </label>
-              </div>
-            );
-          })}
-          <button
-            type="submit"
-            className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full"
-          >
-            Submit
-          </button>
+        {categoryStrings.map((category, index) => { // Creates a button for each category
+          return (
+            <div onClick={() => handleChangeCategory(index)} className="mb-2 cursor-pointer">
+              <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
+              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+                {category}
+              </p>
+            </div>
+          );
+        })}
 
-          {error && <p className="text-red-500 mt-4">{error}</p>}
-        </form>
+        <button onClick={() => handleSubmit()} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
+
+        {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
-    );
-  }
+    )}
 
   return (
     <div>

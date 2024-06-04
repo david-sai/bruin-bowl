@@ -6,6 +6,7 @@ import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
 import { useEffect, useState } from "react";
 import { GameStateContext } from '../context/GameContext.js';
+import QuestionContinueButton from '../components/QuestionContinueButton.js'
 
 
 // For AnswerIndicator
@@ -46,10 +47,15 @@ function Questions() {
     getQuestion(state.category, response);
   }, [questionNumber]);
 
-  const handleQuestionChange = () => {
-    setStatus(STATUS.NOT_ANSWERED);
-    setQuestionNumber(questionNumber + 1);
+  const changeQuestion = () => {
+      setStatus(STATUS.NOT_ANSWERED);
+      setQuestionNumber(questionNumber + 1);
   };
+
+  const restartQuiz = () => {
+    setStatus(STATUS.NOT_ANSWERED);
+    setQuestionNumber(0);
+  }
 
   return (
     <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
@@ -64,13 +70,11 @@ function Questions() {
         wrong3={option3}
       />
 
-      {(status != STATUS.WRONG_ANSWER && status != STATUS.TIMEOUT) && <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
-        Next Question
-      </button>}
+      <QuestionContinueButton status={status} handleQuestionChange={changeQuestion} />
 
       <AnswerIndicator status={status} answer={answer} />
       <Timer
-        questionNumber={questionNumber}
+        answer={answer}
         setStatus={setStatus}
         status={status}
       />
