@@ -33,7 +33,7 @@ const Timer = (props) => {
     useEffect(() => {
         setDeciseconds(initial_deciseconds);
         setPrintText(formatTime);
-    }, [props.questionNumber]);
+    }, [props.answer]); // Using answer so that it doesn't start until the next question is loaded
 
 
 

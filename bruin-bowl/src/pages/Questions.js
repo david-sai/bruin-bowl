@@ -72,7 +72,7 @@ function Questions() {
 
       <AnswerIndicator status={status} answer={answer} />
       <Timer
-        questionNumber={questionNumber}
+        answer={answer}
         setStatus={setStatus}
         status={status}
       />
