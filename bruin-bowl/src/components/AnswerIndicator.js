@@ -39,7 +39,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
 
     let indicatorString = "";
     if (status === STATUS.NOT_ANSWERED) {
-        indicatorString = "";
+        indicatorString = "\u00A0";
     }
     else if (status === STATUS.CORRECT_ANSWER) {
         indicatorString = "You got it correct!";
