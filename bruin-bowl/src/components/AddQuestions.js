@@ -155,7 +155,8 @@ function AddQuestions() {
             <div onClick={() => handleChangeCategory(index)} className="mb-2 cursor-pointer">
               <span className={`ml-2 w-4 h-4 inline-block rounded-full
                 ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
-              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
+                ${index === categoryIndex ? "bg-bruin-blue" : "bg-bruin-gold"}`}>
                 {category}
               </p>
             </div>
@@ -166,7 +167,8 @@ function AddQuestions() {
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
-    )}
+    )
+  }
 
   return (
     <div>

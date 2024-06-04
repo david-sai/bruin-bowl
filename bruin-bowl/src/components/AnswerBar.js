@@ -41,30 +41,21 @@ function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
 
   const selectedStyling = "bg-bruin-blue ";
   const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
-
-  return (
-    <>
-      {answers.map((answer, index) => {
-        return (
-          <div
-            key={index}
-            onClick={() => handleClick(index)}
-            className="mb-2 cursor-pointer"
-          >
-            <span
-              className={`ml-2 w-4 h-4 inline-block rounded-full
-                                ${
-                                  index === selectedIndex
-                                    ? selectedStyling
-                                    : unselectedStyling
-                                }`}
-            />
-            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
-              {answer}
-            </p>
-          </div>
-        );
-      })}
+  
+    return (
+        <>
+            {answers.map((answer, index) => {
+                return (
+                    <div key={index} onClick={() => handleClick(index)} className="mb-2 cursor-pointer">
+                        <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                                ${index === selectedIndex ? selectedStyling : unselectedStyling}`} />
+                        <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
+                            ${index === selectedIndex ? "bg-bruin-blue" : "bg-bruin-gold"}`}>
+                            {answer}
+                        </p>
+                    </div>
+                )
+            })}
 
       {status == STATUS.NOT_ANSWERED ? (
         <button

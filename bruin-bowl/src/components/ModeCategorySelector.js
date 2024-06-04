@@ -61,8 +61,9 @@ function ModeCategorySelector() {
         return (
           <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
             <span className={`ml-2 w-4 h-4 inline-block rounded-full
-                ${index === gameModeIndex ? selectedStyling : unselectedStyling}`} />
-            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              ${index === gameModeIndex ? selectedStyling : unselectedStyling}`} />
+            <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
+              ${index === gameModeIndex ? "bg-bruin-blue" : "bg-bruin-gold"}`}>
               {gameMode}
             </p>
           </div>
@@ -78,7 +79,8 @@ function ModeCategorySelector() {
           <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
             <span className={`ml-2 w-4 h-4 inline-block rounded-full
                 ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
-            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+            <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
+              ${index === categoryIndex ? "bg-bruin-blue" : "bg-bruin-gold"}`}>
               {category}
             </p>
           </div>
