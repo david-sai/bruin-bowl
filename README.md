@@ -93,7 +93,7 @@ The original inspiration for our project is Quiz Bowl, an academic trivia compet
 
 For example, the leaderboard displays scores to bolster competition. 
 
-![Leaderboard display screenshot](./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png =200x100)
+<img src=./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png width="200" height="100">
 
 - Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
 
