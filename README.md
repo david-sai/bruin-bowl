@@ -77,7 +77,7 @@ When we first created a group for the CS35L project, our motivation was to creat
 The original inspiration for our project is Quiz Bowl, an academic trivia competition that, like the essential gameplay of our project, awards points based on the speed of the participant’s response. In this project, we also provided a variety of features that adapt aspects of Quiz Bowl to an appropriate web-based equivalent. 
 
 For example, the leaderboard displays scores to bolster competition. 
-![Leaderboard Display Component image](https://photos.app.goo.gl/EWkkz57nVN19in5w5)
+![Leaderboard Display Component image](https://imgur.com/a/em1mDlq)
 Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
 
 Meanwhile, the visual timer component replaces the verbal countdown of Quiz Bowl staff so players know how much time they have left before the question ends. 
