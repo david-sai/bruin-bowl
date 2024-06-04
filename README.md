@@ -93,29 +93,29 @@ The original inspiration for our project is Quiz Bowl, an academic trivia compet
 
 For example, the leaderboard displays scores to bolster competition. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png width="200" height="100">
+<img src=./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png width="400" height="200">
 
 - Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
 
 Meanwhile, the visual timer component replaces the verbal countdown of Quiz Bowl staff so players know how much time they have left before the question ends. 
 
-![Timer screenshot](bruin-bowl/public/Readme-Screenshots/Timer-Screenshot.png)
+<img src=./bruin-bowl/public/Readme-Screenshots/Timer-Screenshot.png width="250" height="250">
 
 - 15 seconds are given for each question. Points are awarded based on the timeliness of the response. 
 
 Other features include game modes and question categories to keep each playthrough fresh and exciting. 
 
-![GameMode screenshot](bruin-bowl/public/Readme-Screenshots/GameMode-Screenshot.png)
+<img src=./bruin-bowl/public/Readme-Screenshots/GameMode-Screenshot.png width="200" height="400">
 
 - In the Game page, users can select the game mode and category of question which suits them best before starting the game. 
 
 And of course, to ensure that users are real people and to add an extra layer of security to the application, login requires a username, password, and profile picture. 
 
-![Sign up screenshot](bruin-bowl/public/Readme-Screenshots/SignUp-Screenshot.png)
+<img src=./bruin-bowl/public/Readme-Screenshots/SignUp-Screenshot.png width="250" height="400">
 
 - A sign up popup allows users to create a username, password, and choose a profile picture from a few options. 
 
-![Select PFP screenshot](bruin-bowl/public/Readme-Screenshots/SelectPFP-Screenshot.png)
+<img src=./bruin-bowl/public/Readme-Screenshots/SelectPFP-Screenshot.png width="400" height="200">
 
 - While a different popup allows users to select a profile picture from a range of options. 
 
