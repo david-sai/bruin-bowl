@@ -31,7 +31,7 @@ function AnswerIndicator({ status, answer }) {
 
     let indicatorString = "";
     if (status === STATUS.NOT_ANSWERED) {
-        indicatorString = "No answer has been selected.";
+        indicatorString = "";
     }
     else if (status === STATUS.CORRECT_ANSWER) {
         indicatorString = "You got it correct!";

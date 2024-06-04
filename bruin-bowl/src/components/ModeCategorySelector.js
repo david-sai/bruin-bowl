@@ -50,7 +50,7 @@ function ModeCategorySelector() {
   const gameModeStrings = Object.values(GAME_MODES); // Used for mapping later
   const categoryStrings = Object.values(CATEGORIES);
 
-  const selectedStyling = "bg-bruin-gold ";
+  const selectedStyling = "bg-bruin-blue";
   const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
 
   return (

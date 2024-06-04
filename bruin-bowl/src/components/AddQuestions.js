@@ -94,7 +94,7 @@ function AddQuestions() {
     },
   };
 
-  const selectedStyling = "bg-bruin-gold ";
+  const selectedStyling = "bg-bruin-blue ";
   const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
 
   function mainContent() {

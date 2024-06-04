@@ -36,7 +36,7 @@ function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
         setSelectedIndex(index);
     }
 
-    const selectedStyling = "bg-bruin-gold ";
+    const selectedStyling = "bg-bruin-blue ";
     const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
 
     return (
