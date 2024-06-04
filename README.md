@@ -73,17 +73,17 @@ Here are our endpoints:
 
 1. Navigate to the home page of the app. You should see a large blue button at the bottom, with the words "Log in to start."
 2. After clicking on the button, you will be directed to the login page where you can choose a username, password, and profile picture.
-- Note that if you already have an account, you may click the "sign in" link instead to sign into your account.
-
+    - Note that if you already have an account, you may click the "sign in" link instead to sign into your account.
 3. After logging in, you may click the "Start playing" button to begin your playthrough.
 4. Then, you will be redirected to select your desired question categories and gamemodes.
 5. Finally, click "Start Game" to play!
-- Select your answer from the given options, then submit.
-- Getting the question right allows you to advance to the next question with the "Next Question" button.
-- Getting the question wrong, or running out of time, forces you to hit "Restart Quiz" in order to start a new game.
-- You may navigate to other features, such as question searching, adding questions, or leaderboard through the navigation bar at the top of the website.
+    - Select your answer from the given options, then submit.
+    - Getting the question right allows you to advance to the next question with the "Next Question" button.
+    - Getting the question wrong, or running out of time, forces you to hit "Restart Quiz" in order to start a new game.
+    - You may navigate to other features, such as question searching, adding questions, or leaderboard through the navigation bar at the top of the website.
 
 Please note that if you are already logged in, you may skip steps 1 through 3. 
+
 
 ## Motivation:
 
@@ -93,7 +93,7 @@ The original inspiration for our project is Quiz Bowl, an academic trivia compet
 
 For example, the leaderboard displays scores to bolster competition. 
 
-![Leaderboard display screenshot](./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png)
+![Leaderboard display screenshot](./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png =200x100)
 
 - Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
 
