@@ -53,7 +53,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
     return (
         <>
             <div>
-                <p className="mt-4">{indicatorString}</p>
+                <p className="mt-10 text-xl">{indicatorString}</p>
             </div>
         </>
     )
