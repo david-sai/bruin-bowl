@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { searchQuestion } from '../api/api.js';
 import QuestionBox from './QuestionBox.js';
+import QuestionSearchDisplay from './QuestionSearchDisplay.js';
 
 function SearchBar() {
   const [keyword, setKeyword] = useState('');
@@ -38,10 +39,10 @@ function SearchBar() {
         className="p-3 w-full bg-transparent border rounded-md border-bruin-gold"
       />
       <br></br>
-      <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Search</button>
+      <button onClick={handleSubmit} className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full text-base">Search</button>
       {results !== null &&
         results.map((questionObj) => (
-          <QuestionBox questionBody={questionObj.question} />
+          <QuestionSearchDisplay question={questionObj} />
         ))
       }
     </div>
