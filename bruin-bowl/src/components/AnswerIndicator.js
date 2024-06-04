@@ -5,10 +5,9 @@ import { useState, useContext, useEffect } from "react"
 import { updateScore } from '../api/api';
 
 
-function AnswerIndicator({ status, answer }) {
+function AnswerIndicator({ status, answer, score, setScore }) {
     const { user, setUser } = useContext(UserContext);
     const [error, setError] = useState("")
-    const [score, setScore] = useState(0);
 
     useEffect(() => {
       const response = (data) => {
@@ -21,10 +20,13 @@ function AnswerIndicator({ status, answer }) {
           }
         }
       };
+
       if(status == STATUS.CORRECT_ANSWER){
         setScore(score + 10);
       }
       else if(status == STATUS.TIMEOUT || status == STATUS.WRONG_ANSWER) {
+        console.log("updating score")
+        console.log(score)
         updateScore(user.username, score, response);
       }
     }, [status]);
@@ -45,7 +47,7 @@ function AnswerIndicator({ status, answer }) {
     return (
         <>
             <div>
-                <p>{indicatorString}</p>
+                <p className="mt-4">{indicatorString}</p>
             </div>
         </>
     )

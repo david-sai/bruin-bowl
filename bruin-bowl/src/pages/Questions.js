@@ -5,9 +5,9 @@ import Timer from "../components/Timer.js";
 import { getQuestion } from "../api/api.js";
 import AnswerIndicator from "../components/AnswerIndicator.js";
 import { useEffect, useState } from "react";
-import { GameStateContext } from '../context/GameContext.js';
-import QuestionContinueButton from '../components/QuestionContinueButton.js'
-
+import { GameStateContext } from "../context/GameContext.js";
+import QuestionContinueButton from "../components/QuestionContinueButton.js";
+import { UserContext } from "../context/Contexts.js";
 
 // For AnswerIndicator
 export const STATUS = {
@@ -18,7 +18,7 @@ export const STATUS = {
 };
 
 function Questions() {
-  const [questionBody, setQuestionBody] = useState('\u00A0');
+  const [questionBody, setQuestionBody] = useState("\u00A0");
   const [answer, setAnswer] = useState("");
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
@@ -26,7 +26,11 @@ function Questions() {
   const [error, setError] = useState(""); // Player guessed correct answer
   const [status, setStatus] = useState(STATUS.NOT_ANSWERED);
   const [questionNumber, setQuestionNumber] = useState(0);
+
+  // score in the current session
+  const [score, setScore] = useState(0);
   const state = useContext(GameStateContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const response = (data) => {
@@ -48,36 +52,48 @@ function Questions() {
   }, [questionNumber]);
 
   const changeQuestion = () => {
-      setStatus(STATUS.NOT_ANSWERED);
-      setQuestionNumber(questionNumber + 1);
+    setStatus(STATUS.NOT_ANSWERED);
+    setQuestionNumber(questionNumber + 1);
   };
 
   const restartQuiz = () => {
     setStatus(STATUS.NOT_ANSWERED);
     setQuestionNumber(0);
-  }
+  };
 
   return (
-    <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
-      <QuestionBox questionBody={questionBody} />
+    <div>
+      <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
+        <QuestionBox questionBody={questionBody} />
 
-      <AnswerBar
-        status={status}
-        setStatus={setStatus}
-        answer={answer}
-        wrong1={option1}
-        wrong2={option2}
-        wrong3={option3}
-      />
+        <AnswerBar
+          status={status}
+          setStatus={setStatus}
+          answer={answer}
+          wrong1={option1}
+          wrong2={option2}
+          wrong3={option3}
+        />
 
-      <QuestionContinueButton status={status} handleQuestionChange={changeQuestion} />
+        <QuestionContinueButton
+          status={status}
+          handleQuestionChange={changeQuestion}
+        />
 
-      <AnswerIndicator status={status} answer={answer} />
-      <Timer
-        answer={answer}
-        setStatus={setStatus}
-        status={status}
-      />
+        <AnswerIndicator
+          status={status}
+          answer={answer}
+          score={score}
+          setScore={setScore}
+        />
+
+        <Timer answer={answer} setStatus={setStatus} status={status} />
+      </div>
+
+      <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
+        <p>Current Session Score: {score}</p>
+        <p>Total Score: {user.score + score}</p>
+      </div>
     </div>
   );
 }
