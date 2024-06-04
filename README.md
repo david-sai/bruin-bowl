@@ -105,7 +105,7 @@ Meanwhile, the visual timer component replaces the verbal countdown of Quiz Bowl
 
 Other features include game modes and question categories to keep each playthrough fresh and exciting. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/GameMode-Screenshot.png width="200" height="400">
+<img src=./bruin-bowl/public/Readme-Screenshots/GameMode-Screenshot.png width="200" height="350">
 
 - In the Game page, users can select the game mode and category of question which suits them best before starting the game. 
 
