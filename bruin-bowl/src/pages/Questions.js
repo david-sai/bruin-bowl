@@ -47,8 +47,10 @@ function Questions() {
   }, [questionNumber]);
 
   const handleQuestionChange = () => {
-    setStatus(STATUS.NOT_ANSWERED);
-    setQuestionNumber(questionNumber + 1);
+    if (status !== STATUS.NOT_ANSWERED) {
+      setStatus(STATUS.NOT_ANSWERED);
+      setQuestionNumber(questionNumber + 1);
+    }
   };
 
   return (
@@ -64,7 +66,7 @@ function Questions() {
         wrong3={option3}
       />
 
-      {(status != STATUS.WRONG_ANSWER && status != STATUS.TIMEOUT) && <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
+      {(status === STATUS.CORRECT_ANSWER) && <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
         Next Question
       </button>}
 

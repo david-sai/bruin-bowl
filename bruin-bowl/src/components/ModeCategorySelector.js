@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   GameDispatchContext,
   CATEGORIES,
@@ -15,90 +15,83 @@ function ModeCategorySelector() {
 
   const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
   const { user, setUser } = useContext(UserContext);
+  const [gameModeIndex, setGameModeIndex] = useState(0);
+  const [categoryIndex, setCategoryIndex] = useState(0);
 
-  function handleSubmit(e) {
-    // Prevent the browser from reloading the page
-    e.preventDefault();
-
+  function handleSubmit() {
     if (user === null) {
       setModalIsOpen("You need to be logged in first!");
       return;
     }
 
-    // Read the form data from radio buttons
-    const form = e.target;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
-
     dispatch({
       // Setting context category
       type: ACTIONS.SET_CATEGORY,
-      category: formJson.category,
+      category: categoryStrings[categoryIndex],
     });
 
     dispatch({
       // Setting context game mode
       type: ACTIONS.SET_GAME_MODE,
-      gameMode: formJson.gameMode,
+      gameMode: gameModeStrings[gameModeIndex],
     });
 
     navigate("/questions");
   }
 
+  function handleGameModeClick(index) {
+    setGameModeIndex(index);
+  }
+
+  function handleCategoryClick(index) {
+    setCategoryIndex(index);
+  }
+
   const gameModeStrings = Object.values(GAME_MODES); // Used for mapping later
   const categoryStrings = Object.values(CATEGORIES);
+
+  const selectedStyling = "bg-bruin-gold ";
+  const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
 
   return (
     <>
       <h1 className="font-bold text-3xl mb-1.5">Game Mode</h1>
-      <form method="post" onSubmit={handleSubmit}>
-        {gameModeStrings.map((gameMode, index) => {
-          // Creates a button for each game mode
-          return (
-            <div className="mb-1">
-              <input
-                type="radio"
-                id={gameMode}
-                name="gameMode"
-                value={gameMode}
-                defaultChecked={index === 0}
-              />
-              <label htmlFor={gameMode} className="ml-2">
-                {gameMode}
-              </label>
-            </div>
-          );
-        })}
+      {gameModeStrings.map((gameMode, index) => {
+        // Creates a button for each game mode
+        return (
+          <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
+            <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                ${index === gameModeIndex ? selectedStyling : unselectedStyling}`} />
+            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              {gameMode}
+            </p>
+          </div>
+        );
+      })}
 
-        <br />
-        <h1 className="font-bold text-3xl mb-1.5">Category</h1>
+      <br />
+      <h1 className="font-bold text-3xl mb-1.5">Category</h1>
 
-        {categoryStrings.map((category, index) => {
-          // Creates a button for each category
-          return (
-            <div className="mb-1">
-              <input
-                type="radio"
-                id={category}
-                name="category"
-                value={category}
-                defaultChecked={index === 0}
-              />
-              <label htmlFor={category} className="ml-2">
-                {category}
-              </label>
-            </div>
-          );
-        })}
+      {categoryStrings.map((category, index) => {
+        // Creates a button for each category
+        return (
+          <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
+            <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
+            <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              {category}
+            </p>
+          </div>
+        );
+      })}
 
-        <button
-          type="submit"
-          className="mt-4 px-6 py-3 bg-bruin-gold text-white rounded-full font-bold"
-        >
-          <span>Start Game</span>
-          <i className="fa-solid fa-play pl-3"></i>
-        </button>
-      </form>
+      <button
+        onClick={() => handleSubmit()}
+        className="mt-4 px-6 py-3 bg-bruin-gold text-white rounded-full font-bold"
+      >
+        <span>Start Game</span>
+        <i className="fa-solid fa-play pl-3"></i>
+      </button>
     </>
   );
 }
