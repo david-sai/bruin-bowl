@@ -57,6 +57,7 @@ function Questions() {
   };
 
   const restartQuiz = () => {
+    console.log("updating score to 0");
     setStatus(STATUS.NOT_ANSWERED);
     setQuestionNumber(0);
     setScore(0);
@@ -89,13 +90,22 @@ function Questions() {
           score={score}
           setScore={setScore}
         />
-
-        <Timer answer={answer} setStatus={setStatus} status={status} />
       </div>
 
-      <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
-        <p>Current Session Score: {score}</p>
-        <p>Total Score: {user.score + score}</p>
+      <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold text-xl">
+        <div className="flex flex-row items-center">
+          <div className="flex flex-col flex-grow">
+            <p className="mb-2">
+              Game Score: <span className="font-bold">{score}</span>
+            </p>
+            <p>
+              Total Score:{" "}
+              <span className="font-bold">{user.score + score}</span>
+            </p>
+          </div>
+
+          <Timer answer={answer} setStatus={setStatus} status={status} />
+        </div>
       </div>
     </div>
   );

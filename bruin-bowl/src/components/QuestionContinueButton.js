@@ -6,14 +6,13 @@ function QuestionContinueButton(props) {
 
     if (status === STATUS.CORRECT_ANSWER) {
         return (
-            <button onClick={handleQuestionChange} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
+            <button onClick={handleQuestionChange} className="mt-4 px-4 py-2 bg-bruin-blue text-white rounded-full">
                 Next Question
             </button>
         )
-    }
-    else if (status === STATUS.WRONG_ANSWER) {
+    } else if (status === STATUS.WRONG_ANSWER) {
         return (
-            <button onClick={restartQuiz} className="mt-1 px-4 py-2 bg-bruin-blue text-white rounded-full">
+            <button onClick={restartQuiz} className="mt-4 px-4 py-2 bg-bruin-blue text-white rounded-full">
                 Restart Quiz
             </button>
         )
