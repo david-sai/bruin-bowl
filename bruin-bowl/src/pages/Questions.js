@@ -64,49 +64,80 @@ function Questions() {
     changeQuestion();
   };
 
-  return (
-    <div>
-      <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
-        <QuestionBox questionBody={questionBody} />
+  function mainContent() {
+    return (
+      <div>
+        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold">
+          <QuestionBox questionBody={questionBody} />
 
-        <AnswerBar
-          status={status}
-          setStatus={setStatus}
-          answer={answer}
-          wrong1={option1}
-          wrong2={option2}
-          wrong3={option3}
-        />
+          <AnswerBar
+            status={status}
+            setStatus={setStatus}
+            answer={answer}
+            wrong1={option1}
+            wrong2={option2}
+            wrong3={option3}
+          />
 
-        <QuestionContinueButton
-          status={status}
-          handleQuestionChange={changeQuestion}
-          restartQuiz={restartQuiz}
-        />
+          <QuestionContinueButton
+            status={status}
+            handleQuestionChange={changeQuestion}
+            restartQuiz={restartQuiz}
+          />
 
-        <AnswerIndicator
-          status={status}
-          answer={answer}
-          score={score}
-          setScore={setScore}
-        />
-      </div>
+          <AnswerIndicator
+            status={status}
+            answer={answer}
+            score={score}
+            setScore={setScore}
+          />
+        </div>
 
-      <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold text-xl">
-        <div className="flex flex-row items-center">
-          <div className="flex flex-col flex-grow">
-            <p className="mb-2">
-              Game Score: <span className="font-bold">{score}</span>
-            </p>
-            <p>
-              Total Score:{" "}
-              <span className="font-bold">{user.score + score}</span>
-            </p>
+        <div className="mt-4 bg-yellow-600 bg-opacity-5 rounded-3xl p-10 text-bruin-darkgold text-xl">
+          <div className="flex flex-row items-center">
+            <div className="flex flex-col flex-grow">
+              <p className="mb-2">
+                Game Score: <span className="font-bold">{score}</span>
+              </p>
+              <p>
+                Total Score:{" "}
+                <span className="font-bold">{user.score + score}</span>
+              </p>
+            </div>
+
+            <Timer answer={answer} setStatus={setStatus} status={status} />
           </div>
-
-          <Timer answer={answer} setStatus={setStatus} status={status} />
         </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="relative">
+      {status === STATUS.TIMEOUT || status === STATUS.WRONG_ANSWER && (
+        <div
+          className="absolute inset-0 flex justify-center items-center text-red-600 font-bold text-8xl z-50 font-mono"
+          style={{
+            animation: "fadeInOutRotate 3s ease-in-out forwards",
+          }}
+        >
+          GAME OVER!!
+        </div>
+      )}
+      {mainContent()}
+      <style jsx>{`
+        @keyframes fadeInOutRotate {
+          0%,
+          100% {
+            opacity: 0;
+            transform: scale(0.9) rotate(0deg);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.1) rotate(-10deg);
+          }
+        }
+      `}</style>
     </div>
   );
 }
