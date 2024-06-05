@@ -148,3 +148,14 @@ Once you've made your changes, submit a PR on GitHub.
    ```
 
 5. Go to GitHub and submit a PR to merge your changes into the dev branch.
+
+## Credits
+
+Credits to the React tutorial for outlining how context is used. 
+[React tutorial link](https://react.dev/learn/scaling-up-with-reducer-and-context)
+
+Credits to NetNinja on Youtube for foundations of using MongoDB and web development backend. 
+[NetNinja Youtube link](https://www.youtube.com/@NetNinja)
+
+Credits to Daily Tuition on Youtube for a tutorial on creating leaderboards using React.
+[Daily Tuition Youtube link](https://www.youtube.com/watch?v=p_046Qe19p0&t=1298s&ab_channel=DailyTuition)
