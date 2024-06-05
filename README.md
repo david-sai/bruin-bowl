@@ -119,6 +119,15 @@ And of course, to ensure that users are real people and to add an extra layer of
 
 - While a different popup allows users to select a profile picture from a range of options. 
 
+**Our three primary features** are the leaderboard and point calculation (see above), category and game mode selection (see above), and the "add questions" page. 
+
+<img src=./bruin-bowl/public/Readme-Screenshots/AddQuestion-Screenshot.png width="200" height="350">
+
+In the Add Question page, users can create a question, assign an answer and 3 incorrect options, and choose a question category. After the user hits "Submit", the resulting question will be added to the question database. 
+
+<img src=./bruin-bowl/public/Readme-Screenshots/QuestionPopup-Screenshot.png width="250" height="250">
+
+Afterwards, a popup will confirm that the question has been added to the database. The question prompt is shown on top, with the answer in green and the wrong answers below. 
 
 ## **Contribution Guide**
 
@@ -152,10 +161,10 @@ Once you've made your changes, submit a PR on GitHub.
 ## Credits
 
 Credits to the React tutorial for outlining how context is used. 
-[React tutorial link](https://react.dev/learn/scaling-up-with-reducer-and-context)
+- [React tutorial link](https://react.dev/learn/scaling-up-with-reducer-and-context)
 
 Credits to NetNinja on Youtube for foundations of using MongoDB and web development backend. 
-[NetNinja Youtube link](https://www.youtube.com/@NetNinja)
+- [NetNinja Youtube link](https://www.youtube.com/@NetNinja)
 
 Credits to Daily Tuition on Youtube for a tutorial on creating leaderboards using React.
-[Daily Tuition Youtube link](https://www.youtube.com/watch?v=p_046Qe19p0&t=1298s&ab_channel=DailyTuition)
+- [Daily Tuition Youtube link](https://www.youtube.com/watch?v=p_046Qe19p0&t=1298s&ab_channel=DailyTuition)
