@@ -121,11 +121,11 @@ And of course, to ensure that users are real people and to add an extra layer of
 
 **Our three primary features** are the leaderboard and point calculation (see above), category and game mode selection (see above), and the "add questions" page. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/AddQuestion-Screenshot.png width="200" height="350">
+<img src=./bruin-bowl/public/Readme-Screenshots/AddQuestion-Screenshot.png width="250" height="350">
 
 In the Add Question page, users can create a question, assign an answer and 3 incorrect options, and choose a question category. After the user hits "Submit", the resulting question will be added to the question database. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/QuestionPopup-Screenshot.png width="250" height="250">
+<img src=./bruin-bowl/public/Readme-Screenshots/QuestionPopup-Screenshot.png width="300" height="250">
 
 Afterwards, a popup will confirm that the question has been added to the database. The question prompt is shown on top, with the answer in green and the wrong answers below. 
 
