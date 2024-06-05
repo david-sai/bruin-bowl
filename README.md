@@ -159,6 +159,8 @@ Once you've made your changes, submit a PR on GitHub.
 5. Go to GitHub and submit a PR to merge your changes into the dev branch.
 
 ## Credits
+Created by Andrew, Brayden, Daniel, David, Jon, Zach
+CS 35L Discussion 1G
 
 Credits to the React tutorial for outlining how context is used. 
 - [React tutorial link](https://react.dev/learn/scaling-up-with-reducer-and-context)
