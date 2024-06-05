@@ -21,6 +21,21 @@ function Profile() {
     }
   }
 
+  useEffect(() => {
+    getUser(user.username, (data) => {
+      if (data) {
+        if (data["error"]) {
+          console.log(data["error"].message);
+        } else {
+          console.log("Updating user.")
+          console.log(data["user"])
+          console.log(data["user"].score)
+          setUser(data["user"]);
+        }
+      }
+    });
+  }, []);
+
   return (
     <div>
       {user ? (
