@@ -25,6 +25,7 @@ function Questions() {
   const [option3, setOption3] = useState("");
   const [error, setError] = useState(""); // Player guessed correct answer
   const [status, setStatus] = useState(STATUS.NOT_ANSWERED);
+  const [failed, setFailed] = useState(false);
   const [questionNumber, setQuestionNumber] = useState(0);
 
   // score in the current session
@@ -50,6 +51,22 @@ function Questions() {
     };
     getQuestion(state.category, response);
   }, [questionNumber]);
+
+  useEffect(() => {
+    if (status === STATUS.TIMEOUT || status === STATUS.WRONG_ANSWER) {
+      setFailed(true);
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (failed) {
+      const timeout = setTimeout(() => {
+        setFailed(false);
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [failed]);
 
   const changeQuestion = () => {
     setStatus(STATUS.NOT_ANSWERED);
@@ -114,7 +131,7 @@ function Questions() {
 
   return (
     <div className="relative">
-      {status === STATUS.TIMEOUT || status === STATUS.WRONG_ANSWER && (
+      {failed && (
         <div
           className="absolute inset-0 flex justify-center items-center text-red-600 font-bold text-8xl z-50 font-mono"
           style={{
