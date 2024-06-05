@@ -118,7 +118,7 @@ function Questions() {
               </p>
               <p>
                 Total Score:{" "}
-                <span className="font-bold">{user.score + score}</span>
+                <span className="font-bold">{user.score}</span>
               </p>
             </div>
 
