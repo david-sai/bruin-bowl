@@ -193,8 +193,14 @@ Credits to the React tutorial for outlining how context is used in React.
 Credits to NetNinja on Youtube for foundations of using MongoDB and web development backend. 
 - [NetNinja Youtube link](https://www.youtube.com/@NetNinja)
 
+Credits to Dave Gray on Youtube for a comprehensive tutorial on the MERN stack and how to develop a web dev project.
+- [Dave Gray Youtube link](https://www.youtube.com/watch?v=CvCiNeLnZ00)
+
 Credits to Daily Tuition on Youtube for a tutorial on creating leaderboards using React.
 - [Daily Tuition Youtube link](https://www.youtube.com/watch?v=p_046Qe19p0&t=1298s&ab_channel=DailyTuition)
+
+Credits to Hynek Schlawack for a documentation outlining the functionality and uses of argon2.
+- [Argon2 Documentation link](https://argon2-cffi.readthedocs.io/en/stable/howto.html)
 
 The Joe Bruin logo is the property of UCLA and its respective owners. All rights to the logo and its use are retained by UCLA. This website is not affiliated with, endorsed by, or sponsored by UCLA. The use of the Joe Bruin logo is for identification and informational purposes only.
 
