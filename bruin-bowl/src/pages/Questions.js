@@ -52,12 +52,14 @@ function Questions() {
     getQuestion(state.category, response);
   }, [questionNumber]);
 
+  // add "failed" variable to determine if game over popup should appear
   useEffect(() => {
     if (status === STATUS.TIMEOUT || status === STATUS.WRONG_ANSWER) {
       setFailed(true);
     }
   }, [status]);
 
+  // remove game over popup after 3 seconds
   useEffect(() => {
     if (failed) {
       const timeout = setTimeout(() => {

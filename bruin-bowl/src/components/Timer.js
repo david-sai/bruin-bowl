@@ -53,7 +53,7 @@ const Timer = (props) => {
     setPrintText(formatTime);
   }, [props.answer]); // Using answer so that it doesn't start until the next question is loaded
 
-  // Function to format seconds into HH:MM:SS format
+  // Function to format deciseconds into seconds
   const formatTime = () => {
     let secs = Number(deciseconds);
     secs /= 10;
@@ -62,15 +62,14 @@ const Timer = (props) => {
 
   const pulsateStyles = pulsate
     ? {
-        animation: "pulsate 1s infinite",
-      }
+      animation: "pulsate 1s infinite",
+    }
     : {};
 
   return (
     <div
-      className={`p-4 ${
-        pulsate ? "bg-red-500" : "bg-bruin-gold"
-      } text-white rounded-lg text-center`}
+      className={`p-4 ${pulsate ? "bg-red-500" : "bg-bruin-gold"
+        } text-white rounded-lg text-center`}
       style={pulsateStyles}
     >
       <style jsx>{`
