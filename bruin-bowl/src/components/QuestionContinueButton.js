@@ -13,7 +13,7 @@ function QuestionContinueButton(props) {
     } else if (status === STATUS.WRONG_ANSWER || status === STATUS.TIMEOUT) {
         return (
             <button onClick={restartQuiz} className="mt-4 px-4 py-2 bg-bruin-blue text-white rounded-full">
-                Restart Quiz
+                Restart Game
             </button>
         )
     }
