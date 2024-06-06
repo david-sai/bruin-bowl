@@ -29,6 +29,10 @@ const Timer = (props) => {
   useEffect(() => {
     setPrintText(formatTime);
 
+    dispatch({
+      type: ACTIONS.SET_TIME_REMAINING,
+      timeRemaining : deciseconds
+    })
 
     const redTime = GAME_MODE_RED_TIMES[state.gameMode] * 10;
     if (deciseconds < redTime) {
@@ -46,10 +50,6 @@ const Timer = (props) => {
       }
     } else {
       props.setStatus(STATUS.TIMEOUT);
-      dispatch({
-        type: ACTIONS.SET_TIME_REMAINING,
-        timeRemaining : deciseconds
-      })
     }
   }, [deciseconds]);
 
