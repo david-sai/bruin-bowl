@@ -25,14 +25,14 @@ const signin = async (req, res) => {
             return res.status(400).json({ error: "User not found"});
         }
 
-        const isMatch = await argon2.verify(password, user.password)
+        const isMatch = await argon2.verify(user.password, password) //argon2.verify takes in these paramters (IN ORDER): hashed_password, password
         if (!isMatch) {
             return res.status(400).json({ error: "Incorrect password. Please try again."});
         }
         
         res.status(200).json({ user: user });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).json({ error: "Invalid username or password. Please try again." });
     }
 };
 
