@@ -25,7 +25,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
       };
 
       if(status == STATUS.CORRECT_ANSWER){
-        var updatedScore = 0;
+        let updatedScore = 0;
         if(state.gameMode == "Rapid"){
           updatedScore = (state.timeRemaining + 5) * 1.5;
         }
