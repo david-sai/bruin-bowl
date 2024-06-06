@@ -3,7 +3,8 @@ import React, { useReducer, createContext } from 'react';
 
 export const ACTIONS = { // Using enums to reduce errors from misspelling strings
     SET_CATEGORY: "set-category",
-    SET_GAME_MODE: "set-game-mode"
+    SET_GAME_MODE: "set-game-mode",
+    SET_TIME_REMAINING: "set-time-remaining"
 }
 
 export const CATEGORIES = {
@@ -43,6 +44,9 @@ function reducer(state, action) { // Reducer function takes in an action and doe
         }
         case ACTIONS.SET_GAME_MODE: {
             return { ...state, gameMode: action.gameMode };
+        }
+        case ACTIONS.SET_TIME_REMAINING: {
+            return { ...state, timeRemaining: action.timeRemaining };
         }
         default: {
             throw Error("Unknown action: " + action.type);

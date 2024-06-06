@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { STATUS } from "../pages/Questions.js";
-import { GameStateContext, GAME_MODES } from "../context/GameContext.js";
+import { GameStateContext, GAME_MODES, GameDispatchContext, ACTIONS } from "../context/GameContext.js";
 
 export const GAME_MODE_TIMES = {
   // Sets how many seconds are given in each game mode, might need to be accessed for score calculation
@@ -18,6 +18,7 @@ export const GAME_MODE_RED_TIMES = {
 
 const Timer = (props) => {
   const state = useContext(GameStateContext); // state is an object with gameMode and category variables
+  const dispatch = useContext(GameDispatchContext);
   const initial_deciseconds = GAME_MODE_TIMES[state.gameMode] * 10; // Gets the matching time for current mode from GAME_MODE_TIMES
 
   const [deciseconds, setDeciseconds] = useState(initial_deciseconds);
@@ -45,6 +46,10 @@ const Timer = (props) => {
       }
     } else {
       props.setStatus(STATUS.TIMEOUT);
+      dispatch({
+        type: ACTIONS.SET_TIME_REMAINING,
+        timeRemaining : deciseconds
+      })
     }
   }, [deciseconds]);
 
