@@ -1,5 +1,5 @@
 const UserSchema = require("../models/userModel");
-const bcrypt = require('bcrypt') //for password hashing
+const argon2 = require('argon2'); //Password hashing module that has improved brute-force defense
 
 const signup = async (req, res) => {
     const { username, password, avatar } = req.body;
@@ -24,10 +24,12 @@ const signin = async (req, res) => {
         if (!user) {
             return res.status(400).json({ error: "User not found"});
         }
-        const doesPasswordMatch = await bcrypt.compare(password, user.password)
-        if (!doesPasswordMatch) {
-            return res.status(400).json({ error: "Incorrect password"});
+
+        const isMatch = await argon2.verify(password, user.password)
+        if (!isMatch) {
+            return res.status(400).json({ error: "Incorrect password. Please try again."});
         }
+        
         res.status(200).json({ user: user });
     } catch (error) {
         res.status(400).json({ error: error.message });

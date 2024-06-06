@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt') //for password hashing
-
-const saltRounds = 10; //var that controls amnt of processing needed to compute hash (complexity)
+const argon2 = require('argon2'); //Password hashing module that has improved brute-force defense
 
 const userSchema = new Schema({
   username: {
@@ -27,23 +25,23 @@ const userSchema = new Schema({
   }
 });
 
-//middleware to hash the passwords
-userSchema.pre('save', function(next) {
-  // hash password only if it's been modiified or new 
+// Middleware to hash the passwords using argon2
+userSchema.pre('save', async function(next) {
+  // Hash password only if it has been modified or is new
   if (!this.isModified('password')) 
     return next();
-  // generate a salt and use it to hash the password
-  bcrypt.genSalt(saltRounds, (err, salt) => {
-    if (err) return next(err);
 
-    bcrypt.hash(this.password, salt, (err, hash) => {
-      if (err) return next(err);
-      // replace the string password to the hashed one
-      this.password = hash;
-      next();
-    });
-  });
+  try {
+    // Hash the password using argon2 
+    const hash = await argon2.hash(this.password);
+    // Replace the old string password with the hashed one
+    this.password = hash;
+    next();
+  } catch (err) {
+    next(err);
+  }
 });
+
 
 userSchema.statics.signup = async function (username, password, score, avatar) {
   if (!username || !password || !avatar) {
