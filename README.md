@@ -141,13 +141,13 @@ Additional features include the "add questions" page:
 
 The "search questions" feature:
 
-<img src=./bruin-bowl/public/Readme-Screenshots/SearchQuestion-Screenshot.png width="350" height="300">
+<img src=./bruin-bowl/public/Readme-Screenshots/QuestionSearch-Screenshot.png width="350" height="300">
 
 - The question search page allows users to search through the database of questions. It displays the question category, prompt, and options.
 
 Finally, the actual gameplay features:
 
-<img src=./bruin-bowl/public/Readme-Screenshots/Gameplay-Screenshot.png width="400" height="300">
+<img src=./bruin-bowl/public/Readme-Screenshots/Gameplay-Screenshot.png width="500" height="300">
 
 - The gameplay features a number of options, which can be selected by the user.
 - After clicking "Submit," the user either receives a Game Over message (if the answer is incorrect or the user ran out of time), or gains score and proceeds with the "Next Question" button.
