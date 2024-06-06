@@ -5,7 +5,7 @@ function QuestionBox(props) {
     return (
         <div className="py-4">
             <h1 className="font-bold text-3xl mb-1.5">{state.category}</h1>
-            <p className="text-2xl">{props.questionBody}</p>
+            <p className="text-2xl mb-2">{props.questionBody}</p>
         </div>
     )
 }

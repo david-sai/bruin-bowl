@@ -4,6 +4,7 @@ import { CATEGORIES } from "../context/GameContext";
 import Modal from "react-modal";
 
 function AddQuestions() {
+  // set states for user input
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [wrong1, setWrong1] = useState("");
@@ -14,6 +15,7 @@ function AddQuestions() {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const categoryStrings = Object.values(CATEGORIES);
 
+  // create functions to handle user change
   const handleChangeQuestion = (event) => {
     setQuestion(event.target.value);
   };
@@ -55,18 +57,16 @@ function AddQuestions() {
       category: categoryStrings[categoryIndex]
     };
 
+    // create question using the function api.js
     const response = (data) => {
       if (data) {
         if (data["error"]) {
           setError(data["error"].message);
         } else {
-          console.log(data);
 
           const r = data["quizQuestion"];
           setResults(r);
           setError("");
-
-          console.log(r.answer);
         }
       }
     };
@@ -94,7 +94,7 @@ function AddQuestions() {
     },
   };
 
-  const selectedStyling = "bg-bruin-gold ";
+  const selectedStyling = "bg-bruin-blue ";
   const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
 
   function mainContent() {
@@ -155,7 +155,8 @@ function AddQuestions() {
             <div onClick={() => handleChangeCategory(index)} className="mb-2 cursor-pointer">
               <span className={`ml-2 w-4 h-4 inline-block rounded-full
                 ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
-              <p className="ml-2 bg-bruin-gold cursor-pointer bg-opacity-15 rounded-full py-1 px-3 inline-flex items-center">
+              <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
+                ${index === categoryIndex ? "bg-bruin-blue" : "bg-bruin-gold"}`}>
                 {category}
               </p>
             </div>
@@ -166,7 +167,8 @@ function AddQuestions() {
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
-    )}
+    )
+  }
 
   return (
     <div>

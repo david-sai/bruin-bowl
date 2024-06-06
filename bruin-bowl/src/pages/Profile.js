@@ -21,6 +21,16 @@ function Profile() {
     }
   }
 
+  useEffect(() => {
+    getUser(user.username, (data) => {
+      if (data) {
+        if (!data["error"]) {
+          setUser(data["user"]);
+        }
+      }
+    });
+  }, []);
+
   return (
     <div>
       {user ? (
@@ -37,22 +47,3 @@ function Profile() {
 }
 
 export default Profile;
-
-// useEffect(() => {
-//   // If the user in context is not the same as the username in the URL, you might want to fetch the correct user data.
-//   if (username && user?.username !== username) {
-//     // Placeholder: fetch the user data and update the context
-
-//     getUser(username, (data) => {
-//       if (data) {
-//         if (data["error"]) {
-//           console.log(data["error"].message);
-//         } else {
-//           setDisplayedUser(data["user"]);
-//         }
-//       }
-//     });
-//   } else {
-//     setDisplayedUser(user);
-//   }
-// }, [username, user, setUser]);
