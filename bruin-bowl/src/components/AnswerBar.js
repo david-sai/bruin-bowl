@@ -1,68 +1,75 @@
-import React, { useState, useEffect } from 'react'
-import { STATUS } from '../pages/Questions'
+import React, { useState, useEffect } from "react";
+import { STATUS } from "../pages/Questions";
 
-function AnswerBar({status, setStatus, answer, wrong1, wrong2, wrong3}) {
-    const [answers, setAnswers] = useState([String]);
+function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
+  const [answers, setAnswers] = useState([String]);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
-    function handleSubmit(e) {
-        // Prevent the browser from reloading the page
-        e.preventDefault();
-
-        if (status == STATUS.NOT_ANSWERED) {
-
-            // Read the form data
-            const form = e.target;
-            const formData = new FormData(form);
-            const formJson = Object.fromEntries(formData.entries());
-
-            if (formJson.answerNum === answer) {
-                setStatus(STATUS.CORRECT_ANSWER);
-            } else {
-                setStatus(STATUS.WRONG_ANSWER);
-            }
-        }
+  function handleSubmit() {
+    if (status === STATUS.NOT_ANSWERED) {
+      if (answers[selectedIndex] === answer) {
+        setStatus(STATUS.CORRECT_ANSWER);
+      } else {
+        setStatus(STATUS.WRONG_ANSWER);
+      }
     }
+  }
 
-    useEffect(() => {
-        let answers = [answer, wrong1, wrong2, wrong3]
-        const shuffledAnswers = shuffleArray(answers);
-        setAnswers(shuffledAnswers);
-    }, [answer]);
+  useEffect(() => {
+    let answers = [answer, wrong1, wrong2, wrong3];
+    const shuffledAnswers = shuffleArray(answers);
+    setAnswers(shuffledAnswers);
+    setSelectedIndex(null);
+  }, [answer, wrong1, wrong2, wrong3]);
 
+  function shuffleArray(array) {
+    // Uses Fisher-Yates Algorithm
+    let shuffledArray = array.slice();
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Gets random index
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ]; // Shuffles i with that index
+    }
+    return shuffledArray;
+  }
 
-    const shuffleArray = (array) => { // Uses Fisher-Yates Algorithm
-        let shuffledArray = array.slice();
-        for (let i = shuffledArray.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1)); // Gets random index
-            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Shuffles i with that index
-        }
-        return shuffledArray;
-    };
+  function handleClick(index) {
+    setSelectedIndex(index);
+  }
 
+  const selectedStyling = "bg-bruin-blue ";
+  const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
+  
     return (
         <>
-            <form method="post" onSubmit={handleSubmit}>
-                <div className="mb-1">
-                    <input type="radio" id="answer1" name="answerNum" value={answers[0]} />
-                    <label htmlFor="answer1" className="ml-2">{answers[0]}</label>
-                </div>
-                <div className="mb-1">
-                    <input type="radio" id="answer2" name="answerNum" value={answers[1]} />
-                    <label htmlFor="answer2" className="ml-2">{answers[1]}</label>
-                </div>
-                <div className="mb-1">
-                    <input type="radio" id="answer3" name="answerNum" value={answers[2]} />
-                    <label htmlFor="answer3" className="ml-2">{answers[2]}</label>
-                </div>
-                <div className="mb-1">
-                    <input type="radio" id="answer4" name="answerNum" value={answers[3]} />
-                    <label htmlFor="answer4" className="ml-2">{answers[3]}</label>
-                </div>
-                <button type="submit" className="mt-4 px-4 py-2 bg-bruin-gold text-white rounded-full">Submit</button>
-            </form>
-        </>
-    );
-    
+            {answers.map((answer, index) => {
+                return (
+                    <div key={index} onClick={() => handleClick(index)} className="mb-2 cursor-pointer">
+                        <span className={`ml-2 w-4 h-4 inline-block rounded-full
+                                ${index === selectedIndex ? selectedStyling : unselectedStyling}`} />
+                        <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
+                            ${index === selectedIndex ? "bg-bruin-blue" : "bg-bruin-gold"}`}>
+                            {answer}
+                        </p>
+                    </div>
+                )
+            })}
+
+      {status == STATUS.NOT_ANSWERED ? (
+        <button
+          onClick={() => handleSubmit()}
+          className={`mt-4 px-4 py-2 rounded-full bg-bruin-gold text-white ${
+            selectedIndex === null ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={selectedIndex === null}
+        >
+          Submit
+        </button>
+      ) : null}
+    </>
+  );
 }
 
 export default AnswerBar;

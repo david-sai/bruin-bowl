@@ -18,14 +18,26 @@ function AuthModal() {
   const [password2, setPassword2] = useState("");
 
   const availableAvatarURLs = [
-    "https://pbs.twimg.com/media/GPBZbEUWgAAwTjx?format=jpg&name=large",
-    "https://cdn.britannica.com/22/187222-050-07B17FB6/apples-on-a-tree-branch.jpg",
-    "https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_1",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDBJs8O8bT9rxdPm0UUvM7FUjfudubqU4a3A&s=",
-    "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/06/apple-varieties-types-1296x728-header.jpg?w=1155&h=1528",
-    "https://blog-images-1.pharmeasy.in/blog/production/wp-content/uploads/2022/06/05130314/25.jpg",
-    "https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_22726_16560822540037952.jpg",
-    "https://media.post.rvohealth.io/wp-content/uploads/2020/08/different-berries-birdview-thumb.jpg",
+    "https://github.com/david-sai/bruin-bowl/blob/images/anime_girl.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/big_fish.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/big_gamer.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/big_man.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/big_orb.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/cat_girl.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/fish.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/gamer.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/gpu.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/man.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/nerd.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/orb.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/panda.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/robot.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/soccer_player.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/ucla_bear.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/flowers.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/student.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/car.png?raw=true",
+    "https://github.com/david-sai/bruin-bowl/blob/images/prince.png?raw=true",
   ];
 
   // start up with a random avatar
@@ -35,7 +47,6 @@ function AuthModal() {
   };
 
   const [avatarURL, setAvatarURL] = useState(getRandomAvatar);
-
 
   const [error, setError] = useState("");
   const [isSignIn, setIsSignIn] = useState(false);
@@ -48,7 +59,7 @@ function AuthModal() {
 
   // reset back to beginning
   useEffect(() => {
-    if (user == null) {
+    if (user === null) {
       setSuccessfullySignedIn(false);
       setSuccessfullySignedUp(false);
     }
@@ -56,16 +67,15 @@ function AuthModal() {
 
   const handleSubmit = () => {
     if (isLoading) {
-      console.log("is loagin!!");
       return;
     }
 
-    if (username == "") {
+    if (username === "") {
       setError("Username is empty.");
       return;
     }
 
-    if (password == "") {
+    if (password === "") {
       setError("Password is empty.");
       return;
     }
@@ -88,7 +98,7 @@ function AuthModal() {
       }
 
       // make sure passwords match
-      if (password != password2) {
+      if (password !== password2) {
         setError("Passwords do not match.");
         return;
       }
@@ -103,8 +113,6 @@ function AuthModal() {
           setError(data["error"]["response"]["data"]["error"]);
         } else {
           // success!
-          console.log(data);
-
           setUser(data["user"]);
 
           if (isSignIn) {
@@ -113,7 +121,6 @@ function AuthModal() {
             setSuccessfullySignedUp(true);
           }
 
-          console.log(data);
           setError("");
         }
       }
@@ -166,7 +173,7 @@ function AuthModal() {
             {isSignIn ? "Sign In" : "Sign Up"}
           </h1>
 
-          {modalIsOpen && modalIsOpen != "" && (
+          {modalIsOpen && modalIsOpen !== "" && (
             <div className="mt-2 text-lg">{modalIsOpen}</div>
           )}
         </div>
@@ -212,6 +219,7 @@ function AuthModal() {
               </button>
 
               <Modal
+                closeTimeoutMS={200}
                 isOpen={showingAvatarSelector}
                 onRequestClose={() => setShowingAvatarSelector(false)}
                 style={customStylesAvatarSelector}
@@ -266,10 +274,11 @@ function AuthModal() {
     );
   }
 
-  const isOpen = modalIsOpen != null;
+  const isOpen = modalIsOpen !== null;
 
   return (
     <Modal
+      closeTimeoutMS={200}
       isOpen={isOpen}
       onRequestClose={() => setModalIsOpen(null)}
       style={customStyles}

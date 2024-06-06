@@ -8,7 +8,6 @@ import AuthModal from "./components/AuthModal";
 //Styling imports:
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import logo from "./logo.svg";
 //Pages Imports:
 import Home from "./pages/Home.js";
 import Leaderboard from "./pages/Leaderboard.js";
@@ -35,9 +34,7 @@ function App() {
   });
   //Creates an effect that instantiates when the user state changes.
   useEffect(() => {
-    console.log(user);
-    //Updates local storage with user data
-    if (user == null) {
+    if (user === null) {
       localStorage.setItem("user", "\"\"");
     } else {
       localStorage.setItem("user", JSON.stringify(user));
@@ -62,6 +59,7 @@ function App() {
                   <Route path="/search" element={<SearchQuestions />}></Route>
                   <Route path="/mode-select" element={<ModeSelect />}></Route>
                   <Route path="/profile" element={<Profile />}></Route>
+                  <Route path="/profiles/:username" element={<Profiles />} />
                   <Route path="/question-add" element={<QuestionAddition />}></Route>
                 </Routes>
               </GameProvider>

@@ -35,7 +35,7 @@ function NavigationBar() {
             }`
           }
         >
-          Game
+          Start Game
         </NavLink>
         <NavLink
           to="/search"

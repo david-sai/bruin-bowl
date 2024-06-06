@@ -11,14 +11,12 @@ const app = express();
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    if (process.env.NODE_ENV !== "test") {
       app.listen(4000, () => {
         console.log(
           "connected to db & listening on port",
           4000
         );
       });
-    }
   })
   .catch((error) => {
     console.log(error);

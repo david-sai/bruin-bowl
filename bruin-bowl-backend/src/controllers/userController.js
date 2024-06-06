@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt') //for password hashing
 const signup = async (req, res) => {
     const { username, password, avatar } = req.body;
     try {
-        const user = await UserSchema.signup(username, password, 0, avatar);
-        if(user == "exists"){
+        const user = await UserSchema.signup(username, password, 0, avatar); //default score is 0
+        if(user === "exists"){
             return res.status(400).json({ error: "User already exists" });
         }
         res.status(200).json({ user: user });
@@ -35,7 +35,7 @@ const signin = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-    const {username} = req.query; 
+    const { username } = req.query; 
     try {
         if (!username) {
             throw Error("Missing Username...");
@@ -86,7 +86,7 @@ const deleteUser = async(req, res) => {
 const updateScorebyUser = async (req, res) => {
     const { username, amount } = req.body;
     try {
-        if (!username || !amount) throw Error("Missing information for score update");
+        if(!username || !String(amount)) throw Error("Missing Fields")
 
         await UserSchema.updateOne(
             { username: username },
@@ -101,7 +101,7 @@ const updateScorebyUser = async (req, res) => {
             return res.status(400).json({ error: `Error occurred with replacing user (${username})\'s score!` });
         }
         await user.save();
-        res.status(200).json({ message: `User score successfully updated to: ${user.score}` });
+        res.status(200).json({ score: user.score });
     } catch (error) {
         res.status(400).json({ error: "Update Score Error!" });
     }

@@ -11,7 +11,6 @@ export const getQuestion = async (category, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -34,7 +33,6 @@ export const searchQuestion = async (keyword, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -55,7 +53,6 @@ export const createQuestion = async (data, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -80,7 +77,6 @@ export const signup = async (username, password, avatar, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -104,13 +100,26 @@ export const signin = async (username, password, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
 
-export const updateScore = async(username, amount, res) => {
+export const getUser = async (username, res) => {
+  var config = {
+    method: 'get',
+    url: 'http://localhost:4000/user/get?username=' + username,
+    headers: {}
+  };
+  axios(config)
+    .then(function (response) {
+      res(response.data);
+    })
+    .catch(function (error) {
+      res({ error: error });
+    });
+};
 
+export const updateScore = async (username, amount, res) => {
   var data = JSON.stringify({
     "username" : username,
     "amount" : amount
@@ -118,7 +127,7 @@ export const updateScore = async(username, amount, res) => {
 
   var config = {
     method: 'post',
-    url: 'http://localhost:4000/updateScore',
+    url: 'http://localhost:4000/user/updateScore',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -129,7 +138,6 @@ export const updateScore = async(username, amount, res) => {
     res(response.data);
   })
   .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
-    console.log(error);
     res({ error: error });
   });
 }
@@ -145,23 +153,6 @@ export const getLeaderBoard = async(res) => {
     res(response.data);
   })
   .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
-    console.log(error);
-    res({ error: error });
-  });
-}
-
-export const getUserScore = async(res) => {
-  var config = {
-    method: 'get',
-    url: 'http://localhost:4000/user/leaderboard',
-    headers: {},
-  };
-  axios(config)   //uses axios to send the HTTP request w/ specified config
-  .then(function (response) { //if successful, data is passed back to callback fn res
-    res(response.data);
-  })
-  .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
-    console.log(error);
     res({ error: error });
   });
 }
