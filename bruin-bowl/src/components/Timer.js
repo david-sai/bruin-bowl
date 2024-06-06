@@ -53,7 +53,7 @@ const Timer = (props) => {
         }, 100);
         return () => clearTimeout(timer);
       } else {
-        setPulsate(false);
+        setPulsate(false); 
       }
     } else {
       props.setStatus(STATUS.TIMEOUT);
