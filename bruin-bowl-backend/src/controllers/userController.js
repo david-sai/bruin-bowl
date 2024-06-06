@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt') //for password hashing
 const signup = async (req, res) => {
     const { username, password, avatar } = req.body;
     try {
-        const user = await UserSchema.signup(username, password, 0, avatar);
+        const user = await UserSchema.signup(username, password, 0, avatar); //default score is 0
         if(user === "exists"){
             return res.status(400).json({ error: "User already exists" });
         }
@@ -85,7 +85,7 @@ const deleteUser = async(req, res) => {
 
 const updateScorebyUser = async (req, res) => {
     const { username, amount } = req.body;
-    // try {
+    try {
         if(!username || !String(amount)) throw Error("Missing Fields")
 
         await UserSchema.updateOne(
@@ -102,9 +102,9 @@ const updateScorebyUser = async (req, res) => {
         }
         await user.save();
         res.status(200).json({ score: user.score });
-    // } catch (error) {
-    //     res.status(400).json({ error: "Update Score Error!" });
-    // }
+    } catch (error) {
+        res.status(400).json({ error: "Update Score Error!" });
+    }
 }
 
 const getLeaderBoard = async (req, res) => {
