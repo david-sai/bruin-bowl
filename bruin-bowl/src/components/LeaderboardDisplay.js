@@ -14,7 +14,6 @@ function LeaderboardDisplay() {
         if (data["error"]) {
           setError(data["error"].message);
         } else {
-          console.log(data);
           setLeaderboard(data["usernames"]);
           setError("");
         }

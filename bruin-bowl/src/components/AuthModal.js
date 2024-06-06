@@ -67,7 +67,6 @@ function AuthModal() {
 
   const handleSubmit = () => {
     if (isLoading) {
-      console.log("is loagin!!");
       return;
     }
 
@@ -114,8 +113,6 @@ function AuthModal() {
           setError(data["error"]["response"]["data"]["error"]);
         } else {
           // success!
-          console.log(data);
-
           setUser(data["user"]);
 
           if (isSignIn) {
@@ -124,7 +121,6 @@ function AuthModal() {
             setSuccessfullySignedUp(true);
           }
 
-          console.log(data);
           setError("");
         }
       }

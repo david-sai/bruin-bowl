@@ -10,14 +10,10 @@ function Profiles() {
   const [displayedUser, setDisplayedUser] = useState(null);
 
   useEffect(() => {
-    console.log(username);
     if (username) {
       getUser(username, (data) => {
         if (data) {
-          if (data["error"]) {
-            console.log(data["error"].message);
-          } else {
-            console.log(data);
+          if (!data["error"]) {
             setDisplayedUser(data["user"]);
           }
         }

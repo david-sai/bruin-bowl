@@ -19,7 +19,6 @@ function SearchBar() {
         if (data["error"]) {
           setError(data["error"].message);
         } else {
-          console.log(data);
           setResults(data["results"])
           setError("");
         }

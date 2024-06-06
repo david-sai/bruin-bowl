@@ -11,7 +11,6 @@ export const getQuestion = async (category, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -34,7 +33,6 @@ export const searchQuestion = async (keyword, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -55,7 +53,6 @@ export const createQuestion = async (data, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -80,7 +77,6 @@ export const signup = async (username, password, avatar, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -104,7 +100,6 @@ export const signin = async (username, password, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -120,7 +115,6 @@ export const getUser = async (username, res) => {
       res(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       res({ error: error });
     });
 };
@@ -144,7 +138,6 @@ export const updateScore = async (username, amount, res) => {
     res(response.data);
   })
   .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
-    console.log(error);
     res({ error: error });
   });
 }
@@ -160,7 +153,6 @@ export const getLeaderBoard = async(res) => {
     res(response.data);
   })
   .catch(function (error) { //if error occurs, logs the error to consol and passes an error to fn res
-    console.log(error);
     res({ error: error });
   });
 }

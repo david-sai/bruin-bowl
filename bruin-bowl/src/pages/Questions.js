@@ -74,7 +74,6 @@ function Questions() {
   };
 
   const restartQuiz = () => {
-    console.log("updating score to 0");
     setStatus(STATUS.NOT_ANSWERED);
     setQuestionNumber(0);
     setScore(0);

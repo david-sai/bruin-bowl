@@ -1,7 +1,7 @@
 // GlobalStateContext.js
 import React, { useReducer, createContext } from 'react';
 
-export const ACTIONS = {
+export const ACTIONS = { // Using enums to reduce errors from misspelling strings
     SET_CATEGORY: "set-category",
     SET_GAME_MODE: "set-game-mode"
 }

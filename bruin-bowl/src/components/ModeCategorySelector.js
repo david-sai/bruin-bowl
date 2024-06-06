@@ -59,7 +59,7 @@ function ModeCategorySelector() {
       {gameModeStrings.map((gameMode, index) => {
         // Creates a button for each game mode
         return (
-          <div onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
+          <div key={gameMode} onClick={() => handleGameModeClick(index)} className="mb-2 cursor-pointer">
             <span className={`ml-2 w-4 h-4 inline-block rounded-full
               ${index === gameModeIndex ? selectedStyling : unselectedStyling}`} />
             <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center
@@ -76,7 +76,7 @@ function ModeCategorySelector() {
       {categoryStrings.map((category, index) => {
         // Creates a button for each category
         return (
-          <div onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
+          <div key={category} onClick={() => handleCategoryClick(index)} className="mb-2 cursor-pointer">
             <span className={`ml-2 w-4 h-4 inline-block rounded-full
                 ${index === categoryIndex ? selectedStyling : unselectedStyling}`} />
             <p className={`ml-2 bg-opacity-15 text-bruin-gold rounded-full py-1 px-3 inline-flex items-center

@@ -60,13 +60,10 @@ function AddQuestions() {
         if (data["error"]) {
           setError(data["error"].message);
         } else {
-          console.log(data);
 
           const r = data["quizQuestion"];
           setResults(r);
           setError("");
-
-          console.log(r.answer);
         }
       }
     };
