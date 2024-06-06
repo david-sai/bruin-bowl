@@ -35,6 +35,9 @@ function AnswerIndicator({ status, answer, score, setScore }) {
         else{
           updatedScore = state.timeRemaining;
         }
+
+        updatedScore = Math.round(updatedScore);
+
         console.log(updatedScore)
         setUser({ ...user, score: user.score + updatedScore});
         setScore(score + updatedScore);
