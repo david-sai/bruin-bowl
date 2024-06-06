@@ -4,6 +4,7 @@ import { CATEGORIES } from "../context/GameContext";
 import Modal from "react-modal";
 
 function AddQuestions() {
+  // set states for user input
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [wrong1, setWrong1] = useState("");
@@ -14,6 +15,7 @@ function AddQuestions() {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const categoryStrings = Object.values(CATEGORIES);
 
+  // create functions to handle user change
   const handleChangeQuestion = (event) => {
     setQuestion(event.target.value);
   };
@@ -55,6 +57,7 @@ function AddQuestions() {
       category: categoryStrings[categoryIndex]
     };
 
+    // create question using the function api.js
     const response = (data) => {
       if (data) {
         if (data["error"]) {

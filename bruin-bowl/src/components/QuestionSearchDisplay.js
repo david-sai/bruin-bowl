@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 function QuestionSearchDisplay(props) {
+    // pass in question variable in props
     let question = props.question
     return (
         <div className="py-4">
