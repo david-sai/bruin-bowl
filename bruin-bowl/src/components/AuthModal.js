@@ -137,7 +137,7 @@ function AuthModal() {
 
   const customStyles = {
     content: {
-      maxWidth: "400px",
+      maxWidth: "450px",
       maxHeight: "600px",
       overflow: "none",
       margin: "auto", // center horizontally
