@@ -48,6 +48,9 @@ const Timer = (props) => {
         }, 100);
         return () => clearTimeout(timer);
       }
+      else {
+        setPulsate(false); //stops the red timer from pulsating when you submit the question
+      }
     } else {
       props.setStatus(STATUS.TIMEOUT);
     }
