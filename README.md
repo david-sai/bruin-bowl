@@ -141,7 +141,7 @@ Additional features include the "add questions" page:
 
 The "search questions" feature:
 
-<img src=./bruin-bowl/public/Readme-Screenshots/QuestionSearch-Screenshot.png width="350" height="300">
+<img src=./bruin-bowl/public/Readme-Screenshots/QuestionSearch-Screenshot.png width="400" height="300">
 
 - The question search page allows users to search through the database of questions. It displays the question category, prompt, and options.
 
