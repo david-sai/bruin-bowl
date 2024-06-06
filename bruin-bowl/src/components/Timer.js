@@ -42,7 +42,7 @@ const Timer = (props) => {
     }
 
     if (deciseconds > 0) {
-      if (props.status === 0) {
+      if (props.status === STATUS.NOT_ANSWERED) {
         const timer = setTimeout(() => {
           setDeciseconds(deciseconds - 1);
         }, 100);
