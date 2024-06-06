@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getQuestion = async (category, res) => {
-  var config = {
+  let config = {
     method: 'get',
     url: 'http://localhost:4000/quiz?category=' + category,
     headers: {}
@@ -16,11 +16,11 @@ export const getQuestion = async (category, res) => {
 };
 
 export const searchQuestion = async (keyword, res) => {
-  var data = JSON.stringify({
+  let data = JSON.stringify({
     "keyword": keyword
   });
 
-  var config = {
+  let config = {
     method: 'post',
     url: 'http://localhost:4000/quiz/search',
     headers: {
@@ -40,7 +40,7 @@ export const searchQuestion = async (keyword, res) => {
 
 export const createQuestion = async (data, res) => {
 
-  var config = {
+  let config = {
     method: 'post',
     url: 'http://localhost:4000/quiz/create',
     headers: {
@@ -58,13 +58,13 @@ export const createQuestion = async (data, res) => {
 };
 
 export const signup = async (username, password, avatar, res) => {
-  var data = JSON.stringify({
+  let data = JSON.stringify({
     "username": username,
     "password": password,
     "avatar": avatar
   });
 
-  var config = {
+  let config = {
     method: 'post',
     url: 'http://localhost:4000/user/signup',
     headers: {
@@ -82,12 +82,12 @@ export const signup = async (username, password, avatar, res) => {
 };
 
 export const signin = async (username, password, res) => {
-  var data = JSON.stringify({
+  let data = JSON.stringify({
     "username": username,
     "password": password
   });
 
-  var config = {
+  let config = {
     method: 'post',
     url: 'http://localhost:4000/user/signin',
     headers: {
@@ -105,7 +105,7 @@ export const signin = async (username, password, res) => {
 };
 
 export const getUser = async (username, res) => {
-  var config = {
+  let config = {
     method: 'get',
     url: 'http://localhost:4000/user/get?username=' + username,
     headers: {}
@@ -120,12 +120,12 @@ export const getUser = async (username, res) => {
 };
 
 export const updateScore = async (username, amount, res) => {
-  var data = JSON.stringify({
+  let data = JSON.stringify({
     "username" : username,
     "amount" : amount
   });
 
-  var config = {
+  let config = {
     method: 'post',
     url: 'http://localhost:4000/user/updateScore',
     headers: {
@@ -143,7 +143,7 @@ export const updateScore = async (username, amount, res) => {
 }
 
 export const getLeaderBoard = async(res) => {
-  var config = {
+  let config = {
     method: 'get',
     url: 'http://localhost:4000/user/leaderboard',
     headers: {},

@@ -12,7 +12,7 @@ const createQuestion = async (req, res) => {
 };
 
 const usedQuestions = new Map(); //maps categories to a set of questions that have been used
-var lastQuestion = null; //records the last question
+let lastQuestion = null; //records the last question
 
 const getQuestion = async (req, res) => {
     const { category } = req.query; 
