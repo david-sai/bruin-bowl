@@ -120,7 +120,7 @@ And of course, to ensure that users are real people and to add an extra layer of
 - While a different popup allows users to select a profile picture from a range of options. 
 
 ## Features 
-Features we originally included in the project proposal are the leaderboard and point calculation (see above), category and game mode selection (see above), and profile picture selection. 
+The three features we originally included in the project proposal are the leaderboard and point calculation (see above), category and game mode selection (see above), and profile picture selection. 
 
 When users first create their account, they have the option of selecting a profile picture. 
 
@@ -128,8 +128,8 @@ When users first create their account, they have the option of selecting a profi
 
 - Users may choose a profile picture from a selection of profile pictures. 
 
-
-Additional features include the "add questions" page. 
+In addition to these three features, we implemented additional features in order to improve the user experience and enhance gameplay. 
+Additional features include the "add questions" page:
 
 <img src=./bruin-bowl/public/Readme-Screenshots/AddQuestion-Screenshot.png width="325" height="350">
 
