@@ -79,7 +79,7 @@ Here are our endpoints:
 5. Finally, click "Start Game" to play!
     - Select your answer from the given options, then submit.
     - Getting the question right allows you to advance to the next question with the "Next Question" button.
-    - Getting the question wrong, or running out of time, forces you to hit "Restart Quiz" in order to start a new game.
+    - Getting the question wrong, or running out of time, forces you to hit "Restart Game" in order to start a new game.
     - You may navigate to other features, such as question searching, adding questions, or leaderboard through the navigation bar at the top of the website.
 
 Please note that if you are already logged in, you may skip steps 1 through 3. 

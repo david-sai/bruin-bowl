@@ -82,9 +82,9 @@ function AuthModal() {
 
     if (!isSignIn) {
       // username must only contain letters, numbers, and underscores
-      if (!/^[A-Za-z0-9_]*$/.test(username) || username.length < 8) {
+      if (!/^[A-Za-z0-9_]*$/.test(username) || username.length < 4) {
         setError(
-          "Username must be at least 8 characters long and can only contain letters, numbers, and underscores."
+          "Username must be at least 4 characters long and can only contain letters, numbers, and underscores."
         );
         return;
       }

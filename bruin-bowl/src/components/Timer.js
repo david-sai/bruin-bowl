@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { STATUS } from "../pages/Questions.js";
-import { GameStateContext, GAME_MODES, GameDispatchContext, ACTIONS } from "../context/GameContext.js";
+import {
+  GameStateContext,
+  GAME_MODES,
+  GameDispatchContext,
+  ACTIONS,
+} from "../context/GameContext.js";
 
 export const GAME_MODE_TIMES = {
   // Sets how many seconds are given in each game mode, might need to be accessed for score calculation
@@ -31,8 +36,8 @@ const Timer = (props) => {
 
     dispatch({
       type: ACTIONS.SET_TIME_REMAINING,
-      timeRemaining : deciseconds
-    })
+      timeRemaining: deciseconds,
+    });
 
     const redTime = GAME_MODE_RED_TIMES[state.gameMode] * 10;
     if (deciseconds < redTime) {
@@ -47,6 +52,8 @@ const Timer = (props) => {
           setDeciseconds(deciseconds - 1);
         }, 100);
         return () => clearTimeout(timer);
+      } else {
+        setPulsate(false);
       }
     } else {
       props.setStatus(STATUS.TIMEOUT);
@@ -67,14 +74,15 @@ const Timer = (props) => {
 
   const pulsateStyles = pulsate
     ? {
-      animation: "pulsate 1s infinite",
-    }
+        animation: "pulsate 1s infinite",
+      }
     : {};
 
   return (
     <div
-      className={`p-4 ${pulsate ? "bg-red-500" : "bg-bruin-gold"
-        } text-white rounded-lg text-center`}
+      className={`p-4 ${
+        pulsate ? "bg-red-500" : "bg-bruin-gold"
+      } text-white rounded-lg text-center`}
       style={pulsateStyles}
     >
       <style jsx>{`
