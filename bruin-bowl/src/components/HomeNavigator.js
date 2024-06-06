@@ -7,7 +7,7 @@ function HomeNavigator() {
   const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
   const { user, setUser } = useContext(UserContext);
 
-  const message = user === null ? "Log in to start" : "Start playing";
+  const message = user === null ? "Sign up to start" : "Start playing";
 
   function handleClick() {
     if (user === null) {
@@ -22,13 +22,14 @@ function HomeNavigator() {
     <div>
       <button
         onClick={handleClick}
-        className="mt-1 px-8 py-4 bg-bruin-blue text-white text-2xl font-bold rounded-full"
+        className={`mt-1 px-8 py-4  text-white text-2xl font-bold rounded-full ${ user === null ?  "bg-bruin-blue" : "bg-green-500"}`}
         style={{
           animation: "pulsate 2s ease-in-out infinite",
         }}
       >
         {message}
       </button>
+      
       <style jsx>{`
         @keyframes pulsate {
           0%,

@@ -18,9 +18,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
             console.log(data)
 
             const newScore = data["score"];
-            const u = user;
-            u.score = newScore;
-            setUser(u);
+            setUser({ ...user, score : newScore });
 
             setError("");
           }
@@ -28,12 +26,9 @@ function AnswerIndicator({ status, answer, score, setScore }) {
       };
 
       if(status == STATUS.CORRECT_ANSWER){
+        setUser({ ...user, score: user.score + 10 });
         setScore(score + 10);
-      }
-      else if(status == STATUS.TIMEOUT || status == STATUS.WRONG_ANSWER) {
-        console.log("updating score")
-        console.log(score)
-        updateScore(user.username, score, response);
+        updateScore(user.username, 10, response);
       }
     }, [status]);
 

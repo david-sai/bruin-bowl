@@ -10,8 +10,7 @@ export const CATEGORIES = {
     UCLA: "UCLA",
     COMPUTER_SCIENCE: "Computer Science",
     STAR_WARS: "Star Wars",
-    OTHER: "Other",
-    TRASH: "Trash"
+    OTHER: "Other"
 }
 
 export const GAME_MODES = {
@@ -25,7 +24,7 @@ const GameStateContext = createContext();
 const GameDispatchContext = createContext();
 
 const GameProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, {category : CATEGORIES.UCLA, gameMode : GAME_MODES.CLASSIC});
+    const [state, dispatch] = useReducer(reducer, { category: CATEGORIES.UCLA, gameMode: GAME_MODES.CLASSIC });
     // Default state of reducer is UCLA category and Classic game mode
 
     return (
@@ -51,5 +50,5 @@ function reducer(state, action) { // Reducer function takes in an action and doe
     }
 }
 
-export {GameProvider, GameStateContext, GameDispatchContext};
+export { GameProvider, GameStateContext, GameDispatchContext };
 // GameProvider used as HTML element, GameStateContext has state variables, and GameDispatchContext has dispatch function
