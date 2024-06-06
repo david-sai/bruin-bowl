@@ -87,9 +87,9 @@ Please note that if you are already logged in, you may skip steps 1 through 3.
 
 ## Motivation:
 
-When we first created a group for the CS35L project, our motivation was to create something valuable. Something useful, and relevant to our everyday lives. And as UCLA students, we unanimously agreed on a website that could test our knowledge of UCLA trivia in a fun and interactive way. As we expanded our features, we found that our website could also allow us to quiz ourselves on other subjects like computer science in an engaging format. 
+When we first created a group for the CS35L project, we aimed to create a valuable, revelant, and useful web application. And as UCLA students, we unanimously agreed on a website that could test our knowledge of UCLA trivia in a fun and interactive way. As we expanded our features, we found that our website could also allow us to quiz ourselves on other subjects like computer science in an engaging format. 
 
-The original inspiration for our project is Quiz Bowl, an academic trivia competition that, like the essential gameplay of our project, awards points based on the speed of the participant’s response. In this project, we also provided a variety of features that adapt aspects of Quiz Bowl to an appropriate web-based equivalent. 
+The original inspiration for our project is Quiz Bowl, an academic trivia competition that, like the essential gameplay of our project, awards points based on the speed of the participant’s response. This was a shared interest the we all had, and was something where we all had experience in the past. In this project, we also provided a variety of features that adapt aspects of Quiz Bowl to an appropriate web-based equivalent. 
 
 For example, the leaderboard displays scores to bolster competition. 
 
@@ -183,7 +183,7 @@ Once you've made your changes, submit a PR on GitHub.
 5. Go to GitHub and submit a PR to merge your changes into the dev branch.
 
 ## Credits
-Created by Andrew, Brayden, Daniel, David, Jon, Zach
+Created by Andrew, Brayden, Daniel, David, Jonathan, Zach
 CS35L Group name: Six Body Problem
 Group number: 27
 
