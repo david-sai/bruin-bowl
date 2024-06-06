@@ -14,7 +14,7 @@ const createQuestion = async (req, res) => {
 //Creates a Map to store used questions by category. This avoids repetition.
 const usedQuestions = new Map();
 //Keeps track of the last question to prevent repeats
-var lastQuestion = null;
+let lastQuestion = null;
 
 //Purpose: retrieves a random question from the specified category.
 const getQuestion = async (req, res) => {
