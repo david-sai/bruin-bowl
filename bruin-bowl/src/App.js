@@ -14,6 +14,7 @@ import Leaderboard from "./pages/Leaderboard.js";
 import Questions from "./pages/Questions.js";
 import ModeSelect from "./pages/ModeSelect.js";
 import Profile from "./pages/Profile.js";
+import Profiles from "./pages/Profiles.js";
 import QuestionAddition from "./pages/QuestionAddition.js";
 import SearchQuestions from "./pages/SearchQuestions.js";
 //Context Imports:
