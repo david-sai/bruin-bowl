@@ -170,7 +170,8 @@ Once you've made your changes, submit a PR on GitHub.
 
 ## Credits
 Created by Andrew, Brayden, Daniel, David, Jon, Zach
-CS 35L Discussion 1G
+CS35L Group name: Six Body Problem
+Project name: Bruin Bowl
 
 Credits to the React tutorial for outlining how context is used in React. 
 - [React tutorial link](https://react.dev/learn/scaling-up-with-reducer-and-context)
