@@ -104,29 +104,29 @@ The original inspiration for our project is Quiz Bowl, an academic trivia compet
 
 For example, the leaderboard displays scores to bolster competition. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/LeaderboardDisplay-Screenshot.png width="400" height="200">
+<img src=./readme-assets/LeaderboardDisplay-Screenshot.png width="400" height="200">
 
 - Above is the leaderboard, where user information is displayed and updated in real time. This fosters competition by allowing users to see how their score compares to others. 
 
 Meanwhile, the visual timer component replaces the verbal countdown of Quiz Bowl staff so players know how much time they have left before the question ends. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/Timer-Screenshot.png width="250" height="250">
+<img src=./readme-assets/Timer-Screenshot.png width="250" height="250">
 
 - 15 seconds are given for each question. Points are awarded based on the timeliness of the response. 
 
 Other features include game modes and question categories to keep each playthrough fresh and exciting. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/GameMode-Screenshot.png width="200" height="350">
+<img src=./readme-assets/GameMode-Screenshot.png width="200" height="350">
 
 - In the Game page, users can select the game mode and category of question which suits them best before starting the game. 
 
 And of course, to ensure that users are real people and to add an extra layer of security to the application, login requires a username, password, and profile picture. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/SignUp-Screenshot.png width="250" height="350">
+<img src=./readme-assets/SignUp-Screenshot.png width="250" height="350">
 
 - A sign up popup allows users to create a username, password, and choose a profile picture from a few options. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/SelectPFP-Screenshot.png width="400" height="200">
+<img src=./readme-assets/SelectPFP-Screenshot.png width="400" height="200">
 
 - While a different popup allows users to select a profile picture from a range of options. 
 
@@ -135,30 +135,30 @@ The three features we originally included in the project proposal are the leader
 
 When users first create their account, they have the option of selecting a profile picture. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/ProfilePicture-Screenshot.png width="300" height="200">
+<img src=./readme-assets/ProfilePicture-Screenshot.png width="300" height="200">
 
 - Users may choose a profile picture from a selection of profile pictures. 
 
 In addition to these three features, we implemented additional features in order to improve the user experience and enhance gameplay. 
 Additional features include the "add questions" page:
 
-<img src=./bruin-bowl/public/Readme-Screenshots/AddQuestion-Screenshot.png width="325" height="350">
+<img src=./readme-assets/AddQuestion-Screenshot.png width="325" height="350">
 
 - In the Add Question page, users can create a question, assign an answer and 3 incorrect options, and choose a question category. After the user hits "Submit", the resulting question will be added to the question database. 
 
-<img src=./bruin-bowl/public/Readme-Screenshots/QuestionPopup-Screenshot.png width="300" height="250">
+<img src=./readme-assets/QuestionPopup-Screenshot.png width="300" height="250">
 
 - Afterwards, a popup will confirm that the question has been added to the database. The question prompt is shown on top, with the answer in green and the wrong answers below.
 
 The "search questions" feature:
 
-<img src=./bruin-bowl/public/Readme-Screenshots/QuestionSearch-Screenshot.png width="400" height="300">
+<img src=./readme-assets/QuestionSearch-Screenshot.png width="400" height="300">
 
 - The question search page allows users to search through the database of questions. It displays the question category, prompt, and options.
 
 Finally, the actual gameplay features:
 
-<img src=./bruin-bowl/public/Readme-Screenshots/Gameplay-Screenshot.png width="500" height="300">
+<img src=./readme-assets/Gameplay-Screenshot.png width="500" height="300">
 
 - The gameplay features a number of options, which can be selected by the user.
 - After clicking "Submit," the user either receives a Game Over message (if the answer is incorrect or the user ran out of time), or gains score and proceeds with the "Next Question" button.
