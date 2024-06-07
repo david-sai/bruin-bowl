@@ -9,6 +9,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
     const { user, setUser } = useContext(UserContext);
     const state = useContext(GameStateContext);
     const [error, setError] = useState("")
+    const [scoreForQuestion, setScoreForQuestion] = useState(0);
 
     useEffect(() => {
       const response = (data) => {
@@ -25,7 +26,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
       };
 
       if(status == STATUS.CORRECT_ANSWER){
-        var updatedScore = 0;
+        let updatedScore = 0;
         if(state.gameMode == "Rapid"){
           updatedScore = (state.timeRemaining + 5) * 1.5;
         }
@@ -37,11 +38,14 @@ function AnswerIndicator({ status, answer, score, setScore }) {
         }
 
         updatedScore = Math.round(updatedScore);
+        setScoreForQuestion(updatedScore);
 
         console.log(updatedScore)
         setUser({ ...user, score: user.score + updatedScore});
         setScore(score + updatedScore);
         updateScore(user.username, updatedScore, response);
+      } else if (status == STATUS.NOT_ANSWERED) {
+        setScoreForQuestion(0);
       }
     }, [status]);
 
@@ -50,7 +54,7 @@ function AnswerIndicator({ status, answer, score, setScore }) {
         indicatorString = "\u00A0";
     }
     else if (status === STATUS.CORRECT_ANSWER) {
-        indicatorString = "You got it correct!";
+        indicatorString = `You got it correct! Points for this question: ${scoreForQuestion}`;
     }
     else if (status === STATUS.WRONG_ANSWER) {
         indicatorString = "You got it wrong. The correct answer is " + answer + ".";

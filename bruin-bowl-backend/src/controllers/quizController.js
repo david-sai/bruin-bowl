@@ -16,6 +16,7 @@ const usedQuestions = new Map();
 //Keeps track of the last question to prevent repeats
 let lastQuestion = null;
 
+
 //Purpose: retrieves a random question from the specified category.
 const getQuestion = async (req, res) => {
     const { category } = req.query; 
