@@ -38,12 +38,13 @@ The server should be up and running on port 4000!
 
 ## Details
 
-This is the file structure:
+This is the folder structure:
 
 ```
 - bruin-bowl
     - bruin-bowl-frontend (frontend)
     - bruin-bowl-backend (backend)
+    - readme-assets (images for this README)
     - README.md
 ```
 
