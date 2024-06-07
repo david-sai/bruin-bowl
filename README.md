@@ -207,8 +207,19 @@ Once you've made your changes, submit a PR on GitHub.
 
 ## Credits
 Created by Andrew, Brayden, Daniel, David, Jonathan, Zach
-CS35L Group name: Six Body Problem
-Group number: 27
+
+**Name to email mappings:**
+
+- Andrew Zheng `aheze@getfind.app`
+- Brayden Tam `57848434+braydentam@users.noreply.github.com`
+- Daniel Guo `dguo314other@gmail.com`/`76500449+DiiGii@users.noreply.github.com`
+- David Sai `davidsai342@gmail.com`
+- Jonathan Pai `jonathantspai@gmail.com`/`114116017+RandomKnight155@users.noreply.github.com`
+- Zachary DeSoto `zacharysdesoto@gmail.com`
+
+**CS35L Group name:** Six Body Problem
+
+**Group number:** 27
 
 Credits to the React tutorial for outlining how context is used in React. 
 - [React tutorial link](https://react.dev/learn/scaling-up-with-reducer-and-context)
