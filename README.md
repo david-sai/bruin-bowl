@@ -1,6 +1,15 @@
 # How to run the app locally:
 
-## File structure
+## Running the app
+
+### Initial setup:
+
+```bash
+git clone https://github.com/david-sai/bruin-bowl.git
+cd bruin-bowl
+```
+
+This is the file structure:
 
 ```
 - bruin-bowl
@@ -9,13 +18,11 @@
     - README.md
 ```
 
-## Running the app
-
 ### Frontend:
 
 ```bash
 cd bruin-bowl-frontend
-npm install # install dependencies
+npm install
 npm start
 ```
 
@@ -24,7 +31,8 @@ You should now see the website at `localhost:3000`.
 ### Backend
 
 ```bash
-cd .. # go back to the parent `bruin-bowl` directory
+# go back to the parent `bruin-bowl` directory
+cd ..
 cd bruin-bowl-backend
 npm install
 
