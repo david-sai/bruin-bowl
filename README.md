@@ -6,19 +6,11 @@
 
 ```bash
 git clone https://github.com/david-sai/bruin-bowl.git
-cd bruin-bowl
-```
-
-This is the file structure:
-
-```
-- bruin-bowl
-    - bruin-bowl-frontend (frontend)
-    - bruin-bowl-backend (backend)
-    - README.md
 ```
 
 ### Frontend:
+
+First, start in the `bruin-bowl` directory. Then:
 
 ```bash
 cd bruin-bowl-frontend
@@ -30,9 +22,9 @@ You should now see the website at `localhost:3000`.
 
 ### Backend
 
+Open a new shell window and start in the `bruin-bowl` direactory. Then:
+
 ```bash
-# go back to the parent `bruin-bowl` directory
-cd ..
 cd bruin-bowl-backend
 npm install
 
@@ -45,7 +37,16 @@ nodemon server.js
 The server should be up and running on port 4000!
 
 ## Details
-   
+
+This is the file structure:
+
+```
+- bruin-bowl
+    - bruin-bowl-frontend (frontend)
+    - bruin-bowl-backend (backend)
+    - README.md
+```
+
 
 Here are our endpoints: 
 
