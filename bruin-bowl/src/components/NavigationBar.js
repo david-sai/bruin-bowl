@@ -112,7 +112,7 @@ function NavigationBar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-20 right-0 bg-amber-50 px-16 shadow-md z-10">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-amber-50 shadow-md z-10">
           <div className="flex flex-col space-y-4 p-4">
             <NavLinkItem to="/mode-select" onClick={closeMenu}>
               Start Game
