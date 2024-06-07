@@ -1,14 +1,14 @@
-# How to run the app locally:
+# Bruin Bowl
 
-## Running the app
+## Running the app locally
 
-### Initial setup:
+### 1️⃣ Initial setup
 
 ```bash
 git clone https://github.com/david-sai/bruin-bowl.git
 ```
 
-### Frontend:
+### 2️⃣ Frontend:
 
 First, start in the `bruin-bowl` directory. Then:
 
@@ -20,7 +20,7 @@ npm start
 
 You should now see the website at `localhost:3000`.
 
-### Backend
+### 3️⃣ Backend
 
 Open a new shell window and start in the `bruin-bowl` direactory. Then:
 
