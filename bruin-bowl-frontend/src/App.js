@@ -1,9 +1,8 @@
-import React, { useState, useEffect, createContext } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Component Imports:
 import PageTitle from "./components/PageTitle.js";
 import NavigationBar from "./components/NavigationBar.js";
-import AvatarSelector from "./components/AvatarSelector.js";
 import AuthModal from "./components/AuthModal";
 //Styling imports:
 import "./App.css";
