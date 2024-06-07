@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { searchQuestion } from '../api/api.js';
-import QuestionBox from './QuestionBox.js';
 import QuestionSearchDisplay from './QuestionSearchDisplay.js';
 
 function SearchBar() {
   //Below is the state management for: keyword for input, results for search, & output for error messaging
   const [keyword, setKeyword] = useState('');
   const [results, setResults] = useState(null);
-  const [error, setError] = useState("");
 
   //Updates the keyword state when the user types in the input.
   const handleChange = (event) => {
@@ -20,10 +18,8 @@ function SearchBar() {
     const response = (data) => {
       if (data) {
         if (data["error"]) {
-          setError(data["error"].message);
         } else {
-          setResults(data["results"])
-          setError("");
+          setResults(data["results"]);
         }
       }
     };

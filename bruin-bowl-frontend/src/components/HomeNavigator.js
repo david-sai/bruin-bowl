@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ModalIsOpenContext, UserContext } from "../context/Contexts";
 
 function HomeNavigator() {
   const navigate = useNavigate();
-  const { modalIsOpen, setModalIsOpen } = useContext(ModalIsOpenContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setModalIsOpen } = useContext(ModalIsOpenContext);
+  const { user } = useContext(UserContext);
 
   const message = user === null ? "Sign up to start" : "Start playing";
 

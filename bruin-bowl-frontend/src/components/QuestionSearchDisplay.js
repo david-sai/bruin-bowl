@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 function QuestionSearchDisplay(props) {
     // pass in question variable in props
     let question = props.question
