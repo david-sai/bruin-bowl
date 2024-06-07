@@ -33,9 +33,12 @@ npm install -g --force nodemon
 
 # go into src and setup env variables (note: the echo line should start at "echo" and end at ".env")
 cd src
-echo "MONGODB_URI=[INSERT MONGODB_URI VALUE HERE]" > .env
+echo "MONGODB_URI=INSERT_MONGODB_URI_VALUE_HERE" > .env
 nodemon server.js
 ```
+
+> [!NOTE] 
+> You can get the `INSERT_MONGODB_URI_VALUE_HERE` in our project submission document.
 
 The server should be up and running on port 4000!
 
