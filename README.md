@@ -1,64 +1,43 @@
 # How to run the app locally:
 
-## Key Terms
-Our repository is contained inside the **root directory** bruin-bowl. 
-- Within bruin-bowl, the **frontend directory** is called bruin-bowl.
-- The **backend directory** is called bruin-bowl-backend.
-- There are various subdirectories and files under these.
+## File structure
 
-## Frontend:
-0. **Start in the root bruin-bowl directory (the folder storing this README).**
-1. **Switch to the frontend directory bruin-bowl.**
-    ```bash
-    cd bruin-bowl
-    ```
-2. **Install all dependencies.**
-    ```bash
-    npm install
-    ```
-3. **Execute start script.**
-    ```bash
-    npm start
-    ```
-## Backend:
-### Running the Server
+```
+- bruin-bowl
+    - bruin-bowl-frontend (frontend)
+    - bruin-bowl-backend (backend)
+    - README.md
+```
 
-0. **Install the project dependencies (for first time):**
+## Running the app
 
-    > Assuming you are currently in the bruin-bowl frontend directory, use ```cd ../bruin-bowl-backend``` to navigate to the backend folder.
-    > Otherwise, if you are in the root directory, use ```cd bruin-bowl-backend```.
+### Frontend:
 
-   ```sh
-   cd ../bruin-bowl-backend
-   npm install
-   npm install -g --force nodemon
-   ```
+```bash
+cd bruin-bowl-frontend
+npm install # install dependencies
+npm start
+```
 
-2. **Setup environment variables (inside bruin-bowl-backend/src):**
-   ```sh
-   cd src
-   touch .env
-   ```
-   **Paste** the following inside the .env file: MONGODB_URI=mongodb+srv://BruinBowl35L:PZ7R06@bruin-bowl-database.dytrqfo.mongodb.net/?retryWrites=true&w=majority&appName=Bruin-Bowl-Database
+You should now see the website at `localhost:3000`.
 
-    Note: if you are doing this from terminal, use a text editor like Nano to paste the text. 
-    For example:
-    ```sh
-    nano .env
-    ```
-    Then paste the code, type ```Ctrl + x``` then ```y``` to save the changes you made, and enter to close.
+### Backend
 
-    **However**, we recommend using Visual Studio Code as you can directly:
-    - Create a file and name it ```.env``` within the backend src directory
-    - Paste the content in the file
-    - Save the changes 
-      
-4. **Start up the server:**
-   ```sh
-   nodemon server.js
-   ```
-   
+```bash
+cd .. # go back to the parent `bruin-bowl` directory
+cd bruin-bowl-backend
+npm install
+
+# setup env variables
+cd src
+echo "MONGODB_URI=mongodb+srv://BruinBowl35L:PZ7R06@bruin-bowl-database.dytrqfo.mongodb.net/?retryWrites=true&w=majority&appName=Bruin-Bowl-Database" < .env
+nodemon server.js
+```
+
 The server should be up and running on port 4000!
+
+## Details
+   
 
 Here are our endpoints: 
 
