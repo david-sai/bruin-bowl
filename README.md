@@ -202,7 +202,7 @@ Created by Andrew, Brayden, Daniel, David, Jonathan, Zach
 - Andrew Zheng `aheze@getfind.app`
 - Brayden Tam `57848434+braydentam@users.noreply.github.com`
 - Daniel Guo `dguo314other@gmail.com`/`76500449+DiiGii@users.noreply.github.com`
-- David Sai `davidsai342@gmail.com`
+- David Sai `davidsai342@gmail.com`/`51894418+david-sai@users.noreply.github.com`
 - Jonathan Pai `jonathantspai@gmail.com`/`114116017+RandomKnight155@users.noreply.github.com`
 - Zachary DeSoto `zacharysdesoto@gmail.com`
 
