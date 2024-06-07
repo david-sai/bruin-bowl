@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { STATUS } from "../pages/Questions";
 
 function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
+  //Holds shuffed answers and index of selected answer
   const [answers, setAnswers] = useState([String]);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -15,6 +16,7 @@ function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
     }
   }
 
+  //This useEffect shuffles the answers
   useEffect(() => {
     let answers = [answer, wrong1, wrong2, wrong3];
     const shuffledAnswers = shuffleArray(answers);
@@ -22,8 +24,8 @@ function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
     setSelectedIndex(null);
   }, [answer, wrong1, wrong2, wrong3]);
 
+  //This fn uses the Fisher-Yates Algorithm to shuffle the answers array.
   function shuffleArray(array) {
-    // Uses Fisher-Yates Algorithm
     let shuffledArray = array.slice();
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1)); // Gets random index
@@ -35,10 +37,12 @@ function AnswerBar({ status, setStatus, answer, wrong1, wrong2, wrong3 }) {
     return shuffledArray;
   }
 
+  //Handles the click which selects an answer
   function handleClick(index) {
     setSelectedIndex(index);
   }
 
+  //For styling
   const selectedStyling = "bg-bruin-blue ";
   const unselectedStyling = "bg-transparent border-2 border-bruin-darkgold";
   

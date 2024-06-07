@@ -11,17 +11,23 @@ const createQuestion = async (req, res) => {
     }
 };
 
-const usedQuestions = new Map(); //maps categories to a set of questions that have been used
-let lastQuestion = null; //records the last question
+//Creates a Map to store used questions by category. This avoids repetition.
+const usedQuestions = new Map();
+//Keeps track of the last question to prevent repeats
+let lastQuestion = null;
 
+
+//Purpose: retrieves a random question from the specified category.
 const getQuestion = async (req, res) => {
     const { category } = req.query; 
+    
     try {
         const totalQuestions = await QuizSchema.countDocuments({ category: category });
 
         if(totalQuestions === 0){
             return res.status(400).json({ error: "No Questions of this category in DB" });
         }
+
         if (!usedQuestions.has(category)) {
             usedQuestions.set(category, new Set());
         }
@@ -29,13 +35,26 @@ const getQuestion = async (req, res) => {
         const usedQuestionsSet = usedQuestions.get(category);
 
         while(totalQuestions > 0){
-            if(usedQuestionsSet.size >= totalQuestions) usedQuestionsSet.clear(); //If i'm out of questions, clear out used questions
+            if(usedQuestionsSet.size >= totalQuestions) {
+                usedQuestionsSet.clear(); //If i'm out of questions, clear out used questions
+            }
+
             const randomIndex = Math.floor(Math.random() * totalQuestions); //pick a random number
-            if(usedQuestionsSet.has(randomIndex)) continue; 
+            
+            if(usedQuestionsSet.has(randomIndex)) {
+                continue; 
+            } 
+
             quizQuestion = await QuizSchema.findOne({ category: category }).skip(randomIndex); //select that random question
-            if(lastQuestion !== null && lastQuestion === quizQuestion.question) continue; //make sure I haven't repeated a question
+            
+            if(lastQuestion !== null && lastQuestion === quizQuestion.question) {
+                continue;
+            } //make sure I haven't repeated a question
+
             usedQuestionsSet.add(randomIndex);
+
             lastQuestion = quizQuestion.question
+
             break;
         }
         res.status(200).json({ quizQuestion: quizQuestion });
@@ -44,12 +63,14 @@ const getQuestion = async (req, res) => {
     }
 };
 
+//Purpose: searches for questions that contain a specific keyword
 const searchQuestion = async (req, res) => {
     const { keyword } = req.body;
     
     if (!keyword) {
       return res.status(400).json({ error: 'Keyword is required' });
     }
+    
     try {
       const regex = new RegExp(`\\b${keyword}\\b`, 'i'); //search for keyword (surrounded by word boundaries)
       const results = await QuizSchema.find({ question: { $regex: regex } });
