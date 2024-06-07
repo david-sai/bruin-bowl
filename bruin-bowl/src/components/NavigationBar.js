@@ -43,7 +43,7 @@ function UserNav({ user, handleSignIn, onClick }) {
     </NavLink>
   ) : (
     <button
-      className="flex items-center py-2 px-5 text-white rounded-full bg-bruin-gold"
+      className="flex items-center py-3 px-5 text-white rounded-full bg-bruin-gold"
       onClick={() => {
         handleSignIn();
         onClick();
@@ -87,7 +87,7 @@ function NavigationBar() {
 
       <div className="grow"></div>
 
-      <div className="hidden sm:flex space-x-5 text-large items-center">
+      <div className="hidden md:flex space-x-5 text-large items-center">
         <NavLinkItem to="/mode-select" onClick={closeMenu}>
           Start Game
         </NavLinkItem>
