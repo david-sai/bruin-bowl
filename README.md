@@ -24,8 +24,10 @@ Our repository is contained inside the **root directory** bruin-bowl.
 ### Running the Server
 
 0. **Install the project dependencies (for first time):**
-- Assuming you are currently in the bruin-bowl frontend directory, use ```cd ../bruin-bowl-backend``` to navigate to the backend folder.
-- Otherwise, if you are in the root directory, use ```cd bruin-bowl-backend```.
+
+Notes: 
+> Assuming you are currently in the bruin-bowl frontend directory, use ```cd ../bruin-bowl-backend``` to navigate to the backend folder.
+> Otherwise, if you are in the root directory, use ```cd bruin-bowl-backend```.
 
    ```sh
    cd ../bruin-bowl-backend
