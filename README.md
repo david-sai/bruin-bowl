@@ -27,7 +27,9 @@ Open a new shell window and start in the `bruin-bowl` direactory. Then:
 ```bash
 cd bruin-bowl-backend
 npm install
-npm install -g --force nodemon (may be optional)
+
+# (the following may be optional)
+npm install -g --force nodemon
 
 # go into src and setup env variables (note: the echo line should start at "echo" and end at ".env")
 cd src
