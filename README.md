@@ -100,7 +100,7 @@ Please note that if you are already logged in, you may skip steps 1 through 3.
 
 ## Motivation:
 
-When we first created a group for the CS35L project, we aimed to create a valuable, revelant, and useful web application. And as UCLA students, we unanimously agreed on a website that could test our knowledge of UCLA trivia in a fun and interactive way. As we expanded our features, we found that our website could also allow us to quiz ourselves on other subjects like computer science in an engaging format. 
+When we first created a group for the CS35L project, we aimed to create a valuable, relevant, and useful web application. And as UCLA students, we unanimously agreed on a website that could test our knowledge of UCLA trivia in a fun and interactive way. As we expanded our features, we found that our website could also allow us to quiz ourselves on other subjects like computer science in an engaging format. 
 
 The original inspiration for our project is Quiz Bowl, an academic trivia competition that, like the essential gameplay of our project, awards points based on the speed of the participant’s response. This was a shared interest the we all had, and was something where we all had experience in the past. In this project, we also provided a variety of features that adapt aspects of Quiz Bowl to an appropriate web-based equivalent. 
 
