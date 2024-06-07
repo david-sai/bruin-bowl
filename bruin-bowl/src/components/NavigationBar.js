@@ -26,7 +26,7 @@ function UserNav({ user, handleSignIn, onClick }) {
     <NavLink
       to="/profile"
       className={({ isActive }) =>
-        `flex items-center py-0.5 pl-2 pr-5 font-bold rounded-full ${
+        `flex items-center py-2 pl-2 pr-5 font-bold rounded-full ${
           isActive
             ? "text-white bg-bruin-blue bg-opacity-100"
             : "text-bruin-gold bg-bruin-gold bg-opacity-10"
@@ -43,7 +43,7 @@ function UserNav({ user, handleSignIn, onClick }) {
     </NavLink>
   ) : (
     <button
-      className="flex items-center py-4 px-5 text-white rounded-full bg-bruin-gold"
+      className="flex items-center py-2 px-5 text-white rounded-full bg-bruin-gold"
       onClick={() => {
         handleSignIn();
         onClick();
@@ -73,7 +73,7 @@ function NavigationBar() {
   }
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex items-center space-x-6">
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -85,7 +85,9 @@ function NavigationBar() {
         Bruin Bowl
       </NavLink>
 
-      <div className="hidden md:flex space-x-5 text-large items-center">
+      <div className="grow"></div>
+
+      <div className="hidden sm:flex space-x-5 text-large items-center">
         <NavLinkItem to="/mode-select" onClick={closeMenu}>
           Start Game
         </NavLinkItem>
@@ -98,15 +100,21 @@ function NavigationBar() {
         <NavLinkItem to="/leaderboard" onClick={closeMenu}>
           Leaderboard
         </NavLinkItem>
-        <UserNav user={user} handleSignIn={handleSignIn} onClick={closeMenu} />
       </div>
 
-      <div className="md:hidden flex items-center">
+      <UserNav
+        className="justify-self-end"
+        user={user}
+        handleSignIn={handleSignIn}
+        onClick={closeMenu}
+      />
+
+      <div className="md:hidden ">
         <button onClick={toggleMenu}>
           {isOpen ? (
-            <i className="fas fa-times h-6 w-6 text-bruin-blue"></i>
+            <i className="fas fa-times fa-2x h-6 w-6 text-bruin-blue"></i>
           ) : (
-            <i className="fas fa-bars h-6 w-6 text-bruin-blue"></i>
+            <i className="fas fa-bars fa-2x h-6 w-6 text-bruin-blue"></i>
           )}
         </button>
       </div>
@@ -126,7 +134,6 @@ function NavigationBar() {
             <NavLinkItem to="/leaderboard" onClick={closeMenu}>
               Leaderboard
             </NavLinkItem>
-            <UserNav user={user} handleSignIn={handleSignIn} onClick={closeMenu} />
           </div>
         </div>
       )}
