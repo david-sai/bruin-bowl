@@ -22,7 +22,7 @@ You should now see the website at `localhost:3000`.
 
 ### 3️⃣ Backend
 
-Open a new shell window and start in the `bruin-bowl` direactory. Then:
+Open a new shell window and start in the `bruin-bowl` directory. Then:
 
 ```bash
 cd bruin-bowl-backend
