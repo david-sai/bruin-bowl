@@ -52,38 +52,6 @@ This is the folder structure:
 ```
 
 
-Here are our endpoints: 
-
-- **POST user/signup** - Signs up a user  
-  Takes `username` and `password`.
-
-- **POST user/signin** - Signs in a user  
-  Takes `username` and `password`.
-
-- **GET user/get** - Gets user information  
-  Takes `username`.
-
-- **DELETE user/delete** - Deletes a user  
-  Takes `username`.
-
-- **GET user/getscore** - Gets user score  
-  Takes `username`.
-
-- **POST user/updateScore** - Updates user score  
-  Takes `username` and `amount` to increment score.
-
-- **GET user/leaderboard** - Gets the leaderboard  
-  Returns an array of user objects sorted in score order.
-
-- **POST quiz/create** - Creates a question  
-  Takes `question`, `answer`, `3 false options`, and `category`.
-
-- **POST quiz/search** - Searches for a question  
-  Takes `keyword` to search for.
-
-- **GET quiz/** - Gets a question  
-  Takes `category`.
-
 ## Playthrough
 
 1. Navigate to the home page of the app. You should see a large blue button at the bottom, with the words "Sign up to start."
