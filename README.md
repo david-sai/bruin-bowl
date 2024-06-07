@@ -27,8 +27,9 @@ Open a new shell window and start in the `bruin-bowl` direactory. Then:
 ```bash
 cd bruin-bowl-backend
 npm install
+npm install -g --force nodemon (may be optional)
 
-# go into src and setup env variables
+# go into src and setup env variables (note: the echo line should start at "echo" and end at ".env")
 cd src
 echo "MONGODB_URI=mongodb+srv://BruinBowl35L:PZ7R06@bruin-bowl-database.dytrqfo.mongodb.net/?retryWrites=true&w=majority&appName=Bruin-Bowl-Database" > .env
 nodemon server.js
