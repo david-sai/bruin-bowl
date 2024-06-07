@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ModalIsOpenContext, UserContext } from "../context/Contexts";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-function NavLinkItem({ to, children }) {
+function NavLinkItem({ to, children, onClick }) {
   return (
     <NavLink
       to={to}
@@ -14,13 +14,14 @@ function NavLinkItem({ to, children }) {
             : "text-bruin-gold border-transparent"
         }`
       }
+      onClick={onClick}
     >
       {children}
     </NavLink>
   );
 }
 
-function UserNav({ user, handleSignIn }) {
+function UserNav({ user, handleSignIn, onClick }) {
   return user ? (
     <NavLink
       to="/profile"
@@ -31,6 +32,7 @@ function UserNav({ user, handleSignIn }) {
             : "text-bruin-gold bg-bruin-gold bg-opacity-10"
         }`
       }
+      onClick={onClick}
     >
       <img
         src={user.avatar}
@@ -41,8 +43,11 @@ function UserNav({ user, handleSignIn }) {
     </NavLink>
   ) : (
     <button
-      className="flex items-center py-0.5 px-5 text-white rounded-full bg-bruin-gold"
-      onClick={handleSignIn}
+      className="flex items-center py-4 px-5 text-white rounded-full bg-bruin-gold"
+      onClick={() => {
+        handleSignIn();
+        onClick();
+      }}
     >
       <span>Sign Up</span>
       <i className="fas fa-arrow-right pl-3"></i>
@@ -63,6 +68,10 @@ function NavigationBar() {
     setIsOpen(!isOpen);
   }
 
+  function closeMenu() {
+    setIsOpen(false);
+  }
+
   return (
     <div className="flex justify-between items-center">
       <NavLink
@@ -77,11 +86,19 @@ function NavigationBar() {
       </NavLink>
 
       <div className="hidden md:flex space-x-5 text-large items-center">
-        <NavLinkItem to="/mode-select">Start Game</NavLinkItem>
-        <NavLinkItem to="/search">Search Questions</NavLinkItem>
-        <NavLinkItem to="/question-add">Add Questions</NavLinkItem>
-        <NavLinkItem to="/leaderboard">Leaderboard</NavLinkItem>
-        <UserNav user={user} handleSignIn={handleSignIn} />
+        <NavLinkItem to="/mode-select" onClick={closeMenu}>
+          Start Game
+        </NavLinkItem>
+        <NavLinkItem to="/search" onClick={closeMenu}>
+          Search Questions
+        </NavLinkItem>
+        <NavLinkItem to="/question-add" onClick={closeMenu}>
+          Add Questions
+        </NavLinkItem>
+        <NavLinkItem to="/leaderboard" onClick={closeMenu}>
+          Leaderboard
+        </NavLinkItem>
+        <UserNav user={user} handleSignIn={handleSignIn} onClick={closeMenu} />
       </div>
 
       <div className="md:hidden flex items-center">
@@ -95,13 +112,21 @@ function NavigationBar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-20 bg-amber-50 px-16 shadow-md z-10">
+        <div className="md:hidden absolute top-20 right-0 bg-amber-50 px-16 shadow-md z-10">
           <div className="flex flex-col space-y-4 p-4">
-            <NavLinkItem to="/mode-select">Start Game</NavLinkItem>
-            <NavLinkItem to="/search">Search Questions</NavLinkItem>
-            <NavLinkItem to="/question-add">Add Questions</NavLinkItem>
-            <NavLinkItem to="/leaderboard">Leaderboard</NavLinkItem>
-            <UserNav user={user} handleSignIn={handleSignIn} />
+            <NavLinkItem to="/mode-select" onClick={closeMenu}>
+              Start Game
+            </NavLinkItem>
+            <NavLinkItem to="/search" onClick={closeMenu}>
+              Search Questions
+            </NavLinkItem>
+            <NavLinkItem to="/question-add" onClick={closeMenu}>
+              Add Questions
+            </NavLinkItem>
+            <NavLinkItem to="/leaderboard" onClick={closeMenu}>
+              Leaderboard
+            </NavLinkItem>
+            <UserNav user={user} handleSignIn={handleSignIn} onClick={closeMenu} />
           </div>
         </div>
       )}
